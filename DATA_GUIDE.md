@@ -10,9 +10,12 @@
 
 ## 1. 数据来源
 
-六个政府公开数据源。原始文件在 `data/raw/`（逐字节保存，从不改写），
-完整抓取记录见 `data/raw/_manifest.json`（含 URL / SHA256 / 抓取时间），
-官方元数据见 `data/raw/_provenance.json`。
+六个政府公开数据源。原始文件在 `data/raw/`（逐字节保存，从不改写）：
+**下载链接与 SHA256 见 [`data/raw/SOURCES.md`](data/raw/SOURCES.md)**；
+机器可读清单位于 `data/raw/_manifest.json`，官方元数据见 `data/raw/_provenance.json`。
+
+若需更新到最新官方数据，按 SOURCES.md 手动下载覆盖对应文件即可
+（管道会在构建前比对 SHA256 并提示差异）。
 
 | # | 提供机构 | 数据 | 频率 | 本地文件 | 用途 |
 |---|---|---|---|---|---|
@@ -235,7 +238,7 @@ season     周数   起            止              断档
 ```
 
 不统一会导致该院**整行静默丢失**（merge 后变 NaN，不报错）。
-映射表在 `pipeline/02_build.py` 的 `HOSPITAL_NAME_MAP`。
+映射表在 `pipeline/01_build.py` 的 `HOSPITAL_NAME_MAP`。
 
 **② 医院名录的联网划分与高峰统计不同。** 名录把港岛合并为 `Hong Kong Island Cluster`，
 而高峰统计拆成 `Hong Kong East` / `Hong Kong West`。名录只用于取坐标。
@@ -395,9 +398,10 @@ $$\text{med\_bed\_occ}_{it} = \alpha_i + \delta_s + \beta X_t + \theta (X_t \tim
 
 ```bash
 # 直接看管道怎么做的
-cat pipeline/02_build.py
+cat pipeline/01_build.py
 
 # 只用 pandas 即可；关键步骤在 S1–S6，处理约定集中在文件顶部常量区
+# 运行： ./pipeline/run_all.sh
 ```
 
 管道输出的 6 个表：

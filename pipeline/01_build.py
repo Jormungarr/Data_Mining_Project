@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-02_build.py — 把 data/raw/ 的原始文件清洗、聚合、合并成分析用面板数据。
+01_build.py — 把 data/raw/ 的原始文件清洗、聚合、合并成分析用面板数据。
+
+原始数据需已放在 data/raw/ 下（来源与下载链接见 data/raw/SOURCES.md）。
+本脚本不联网，只做本地处理。
 
 产出（data/processed/）：
     panel_hospital_week.csv    主分析表：17 医院 × 144 周 = 2,448 行 × 31 列
@@ -22,11 +25,12 @@
     * 周的定义一律采用「流感速递」的 From/To；To 为该周最后一天（周六）。
       所有其它来源都对齐到这个边界，以保证跨来源可比。
     * 所有聚合均为确定性运算，不含随机成分。
-    * 若 data/raw/ 缺少文件，本脚本会提示先执行 01_download.py。
+    * 构建前会比对 data/raw/_manifest.json 中的 SHA256，报告缺失或被改动的文件
+      （仅提示，不中断 —— 你可能下载到了官方更新的版本）。
 
 用法：
-    python pipeline/02_build.py
-    python pipeline/02_build.py --raw-dir data/raw --out-dir data/processed
+    python pipeline/01_build.py
+    python pipeline/01_build.py --raw-dir data/raw --out-dir data/processed
 """
 
 from __future__ import annotations
@@ -107,9 +111,38 @@ def season_label(week_end: pd.Timestamp) -> str:
 def require(path: pathlib.Path) -> pathlib.Path:
     if not path.exists():
         raise SystemExit(
-            f"缺少原始文件：{path}\n请先执行：python pipeline/01_download.py"
+            f"缺少原始文件：{path}\n"
+            f"请按 data/raw/SOURCES.md 从官网下载后放入该路径。"
         )
     return path
+
+
+def verify_raw(raw: pathlib.Path) -> None:
+    """比对 _manifest.json 中的 SHA256，报告缺失/改动（仅提示，不中断）。"""
+    manifest = raw / "_manifest.json"
+    if not manifest.exists():
+        print("    （未找到 _manifest.json，跳过完整性比对）")
+        return
+    import hashlib
+
+    recorded = json.loads(manifest.read_text(encoding="utf-8")).get("files", {})
+    missing, changed, ok = [], [], 0
+    for relpath, meta in recorded.items():
+        path = raw / relpath
+        if not path.exists():
+            missing.append(relpath)
+            continue
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if digest == meta["sha256"]:
+            ok += 1
+        else:
+            changed.append(relpath)
+    print(f"    与清单一致 {ok}/{len(recorded)}")
+    if missing:
+        print(f"    ⚠ 缺失 {len(missing)} 个：{missing[:5]}{' …' if len(missing) > 5 else ''}")
+    if changed:
+        print(f"    ⚠ SHA256 不符 {len(changed)} 个：{changed[:5]}{' …' if len(changed) > 5 else ''}")
+        print("      （可能是官方数据已更新，或文件被改动）")
 
 
 # --------------------------------------------------------------------------
@@ -224,7 +257,7 @@ def load_hko(raw: pathlib.Path) -> pd.DataFrame:
         for year in HKO_YEARS:
             path = raw / f"hko/{code}_{year}.csv"
             if not path.exists():
-                raise SystemExit(f"缺少原始文件：{path}\n请先执行：python pipeline/01_download.py")
+                raise SystemExit(f"缺少原始文件：{path}\n请按 data/raw/SOURCES.md 下载后放入该路径。")
             rows = []
             for line in path.read_text(encoding="utf-8-sig").splitlines()[2:]:  # 前两行为标题
                 fields = [c.strip().strip('"') for c in line.split(",")]
@@ -291,7 +324,10 @@ def aggregate_hko_to_weeks(hko: pd.DataFrame, flu: pd.DataFrame) -> pd.DataFrame
 def build(raw: pathlib.Path, out: pathlib.Path) -> dict:
     out.mkdir(parents=True, exist_ok=True)
 
-    print("S1  读取原始文件")
+    print("S0  检查 data/raw/ 完整性")
+    verify_raw(raw)
+
+    print("\nS1  读取原始文件")
     flu = load_flu(raw)
     surge = load_surge(raw)
     beds = load_beds(raw)
@@ -480,13 +516,23 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--raw-dir", default=str(ROOT / "data" / "raw"), help="原始数据目录")
     ap.add_argument("--out-dir", default=str(ROOT / "data" / "processed"), help="产出目录")
+    ap.add_argument("--check-raw-only", action="store_true",
+                    help="只检查 data/raw/ 完整性，不做构建")
     args = ap.parse_args()
 
+    raw_dir = pathlib.Path(args.raw_dir)
+    if args.check_raw_only:
+        print("=" * 78)
+        print("data/raw/ 完整性检查")
+        print("=" * 78)
+        verify_raw(raw_dir)
+        return 0
+
     print("=" * 78)
-    print("02_build.py — 构建分析面板")
+    print("01_build.py — 构建分析面板")
     print("=" * 78)
-    build(pathlib.Path(args.raw_dir), pathlib.Path(args.out_dir))
-    print("\n✓ 完成。请接着执行 python pipeline/03_validate.py")
+    build(raw_dir, pathlib.Path(args.out_dir))
+    print("\n✓ 完成。请接着执行 python pipeline/02_validate.py")
     return 0
 
 

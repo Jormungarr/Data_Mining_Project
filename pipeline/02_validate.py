@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-03_validate.py — 对 data/processed/ 的产出做完整性、一致性与合理性检查。
+02_validate.py — 对 data/processed/ 的产出做完整性、一致性与合理性检查。
 
 检查分四类：
     A. 结构        行数、主键唯一性、面板平衡性、列数
@@ -11,8 +11,8 @@
 任一检查失败则退出码为 1，可用于 CI。
 
 用法：
-    python pipeline/03_validate.py
-    python pipeline/03_validate.py --out-dir data/processed --report out/validation_report.txt
+    python pipeline/02_validate.py
+    python pipeline/02_validate.py --out-dir data/processed --report out/validation_report.txt
 """
 
 from __future__ import annotations
@@ -290,14 +290,14 @@ def main() -> int:
     panel_path = out_dir / "panel_hospital_week.csv"
     hk_path = out_dir / "hk_weekly.csv"
     if not panel_path.exists():
-        raise SystemExit(f"找不到 {panel_path}\n请先执行：python pipeline/02_build.py")
+        raise SystemExit(f"找不到 {panel_path}\n请先执行：python pipeline/01_build.py")
 
     panel = pd.read_csv(panel_path)
     hk = pd.read_csv(hk_path)
 
     r = Report()
     r.lines.append("=" * 78)
-    r.lines.append("03_validate.py — 分析面板验证报告")
+    r.lines.append("02_validate.py — 分析面板验证报告")
     r.lines.append("=" * 78)
     r.lines.append(f"  主表   {panel_path}   {panel.shape[0]:,} 行 × {panel.shape[1]} 列")
     r.lines.append(f"  全港表 {hk_path}   {hk.shape[0]:,} 行 × {hk.shape[1]} 列")

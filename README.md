@@ -23,19 +23,19 @@
 **想自己重新合并**：
 
 ```bash
-./pipeline/run_all.sh          # 下载 → 校验 → 构建 → 验证，约 2 分钟
+./pipeline/run_all.sh          # 构建 → 验证，约 10 秒
 ```
 
 首次运行会自动用 `uv` 创建 `.venv` 并安装依赖（Python 3.12）。
-`data/raw/` 已随仓库提供，通常**无需联网**即可完成构建与验证。
-
-三种运行模式：
+**整个过程不联网** —— 原始数据已随仓库提供在 `data/raw/`。
 
 ```bash
-./pipeline/run_all.sh              # 增量：已有的原始文件跳过下载
-./pipeline/run_all.sh --fresh      # 彻底重来：清空 data/ 后从零重建
-./pipeline/run_all.sh --check-only # 离线：只校验本地文件，不联网
+./pipeline/run_all.sh                # 构建 + 验证
+./pipeline/run_all.sh --check-only    # 只检查 data/raw/ 完整性
 ```
+
+管道直接读取 `data/raw/`，不下载任何东西。若要更新到最新官方数据，
+按 [`data/raw/SOURCES.md`](data/raw/SOURCES.md) 手动下载覆盖对应文件即可。
 
 管道是**确定性**的。在同一批原始数据上重复运行，产出的 CSV 逐字节一致
 （已验证：冷启动重建后 6 个产出文件的 SHA256 完全相同）。
@@ -52,12 +52,12 @@
 │
 ├── pipeline/                     ★ 数据管道（可复现的全部逻辑）
 │   ├── run_all.sh                一键驱动
-│   ├── 01_download.py            下载 + SHA256 清单 + 元数据存档
-│   ├── 02_build.py               清洗、聚合、合并 → 分析数据集
-│   └── 03_validate.py            结构/时间/一致性/分布 四类检查
+│   ├── 01_build.py               清洗、聚合、合并 → 分析数据集
+│   └── 02_validate.py            结构/时间/一致性/分布 四类检查
 │
 ├── data/
 │   ├── raw/                      原始文件（逐字节保存，从不改写）
+│   │   ├── SOURCES.md            ★ 数据来源与下载链接
 │   │   ├── _manifest.json        URL / 字节数 / SHA256 / 抓取时间
 │   │   ├── _provenance.json      data.gov.hk 数据集官方元数据
 │   │   └── flu/  ha/  hko/
@@ -69,7 +69,7 @@
 └── pyproject.toml / uv.lock      依赖锁定
 ```
 
-**`data/raw/` 从不被改写。** 所有清洗都发生在 `02_build.py`。
+**`data/raw/` 从不被改写。** 所有清洗都发生在 `01_build.py`。
 这意味着任何时候都可以从原始文件重新推导结果，且能看到用了哪个版本的数据。
 
 ---
@@ -92,22 +92,13 @@ data.gov.hk 上的**官方元数据**（标题、提供机构、更新频率）�
 
 ## 管道细节
 
-### 01_download.py
+### 01_build.py
 
-- 清单式声明全部 29 个资源（URL + 本地路径 + 用途），见源码 `build_manifest()`
-- 幂等：已存在且 SHA256 匹配则跳过；`--force` 强制重下
-- 每个文件记录 `url` / `bytes` / `sha256` / `retrieved_at` 到 `_manifest.json`
-- 拦截明显的错误响应（参数错误、HTML 404 页）
-- 部分政府站点对 Python 的 TLS 指纹返回 `SSL UNEXPECTED_EOF`，
-  已加入系统 `curl` 自动回退
-- `--check` 可完全离线地校验本地文件完整性
-
-### 02_build.py
-
-按 S1–S6 六步执行，每一步都有日志：
+按 S0–S6 七步执行，每一步都有日志：
 
 | 步骤 | 内容 |
 |---|---|
+| **S0** | 比对 `data/raw/_manifest.json` 中的 SHA256，报告缺失或被改动的文件（仅提示，不中断） |
 | **S1** | 读入并解析 6 个来源 |
 | **S2** | 统一医院/联网名称（跨来源对照表，见源码 `HOSPITAL_NAME_MAP`） |
 | **S3** | HA 逐日数据 → 按流感周界（周日至周六）聚合成 `(联网, 医院, 周)` 均值 |
@@ -120,7 +111,7 @@ data.gov.hk 上的**官方元数据**（标题、提供机构、更新频率）�
 
 **数据处理中踩过的坑（若自行合并需同样处理）**见 [`DATA_GUIDE.md` 第 5 节](DATA_GUIDE.md#5-数据处理中已解决的坑)。
 
-### 03_validate.py
+### 02_validate.py
 
 四类检查，共 40+ 项断言，任一失败则退出码为 1（可用于 CI）：
 
@@ -154,17 +145,16 @@ data.gov.hk 上的**官方元数据**（标题、提供机构、更新频率）�
 ## 复现验证
 
 ```bash
-# 冷启动重建（删掉 raw 与 processed 后从零跑）
-./pipeline/run_all.sh --fresh
-→ 29 个文件全部下载成功，四类检查全部通过
-
-# 从 GitHub 全新克隆后运行
+# 从 GitHub 全新克隆后运行（不联网）
 git clone <repo> && cd <repo> && ./pipeline/run_all.sh
+→ raw 完整性 29/29 一致
+→ S0–S6 构建完成
+→ 四类检查全部通过
 → 6 个产出文件的 SHA256 与上游仓库逐个一致
 
-# 原始文件离线校验
+# 只检查原始数据
 ./pipeline/run_all.sh --check-only
-→ 全部 29 个文件 SHA256 校验通过
+→ 与清单一致 29/29
 ```
 
 ---
@@ -179,7 +169,7 @@ pandas 3.0.6    numpy 2.5.3    scipy 1.18.1    statsmodels 0.15.0
 matplotlib 3.11.2    requests 2.34.2    lxml 6.1.3
 ```
 
-只需 `pandas` 即可跑通整条管道（其余为后续建模所需）。
+只需 `pandas` 即可跑通整条管道，且**不需要联网**（其余依赖为后续建模所需）。
 
 在受限环境（如沙箱）中，`uv` 的默认缓存目录可能不可写，此时设置：
 

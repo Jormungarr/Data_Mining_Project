@@ -1,5 +1,5 @@
 ==============================================================================
-03_validate.py — 分析面板验证报告
+02_validate.py — 分析面板验证报告
 ==============================================================================
   主表   /Users/yukuanzou/HKU/HKU-TPG-DS/production/STAT8017/project/data/processed/panel_hospital_week.csv   2,448 行 × 34 列
   全港表 /Users/yukuanzou/HKU/HKU-TPG-DS/production/STAT8017/project/data/processed/hk_weekly.csv   144 行 × 23 列
