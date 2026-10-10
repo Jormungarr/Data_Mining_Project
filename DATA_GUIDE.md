@@ -10,6 +10,56 @@ this dataset can and cannot answer, so please read Section 4 before you start
 modelling.
 
 > A Chinese version of this guide is available at [`DATA_GUIDE.zh.md`](DATA_GUIDE.zh.md).
+>
+> New to this kind of data? Start with **Section 0**, which walks through a single
+> row. Unfamiliar terms are defined in the [glossary](#10-glossary) in Section 10.
+
+---
+
+## 0. Start here: what one row looks like
+
+The table has one row per **hospital-week**. Here are four real rows from a
+single week (7 January 2023), taken straight from the dataset, rounded to one
+decimal:
+
+| hospital | week_end | ILI_PMP | ae_first_attend | med_bed_occ_rate | days |
+|---|---|---|---|---|---|
+| Queen Elizabeth Hospital | 2023-01-07 | 18.0 | 422.6 | 118.3 | 7 |
+| Tuen Mun Hospital | 2023-01-07 | 18.0 | 373.0 | 114.3 | 7 |
+| Ruttonjee Hospital | 2023-01-07 | 18.0 | 149.3 | 99.7 | 7 |
+| North Lantau Hospital | 2023-01-07 | 18.0 | 191.3 | — | 7 |
+
+Reading across one row:
+
+- **`hospital` + `week_end`** identify the observation: one hospital during one week.
+- **`ILI_PMP` = 18.0** is the territory-wide influenza-like illness rate reported
+  by sentinel clinics that week. Notice it is **identical in all four rows** —
+  because it measures influenza across the whole of Hong Kong, not at any one
+  hospital. That is the single most important thing to understand about this table.
+- **`ae_first_attend` = 422.6** means Queen Elizabeth's A&E saw about 423 first
+  attendances per day, averaged over that week.
+- **`med_bed_occ_rate` = 118.3** means its medical wards were 18% over capacity.
+- **`days` = 7** means all seven days of that week had published data. If it were
+  4, the weekly averages would be based on only four days.
+- **`med_bed_occ_rate` is missing for North Lantau** because that hospital has no
+  medical inpatient wards. The value is absent, not zero.
+
+> **The key takeaway.** Because `ILI_PMP` is the same for every hospital in a
+> given week, it can explain *why demand rises and falls over time*. It cannot
+> explain *why one hospital is busier than another*. In the rows above, all four
+> hospitals faced identical influenza activity yet handled between 149 and 423
+> A&E attendances a day — that difference comes from hospital size and catchment,
+> not from influenza.
+
+Try a quick sanity check yourself:
+
+```python
+import pandas as pd
+df = pd.read_csv("data/processed/panel_hospital_week.csv")
+
+df[df.week_end == "2023-01-07"][["hospital", "ILI_PMP", "ae_first_attend"]]
+# ILI_PMP is 18.0 for all 17 hospitals, while ae_first_attend ranges from ~149 to ~423
+```
 
 ---
 
@@ -44,6 +94,31 @@ HKO daily temperature 2,800 days   2019-01-01 → 2026-08-31
 
 The week definition comes from Flu Express: each week ends on the `To` date
 (a Saturday). Every other source is aggregated onto that same boundary.
+
+### 1.1 Your first ten minutes with this data
+
+Before modelling anything, load the table and look at it:
+
+```python
+import pandas as pd
+
+df = pd.read_csv("data/processed/panel_hospital_week.csv")
+
+df.shape                                   # (2448, 34) - 2448 hospital-weeks, 34 columns
+df.head()                                  # what does a row look like?
+df.dtypes                                  # numeric vs text columns
+df.isna().mean().sort_values(ascending=False)   # which columns have gaps?
+
+# One value per week, shared by all 17 hospitals:
+df.groupby("week_end")["ILI_PMP"].nunique().max()      # -> 1
+
+# Weekly averages over all hospitals, for a first look at the time pattern:
+weekly = df.groupby("week_end")[["ae_first_attend", "ILI_PMP"]].mean()
+weekly.plot(subplots=True, figsize=(11, 5))
+```
+
+Two things to watch for on that plot: the eight separate winter humps with gaps
+between them, and how closely the two lines rise and fall together.
 
 ---
 
@@ -196,6 +271,14 @@ Tuen Mun             16.2        26.4        28.0        29.1
 - Cross-hospital differences have to come from hospital fixed effects and the
   capacity covariates (`beds_acute`, `ae_annual`, and so on).
 
+> **In plain terms.** Think of the influenza variables as Hong Kong's *national
+> weather report*. Everyone in the country reads the same number, so it can tell
+> you whether it was a bad flu week everywhere. It cannot tell you why one
+> hospital is under more pressure than another — for that you need to know how
+> big each hospital is and who it serves. "No cross-sectional variation" just
+> means "the number is the same across all hospitals"; *cross-section* is
+> statistics-speak for the collection of hospitals in one period.
+
 ### 4.2 The time axis is discontinuous — eight winter windows
 
 `T = 144` is not 144 consecutive weeks. It is eight separate windows:
@@ -218,6 +301,13 @@ season    weeks   first        last         gaps
   decomposition do not apply.
 - You cannot run `shift(1)` on the whole table to build lags.
 - Stratify by `season` and treat each winter as a separate surge episode.
+
+> **In plain terms.** The HA only publishes these statistics while a winter
+> surge is happening, so the record stops in spring and starts again the
+> following December. It is like having eight separate snapshots of eight
+> different winters rather than one continuous film. Anything that relies on
+> "the week before" has to respect the break — otherwise you would be comparing
+> a week in April 2024 with one in December 2024 as if they were adjacent.
 
 > **When you build lagged variables:**
 > ```python
@@ -281,6 +371,13 @@ the gaps in Section 4.2, flagged by `prev_gap_days`.
 ## 6. Signals already visible — a starting point
 
 Before modelling, it is worth confirming these relationships exist.
+
+> **These numbers are descriptive associations, not evidence of causation.** A
+> correlation means the two series move together; it does not mean influenza is
+> driving the change. Season, weather, public holidays, healthcare policy and the
+> COVID-19 period all move at the same time as influenza and could account for
+> part of the pattern. Establishing a causal claim needs the modelling in
+> Section 7 plus explicit assumptions — and this dataset alone cannot settle it.
 
 **Territory-wide, weekly (n = 144):**
 
@@ -376,6 +473,13 @@ point, test whether the transmission from influenza to load has changed.
 | Non-linearity | GAM or piecewise regression to locate a threshold |
 | Validation | Leave-one-season-out cross-validation; off-season placebo test |
 
+**If you are new to this, do not start with all of it.** A sensible first
+project is: pick `ILI_PMP` as the single predictor and `ae_first_attend` as the
+single response, fit a Poisson or negative binomial model with hospital and
+season fixed effects, and report the coefficient. Get that working end to end
+before adding lags, interactions or thresholds. The other options exist for
+when you have a specific question that the simple model cannot answer.
+
 **Robustness checklist:**
 
 1. Restrict to complete weeks (`days == 7`, 2,108 rows)
@@ -457,7 +561,35 @@ for byte.
 
 ---
 
-## 10. Known limitations
+## 10. Glossary
+
+Statistical shorthand used in this guide, in plain language. Skip it if you
+already know the terms; come back if one trips you up.
+
+| Term | What it means here |
+|---|---|
+| **Panel data** | A table with two dimensions: several units (hospitals) each observed repeatedly over time (weeks). Also called longitudinal data. |
+| **Balanced panel** | Every unit has a row for every period, with no gaps. Here that is 17 × 144 = 2,448 rows. Balanced in *shape* does not mean every column is complete — see Section 3.2. |
+| **Cross-section** | All the units at one point in time — here, the 17 hospitals in a given week. |
+| **Cross-sectional variation** | Whether a variable differs *between* units within the same period. The influenza variables have none. |
+| **Fixed effects** | Giving each hospital (or each season) its own baseline, so the model compares a hospital to itself over time rather than to other hospitals. It absorbs all stable differences between hospitals, observed or not. |
+| **Ecological data** | Measurements taken at group level rather than individual level. A territory-wide influenza rate is ecological. |
+| **Ecological fallacy** | Wrongly assuming a group-level relationship also holds for individuals. High territory-wide flu does not mean any particular patient had flu. |
+| **Count data** | Non-negative whole numbers, such as A&E attendances per day. |
+| **Poisson regression** | The standard model for count data. It assumes the variance equals the mean. |
+| **Negative binomial regression** | A count model that allows the variance to exceed the mean (overdispersion). Usually the safer default for real health data, including here. |
+| **Proportion / bounded outcome** | A value confined to a range, such as bed occupancy in %. Ordinary linear regression can predict impossible values above 100% or below 0%. |
+| **Beta regression** | A model designed for proportions. An alternative is to transform the proportion first. |
+| **Lag** | A value from an earlier period. The 1-week lag of `ILI_PMP` is last week's value. |
+| **Distributed lag model** | A model that includes several lags at once, so you can see how long a shock takes to show up and how long it lasts. |
+| **Threshold / change-point** | A level at which the relationship changes. Here: the influenza level at which bed occupancy crosses 100%. |
+| **Clustered standard errors** | Standard errors that allow for the fact that repeated observations of the same hospital are not independent. Ignoring this makes significance look stronger than it is. |
+| **Placebo test** | Checking that an effect you found disappears when it should — here, testing the off-season months. |
+| **FDR (false discovery rate)** | An adjustment for testing many hypotheses at once, so that some do not appear "significant" by chance alone. |
+
+---
+
+## 11. Known limitations
 
 1. **Discontinuous time axis** — eight winter windows, not a continuous series
 2. **Ecological exposure** — a territory-wide indicator, so no individual-level inference

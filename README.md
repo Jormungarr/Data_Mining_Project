@@ -18,6 +18,23 @@ differ systematically across hospitals?
 
 ---
 
+## Where to start
+
+Four common situations. Pick the row that matches you.
+
+| If you want to... | Read |
+|---|---|
+| **Just use the data** | The table above, then `data/processed/`. You do not need to run anything. |
+| **Understand what the columns mean** | [`DATA_GUIDE.md`](DATA_GUIDE.md) Sections 0–3. Section 0 walks through a single row. |
+| **Analyse the data** | Read [Section 4](DATA_GUIDE.md#4-three-structural-facts-you-must-know) **first** — it explains the constraints that will otherwise trip you up — then [Section 7](DATA_GUIDE.md#7-what-you-can-and-cannot-do) for what is and is not answerable. |
+| **Rebuild the dataset** | The setup below, then [Pipeline details](#pipeline-details). |
+
+Unfamiliar with terms like *panel data*, *fixed effects* or *negative binomial*?
+There is a plain-language [glossary](DATA_GUIDE.md#10-glossary) at the end of the
+Data Guide.
+
+---
+
 ## Getting started
 
 **Just want the data?** `data/processed/` already holds the finished tables.
