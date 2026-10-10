@@ -327,9 +327,9 @@ wheels = [
 ]
 
 [[package]]
-name = "hk-od"
+name = "hk-flu-hospital-pressure"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "lxml" },
     { name = "matplotlib" },

@@ -1,25 +1,21 @@
 [project]
-name = "hk-od"
+name = "hk-flu-hospital-pressure"
 version = "0.1.0"
-description = "Add your description here"
+description = "流感季公营医院急症服务压力：数据管道与分析数据集"
 readme = "README.md"
-authors = [
-    { name = "Jormungarr", email = "yukuanzou@outlook.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
+    "pandas>=3.0.6",
+    "numpy>=2.5.3",
     "lxml>=6.1.3",
     "matplotlib>=3.11.2",
-    "numpy>=2.5.3",
     "openpyxl>=3.1.5",
-    "pandas>=3.0.6",
     "requests>=2.34.2",
     "statsmodels>=0.15.0",
 ]
 
-[project.scripts]
-hk-od = "hk_od:main"
-
-[build-system]
-requires = ["uv_build>=0.12.16,<0.13.0"]
-build-backend = "uv_build"
+# 本项目是一套数据管道脚本，不是可安装的 Python 包：
+# 没有 src/ 布局，也不需要构建 wheel。声明为非打包项目，
+# 否则 `uv sync` 会尝试寻找 src/<name>/__init__.py 而失败。
+[tool.uv]
+package = false
