@@ -1,34 +1,37 @@
 #!/usr/bin/env python3
 """
-01_build.py — 把 data/raw/ 的原始文件清洗、聚合、合并成分析用面板数据。
+01_build.py - clean, aggregate and merge the raw files in data/raw/ into the analysis panel.
 
-原始数据需已放在 data/raw/ 下（来源与下载链接见 data/raw/SOURCES.md）。
-本脚本不联网，只做本地处理。
+The raw data must already be in data/raw/ (sources and download links: data/raw/SOURCES.md).
+This script does no network access; it only processes local files.
 
-产出（data/processed/）：
-    panel_hospital_week.csv    主分析表：17 医院 × 144 周 = 2,448 行 × 31 列
-    hk_weekly.csv              全港周序列（HA Overall）：144 行
-    hospital_beds_annual.csv   医院 × 财政年度 病床数
-    ae_attendances_annual.csv  医院 × 财政年度 急症室年服务量
-    hospital_directory.csv     医院名录、联网、坐标
-    data_dictionary.csv        逐列变量字典
+Outputs (data/processed/):
+    panel_hospital_week.csv    Main analysis table: 17 hospitals x 144 weeks = 2,448 rows x 34 cols
+    hk_weekly.csv              Territory-wide weekly series (HA Overall): 144 rows
+    hospital_beds_annual.csv   Bed counts by hospital and financial year
+    ae_attendances_annual.csv  Annual A&E attendances by hospital and financial year
+    hospital_directory.csv     Hospital directory: cluster, A&E flag, coordinates
+    data_dictionary.csv        Per-column variable dictionary
 
-处理步骤：
-    S1  读入并解析 5 个原始文件
-    S2  统一医院/联网名称（跨来源对照）
-    S3  HA 逐日数据 → 按流感周界（周日至周六）聚合成周
-    S4  医院年度容量协变量（财政年度）并对齐到周
-    S5  香港天文台逐日气温 → 聚合成同一边界的周
-    S6  合并成主表，写出所有产出
+Steps:
+    S0  Verify data/raw/ against the SHA256 values in _manifest.json
+    S1  Read and parse the six source files
+    S2  Harmonise hospital and cluster names across sources
+    S3  Aggregate HA daily data into weeks on the Flu Express boundary (Sun-Sat)
+    S4  Attach hospital capacity covariates, aligned on financial year
+    S5  Aggregate HKO daily temperature onto the same week boundary
+    S6  Merge into the main table, order columns, write all outputs
 
-约定：
-    * 周的定义一律采用「流感速递」的 From/To；To 为该周最后一天（周六）。
-      所有其它来源都对齐到这个边界，以保证跨来源可比。
-    * 所有聚合均为确定性运算，不含随机成分。
-    * 构建前会比对 data/raw/_manifest.json 中的 SHA256，报告缺失或被改动的文件
-      （仅提示，不中断 —— 你可能下载到了官方更新的版本）。
+Conventions:
+    * The week definition follows Flu Express From/To; To is the last day of the
+      week (a Saturday). Every other source is aligned to that same boundary so
+      that values are comparable across sources.
+    * All aggregation is deterministic; there is no randomness anywhere.
+    * Before building, files are compared against the SHA256 values in
+      data/raw/_manifest.json and any missing or altered ones are reported.
+      This is advisory only - you may have downloaded a newer official release.
 
-用法：
+Usage:
     python pipeline/01_build.py
     python pipeline/01_build.py --raw-dir data/raw --out-dir data/processed
 """
@@ -45,42 +48,44 @@ import pandas as pd
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 # --------------------------------------------------------------------------
-# 常量：处理规则集中在此，便于审阅与修改
+# Constants: all processing rules live here so they are easy to review and change.
 # --------------------------------------------------------------------------
 
-# 结果变量（HA 服务需求高峰统计数字）
+# Response variables (HA Key Statistics during Service Demand Surge)
 OUTCOME_COLS = [
-    "ae_first_attend",   # 急症室首次求诊人次 / 日
-    "ae_to_med_ip",      # 经急症室转入内科住院人次 / 日
-    "med_bed_occ_rate",  # 内科病床占用率 %
-    "ped_bed_occ_rate",  # 儿科病床占用率 %
+    "ae_first_attend",   # A&E first attendances per day
+    "ae_to_med_ip",      # Admissions to medical wards via A&E per day
+    "med_bed_occ_rate",  # Medical bed occupancy %
+    "ped_bed_occ_rate",  # Paediatric bed occupancy %
 ]
 
-# 流感暴露变量：源文件列名 -> 输出列名
+# Influenza predictors: source column name -> output column name
 FLU_COLS = {
-    "ILI_PMP": "ILI_PMP",                          # 定点普通科门诊流感样病例比率（主解释变量）
-    "ILI_AED": "ILI_AED",                          # 急症室流感样病例比率
-    "Adm_65_higher": "Adm_65",                     # 65 岁及以上流感入院率
-    "Adm_All": "Adm_All",                          # 整体流感入院率
-    "SevereCase_65_higher": "Severe65",            # 65 岁及以上严重流感个案
-    "H1": "flu_H1",                                # 实验室确诊甲型 H1
-    "H3": "flu_H3",                                # 实验室确诊甲型 H3
-    "B": "flu_B",                                  # 实验室确诊乙型
-    "AandB": "flu_AandB",                          # 实验室确诊甲型+乙型合计
+    "ILI_PMP": "ILI_PMP",                          # ILI rate, sentinel GOPC (primary predictor)
+    "ILI_AED": "ILI_AED",                          # ILI rate, A&E departments
+    "Adm_65_higher": "Adm_65",                     # Influenza admission rate, aged 65+
+    "Adm_All": "Adm_All",                          # Influenza admission rate, all ages
+    "SevereCase_65_higher": "Severe65",            # Severe influenza cases, aged 65+
+    "H1": "flu_H1",                                # Laboratory-confirmed influenza A(H1)
+    "H3": "flu_H3",                                # Laboratory-confirmed influenza A(H3)
+    "B": "flu_B",                                  # Laboratory-confirmed influenza B
+    "AandB": "flu_AandB",                          # Laboratory-confirmed influenza A + B
 }
 
-# 跨来源医院名称统一表。
-# HA 各部会用不同名称指同一家医院，必须显式对照，否则 merge 会静默丢行。
+# Hospital name harmonisation across sources.
+# Different HA divisions name the same hospital differently. Without an explicit
+# mapping the merge drops rows silently (NaN rather than an error).
 HOSPITAL_NAME_MAP = {
     "Ruttonjee & Tang Shiu Kin Hospitals": "Ruttonjee Hospital",
 }
 
-# HA 设施名录把港岛合并为一个联网，而高峰统计拆成东/西，故只保留名录中的坐标用途。
+# The facility list merges Hong Kong Island into one cluster while the surge
+# statistics split it into East and West, so the list is used only for coordinates.
 CLUSTER_NAME_MAP = {
     "Hong Kong Island Cluster": "Hong Kong East/West",
 }
 
-# 病床专科 -> 输出列名
+# Bed specialty -> output column name
 BED_SPECIALTY_MAP = {
     "General (Acute and Convalescent)": "beds_acute",
     "Infirmary": "beds_infirmary",
@@ -93,17 +98,17 @@ HKO_YEARS = list(range(2019, 2027))
 
 
 # --------------------------------------------------------------------------
-# 辅助函数
+# Helpers
 # --------------------------------------------------------------------------
 def fiscal_year(date_like) -> str:
-    """日期 -> 香港财政年度字符串（4 月 1 日起算），如 2023-11-01 -> '2023-24'。"""
+    """Date -> Hong Kong financial year string (starts 1 April), e.g. 2023-11-01 -> '2023-24'."""
     ts = pd.Timestamp(date_like)
     y = ts.year if ts.month >= 4 else ts.year - 1
     return f"{y}-{str(y + 1)[2:]}"
 
 
 def season_label(week_end: pd.Timestamp) -> str:
-    """周结束日 -> 流感季标签（7 月为界），如 2020-01-04 -> '2019-20'。"""
+    """Week-ending date -> influenza season label (July boundary), e.g. 2020-01-04 -> '2019-20'."""
     y = week_end.year - 1 if week_end.month < 7 else week_end.year
     return f"{y}-{str(y + 1)[2:]}"
 
@@ -111,17 +116,17 @@ def season_label(week_end: pd.Timestamp) -> str:
 def require(path: pathlib.Path) -> pathlib.Path:
     if not path.exists():
         raise SystemExit(
-            f"缺少原始文件：{path}\n"
-            f"请按 data/raw/SOURCES.md 从官网下载后放入该路径。"
+            f"Missing raw file: {path}\n"
+            f"Download it as described in data/raw/SOURCES.md and place it at that path."
         )
     return path
 
 
 def verify_raw(raw: pathlib.Path) -> None:
-    """比对 _manifest.json 中的 SHA256，报告缺失/改动（仅提示，不中断）。"""
+    """Compare files against the SHA256 values in _manifest.json. Advisory only."""
     manifest = raw / "_manifest.json"
     if not manifest.exists():
-        print("    （未找到 _manifest.json，跳过完整性比对）")
+        print("    (no _manifest.json found, skipping the integrity check)")
         return
     import hashlib
 
@@ -137,19 +142,19 @@ def verify_raw(raw: pathlib.Path) -> None:
             ok += 1
         else:
             changed.append(relpath)
-    print(f"    与清单一致 {ok}/{len(recorded)}")
+    print(f"    Match manifest: {ok}/{len(recorded)}")
     if missing:
-        print(f"    ⚠ 缺失 {len(missing)} 个：{missing[:5]}{' …' if len(missing) > 5 else ''}")
+        print(f"    ! missing {len(missing)}: {missing[:5]}{' ...' if len(missing) > 5 else ''}")
     if changed:
-        print(f"    ⚠ SHA256 不符 {len(changed)} 个：{changed[:5]}{' …' if len(changed) > 5 else ''}")
-        print("      （可能是官方数据已更新，或文件被改动）")
+        print(f"    ! SHA256 mismatch {len(changed)}: {changed[:5]}{' ...' if len(changed) > 5 else ''}")
+        print("      (the official data may have been updated, or the file was modified)")
 
 
 # --------------------------------------------------------------------------
-# S1 + S2  读取与名称统一
+# S1 + S2  Read and harmonise names
 # --------------------------------------------------------------------------
 def load_flu(raw: pathlib.Path) -> pd.DataFrame:
-    """流感速递：周粒度，本研究的基准时间轴。"""
+    """Flu Express: weekly, and the reference time axis for this study."""
     df = pd.read_csv(require(raw / "flu/flux_data.csv"))
     df["week_end"] = pd.to_datetime(df["To"], format="%d/%m/%Y", errors="coerce")
     n_bad = int(df["week_end"].isna().sum())
@@ -166,21 +171,22 @@ def load_flu(raw: pathlib.Path) -> pd.DataFrame:
 
 
 def load_surge(raw: pathlib.Path) -> pd.DataFrame:
-    """HA 服务需求高峰统计数字：逐日 × 医院。"""
+    """HA Key Statistics during Service Demand Surge: daily x hospital."""
     records = json.loads(require(raw / "ha/service_demand_surge_daily.json").read_text(encoding="utf-8"))
     df = pd.DataFrame(records)
     df["date"] = pd.to_datetime(df["date"])
-    # 全港汇总行的 hospital 字段为空字符串，显式命名，避免与真实医院混淆
+    # Territory-wide summary rows have an empty hospital field. Name them
+    # explicitly so they are never confused with a real hospital.
     df["hospital"] = df["hospital"].replace("", "HA Overall")
     df["hospital"] = df["hospital"].replace(HOSPITAL_NAME_MAP)
     return df.sort_values(["date", "cluster", "hospital"]).reset_index(drop=True)
 
 
 def load_beds(raw: pathlib.Path) -> pd.DataFrame:
-    """HA 病床数目：财政年度 × 联网 × 医院 × 专科（长表）。"""
+    """HA bed counts: financial year x cluster x hospital x specialty (long format)."""
     records = json.loads(require(raw / "ha/hospital_beds.json").read_text(encoding="utf-8"))
     df = pd.DataFrame(records)
-    df = df[df["Specialty"] != "Overall"]           # 去掉专科汇总行，避免重复计数
+    df = df[df["Specialty"] != "Overall"]           # drop the specialty total row
     df["hospital"] = df["Hospital"].replace(HOSPITAL_NAME_MAP)
 
     wide = (
@@ -199,7 +205,8 @@ def load_beds(raw: pathlib.Path) -> pd.DataFrame:
             wide[col] = 0.0
     wide = wide[["fy", "bed_cluster", "hospital"] + list(BED_SPECIALTY_MAP.values())]
 
-    # 部分医院在 2017-18 前后改过名，映射后会出现同院两行 -> 相加合并
+    # Some hospitals were renamed around 2017-18, so after mapping there can be
+    # two rows for one hospital. Sum them.
     wide = wide.groupby(["fy", "hospital"], as_index=False).sum(numeric_only=True)
     wide["bed_cluster"] = wide["hospital"].map(
         df.drop_duplicates("hospital").set_index("hospital")["Cluster"]
@@ -208,10 +215,10 @@ def load_beds(raw: pathlib.Path) -> pd.DataFrame:
 
 
 def load_ae_annual(raw: pathlib.Path) -> pd.DataFrame:
-    """HA 急症室年服务量：财政年度 × 医院。"""
+    """HA annual A&E attendances: financial year x hospital."""
     records = json.loads(require(raw / "ha/ae_attendances_annual.json").read_text(encoding="utf-8"))
     df = pd.DataFrame(records)
-    df = df[~df["Hospital"].str.startswith("Overall")]   # 去掉联网汇总行
+    df = df[~df["Hospital"].str.startswith("Overall")]   # drop cluster total rows
     df = df.rename(
         columns={
             "Financial Year": "fy",
@@ -230,7 +237,7 @@ def load_ae_annual(raw: pathlib.Path) -> pd.DataFrame:
 
 
 def load_directory(raw: pathlib.Path) -> pd.DataFrame:
-    """HA 设施名录：联网、是否有急症室、地址、经纬度。"""
+    """HA facility list: cluster, A&E flag, address, coordinates."""
     records = json.loads(require(raw / "ha/facility_hospitals.json").read_text(encoding="utf-8"))
     df = pd.DataFrame(records)
     df = df.rename(
@@ -250,16 +257,16 @@ def load_directory(raw: pathlib.Path) -> pd.DataFrame:
 
 
 def load_hko(raw: pathlib.Path) -> pd.DataFrame:
-    """香港天文台逐日气温，合并成 (date, temp_mean, temp_max, temp_min)。"""
+    """HKO daily temperature, merged into (date, temp_mean, temp_max, temp_min)."""
     frames = []
     for code, name in HKO_DATA_TYPES.items():
         parts = []
         for year in HKO_YEARS:
             path = raw / f"hko/{code}_{year}.csv"
             if not path.exists():
-                raise SystemExit(f"缺少原始文件：{path}\n请按 data/raw/SOURCES.md 下载后放入该路径。")
+                raise SystemExit(f"Missing raw file: {path}\nDownload it as described in data/raw/SOURCES.md.")
             rows = []
-            for line in path.read_text(encoding="utf-8-sig").splitlines()[2:]:  # 前两行为标题
+            for line in path.read_text(encoding="utf-8-sig").splitlines()[2:]:  # first two lines are the title
                 fields = [c.strip().strip('"') for c in line.split(",")]
                 if len(fields) >= 4 and fields[0].isdigit():
                     value = fields[3]
@@ -283,10 +290,10 @@ def load_hko(raw: pathlib.Path) -> pd.DataFrame:
 
 
 # --------------------------------------------------------------------------
-# S3  逐日 -> 逐周（对齐到流感周界）
+# S3  Daily -> weekly, aligned to the Flu Express week boundary
 # --------------------------------------------------------------------------
 def aggregate_to_weeks(daily: pd.DataFrame, flu: pd.DataFrame) -> pd.DataFrame:
-    """把 HA 逐日数据按流感周界聚合成 (联网, 医院, 周) 的均值。"""
+    """Aggregate HA daily data into (cluster, hospital, week) means on the Flu Express boundary."""
     rows = []
     for r in flu.itertuples(index=False):
         window = daily[(daily["date"] >= r.week_start) & (daily["date"] <= r.week_end)]
@@ -307,7 +314,7 @@ def aggregate_to_weeks(daily: pd.DataFrame, flu: pd.DataFrame) -> pd.DataFrame:
 
 
 def aggregate_hko_to_weeks(hko: pd.DataFrame, flu: pd.DataFrame) -> pd.DataFrame:
-    """气温按同一周界聚合成周均值。"""
+    """Aggregate temperature into weekly means on the same boundary."""
     rows = []
     for r in flu.itertuples(index=False):
         window = hko.loc[(hko.index >= r.week_start) & (hko.index <= r.week_end)]
@@ -319,62 +326,62 @@ def aggregate_hko_to_weeks(hko: pd.DataFrame, flu: pd.DataFrame) -> pd.DataFrame
 
 
 # --------------------------------------------------------------------------
-# S4-S6  组装主表
+# S4-S6  Assemble the main table
 # --------------------------------------------------------------------------
 def build(raw: pathlib.Path, out: pathlib.Path) -> dict:
     out.mkdir(parents=True, exist_ok=True)
 
-    print("S0  检查 data/raw/ 完整性")
+    print("S0  Verify data/raw/ integrity")
     verify_raw(raw)
 
-    print("\nS1  读取原始文件")
+    print("\nS1  Read raw files")
     flu = load_flu(raw)
     surge = load_surge(raw)
     beds = load_beds(raw)
     ae_annual = load_ae_annual(raw)
     directory = load_directory(raw)
     hko = load_hko(raw)
-    print(f"    流感速递        {len(flu):>6,} 周   {flu.week_end.min().date()} → {flu.week_end.max().date()}")
-    print(f"    HA 高峰统计     {len(surge):>6,} 行   {surge.date.min().date()} → {surge.date.max().date()}")
-    print(f"    HA 病床         {len(beds):>6,} 行   财政年度 {beds.fy.min()} → {beds.fy.max()}")
-    print(f"    HA 年服务量     {len(ae_annual):>6,} 行")
-    print(f"    HA 设施名录     {len(directory):>6,} 个机构")
-    print(f"    天文台气温      {len(hko):>6,} 天   {hko.index.min().date()} → {hko.index.max().date()}")
+    print(f"    Flu Express        {len(flu):>6,} weeks  {flu.week_end.min().date()} -> {flu.week_end.max().date()}")
+    print(f"    HA surge stats     {len(surge):>6,} rows   {surge.date.min().date()} -> {surge.date.max().date()}")
+    print(f"    HA bed counts      {len(beds):>6,} rows   FY {beds.fy.min()} -> {beds.fy.max()}")
+    print(f"    HA annual A&E      {len(ae_annual):>6,} rows")
+    print(f"    HA facility list   {len(directory):>6,} institutions")
+    print(f"    HKO temperature    {len(hko):>6,} days   {hko.index.min().date()} -> {hko.index.max().date()}")
 
-    print("\nS2  统一医院/联网名称")
+    print("\nS2  Harmonise hospital and cluster names")
     surge_hospitals = sorted(set(surge.loc[surge.hospital != "HA Overall", "hospital"]))
     matched = sorted(set(surge_hospitals) & set(beds["hospital"]))
     unmatched = sorted(set(surge_hospitals) - set(beds["hospital"]))
-    print(f"    高峰统计医院数         {len(surge_hospitals)}")
-    print(f"    可对上病床年表         {len(matched)}/{len(surge_hospitals)}"
-          + (f"   未对上：{unmatched}" if unmatched else ""))
-    print(f"    名称对照规则           {HOSPITAL_NAME_MAP}")
+    print(f"    Hospitals in surge data   {len(surge_hospitals)}")
+    print(f"    Matched to bed table      {len(matched)}/{len(surge_hospitals)}"
+          + (f"   unmatched: {unmatched}" if unmatched else ""))
+    print(f"    Name mapping              {HOSPITAL_NAME_MAP}")
 
-    print("\nS3  HA 逐日 -> 逐周")
+    print("\nS3  HA daily -> weekly")
     weekly = aggregate_to_weeks(surge, flu)
     hospital_week = weekly[weekly.hospital != "HA Overall"].copy()
     hk_week = weekly[weekly.hospital == "HA Overall"].drop(columns=["cluster", "hospital"])
-    print(f"    医院×周                {hospital_week.shape}")
-    print(f"    全港周序列             {hk_week.shape}")
+    print(f"    Hospital x week           {hospital_week.shape}")
+    print(f"    Territory-wide weekly     {hk_week.shape}")
 
-    print("\nS4  医院年度容量协变量")
+    print("\nS4  Hospital capacity covariates")
     hospital_week["fy"] = hospital_week["week_end"].map(fiscal_year)
     panel = hospital_week.merge(beds.drop(columns=["bed_cluster"]), on=["fy", "hospital"], how="left")
     panel = panel.merge(ae_annual, on=["fy", "hospital"], how="left")
     panel = panel.merge(
         directory[["hospital", "with_AE", "lat", "lon"]], on="hospital", how="left"
     )
-    print(f"    合并后                 {panel.shape}")
+    print(f"    After merge               {panel.shape}")
 
-    print("\nS5  气温 -> 逐周")
+    print("\nS5  Temperature -> weekly")
     hko_week = aggregate_hko_to_weeks(hko, flu)
-    print(f"    周气温                 {hko_week.shape}")
+    print(f"    Weekly temperature        {hko_week.shape}")
 
-    print("\nS6  组装主表")
+    print("\nS6  Assemble main table")
     panel = panel.merge(hko_week, on="week_end", how="left")
     hk_week = hk_week.merge(hko_week, on="week_end", how="left")
 
-    # 列次序：标识 -> 结果 -> 暴露 -> 协变量 -> 时间覆盖
+    # Column order: identifiers -> response -> predictors -> covariates -> flags
     order = (
         ["hospital", "cluster", "fy", "season", "week_start", "week_end"]
         + OUTCOME_COLS
@@ -384,14 +391,16 @@ def build(raw: pathlib.Path, out: pathlib.Path) -> dict:
         + ["week_in_season", "prev_gap_days"]
     )
 
-    # 病床 / 年服务量只发布到 FY2024-25；之后沿用最后一年（病床为慢变量）
+    # Beds and annual A&E are published only up to FY2024-25. Later weeks carry
+    # the last published year forward - bed counts are slow-moving.
     for col in ["beds_acute", "beds_infirmary", "beds_mental", "beds_mh", "ae_annual"]:
         panel[col] = panel.groupby("hospital")[col].ffill()
 
-    # 季节内周序 + 与上一周的间隔天数。
-    # HA 并非每个冬季都连续发布（2023-24 起出现停发），因此直接 shift(1) 造滞后变量
-    # 可能跨越数周空档。prev_gap_days > 7 即表示上一行并非真正的「上一周」，
-    # 建模时必须据此屏蔽跨断档的滞后项。
+    # Within-season week index, plus days since the previous published week.
+    # The HA does not publish every week of every winter (gaps appear from
+    # 2023-24 onward), so a naive shift(1) can reach back several weeks.
+    # prev_gap_days > 7 means the previous row is not really 'last week',
+    # and lags crossing such a gap must be masked when modelling.
     week_order = (
         panel[["season", "week_end"]]
         .drop_duplicates()
@@ -419,12 +428,12 @@ def build(raw: pathlib.Path, out: pathlib.Path) -> dict:
     )
 
     panel = panel[order].sort_values(["week_end", "hospital"]).reset_index(drop=True)
-    print(f"    最终主表               {panel.shape}")
+    print(f"    Final main table          {panel.shape}")
     n_gap = int((panel["prev_gap_days"] > 7).sum())
-    print(f"    跨季节断档的周          {n_gap} 行（prev_gap_days > 7，最长达 "
-          f"{int(panel['prev_gap_days'].max())} 天）")
+    print(f"    Weeks after a gap         {n_gap} rows (prev_gap_days > 7, "
+          f"longest {int(panel['prev_gap_days'].max())} days)")
 
-    # -- 写出 ---------------------------------------------------------------
+    # -- Write out -------------------------------------------------------------
     panel.to_csv(out / "panel_hospital_week.csv", index=False)
     hk_week.to_csv(out / "hk_weekly.csv", index=False)
     beds.to_csv(out / "hospital_beds_annual.csv", index=False)
@@ -432,7 +441,7 @@ def build(raw: pathlib.Path, out: pathlib.Path) -> dict:
     directory.to_csv(out / "hospital_directory.csv", index=False)
     write_data_dictionary(panel, hk_week, out / "data_dictionary.csv")
 
-    print("\n产出：")
+    print("\nOutputs:")
     for name in [
         "panel_hospital_week.csv",
         "hk_weekly.csv",
@@ -448,45 +457,46 @@ def build(raw: pathlib.Path, out: pathlib.Path) -> dict:
 
 
 # --------------------------------------------------------------------------
-# 变量字典
+# Variable dictionary
 # --------------------------------------------------------------------------
 DATA_DICTIONARY = [
-    ("hospital", "标识", "医院名称（已跨来源统一）", "分类型", "17 个值"),
-    ("cluster", "标识", "医院所属医院联网", "分类型", "7 个值"),
-    ("fy", "标识", "财政年度（4 月 1 日起算）", "分类型", "2019-20 … 2026-27"),
-    ("season", "标识", "流感季标签（7 月为界）", "分类型", "8 个季节"),
-    ("week_start", "标识", "该周第一天（周日）", "日期", "2019-11-25 …"),
-    ("week_end", "标识", "该周最后一天（周六），对齐流感速递 To", "日期", "2019-12-07 … 2026-08-08"),
-    ("ae_first_attend", "结果变量", "急症室首次求诊人次（周内日均）", "计数", "人次/日"),
-    ("ae_to_med_ip", "结果变量", "经急症室转入内科住院人次（周内日均）", "计数", "人次/日"),
-    ("med_bed_occ_rate", "结果变量", "内科病床占用率（周内日均）", "有界比例", "%"),
-    ("ped_bed_occ_rate", "结果变量", "儿科病床占用率（周内日均）", "有界比例", "%"),
-    ("ILI_PMP", "解释变量", "定点普通科门诊流感样病例比率【主解释变量】", "连续", "每千宗诊症"),
-    ("ILI_AED", "解释变量", "急症室流感样病例比率", "连续", "每千宗诊症"),
-    ("Adm_65", "解释变量", "65 岁及以上流感入院率", "连续", "每千人口"),
-    ("Adm_All", "解释变量", "整体流感入院率", "连续", "每千人口"),
-    ("Severe65", "解释变量", "65 岁及以上严重流感个案数", "计数", "宗/周"),
-    ("flu_H1", "解释变量", "实验室确诊甲型 H1 流感病毒数", "计数", "宗/周"),
-    ("flu_H3", "解释变量", "实验室确诊甲型 H3 流感病毒数", "计数", "宗/周"),
-    ("flu_B", "解释变量", "实验室确诊乙型流感病毒数", "计数", "宗/周"),
-    ("flu_AandB", "解释变量", "实验室确诊甲型+乙型流感病毒数", "计数", "宗/周"),
-    ("beds_acute", "协变量", "急性及康复病床数（财政年度）", "连续", "张"),
-    ("beds_infirmary", "协变量", "疗养病床数（财政年度）", "连续", "张"),
-    ("beds_mental", "协变量", "精神科病床数（财政年度）", "连续", "张"),
-    ("beds_mh", "协变量", "弱智科病床数（财政年度）", "连续", "张"),
-    ("ae_annual", "协变量", "该院该财政年度急症室求诊总人次", "连续", "人次/年"),
-    ("with_AE", "协变量", "该机构是否设急症室服务", "分类型", "Yes"),
-    ("lat", "协变量", "医院纬度", "连续", "十进制度"),
-    ("lon", "协变量", "医院经度", "连续", "十进制度"),
-    ("temp_mean", "协变量", "香港天文台日平均气温（周内均值）", "连续", "°C"),
-    ("temp_max", "协变量", "香港天文台日最高气温（周内均值）", "连续", "°C"),
-    ("temp_min", "协变量", "香港天文台日最低气温（周内均值）", "连续", "°C"),
-    ("temp_days", "数据质量", "该周有气温记录的天数", "计数", "0–7"),
-    ("days", "数据质量", "该周 HA 实际发布数据的天数", "计数", "1–7"),
-    ("week_in_season", "数据质量", "该周在其所属流感季内的序号", "计数", "1..N"),
-    ("prev_gap_days", "数据质量",
-     "与同季上一个已发布周的间隔天数。=7 表示真正相邻；>7 表示 HA 停发造成断档，"
-     "构造滞后变量时必须据此屏蔽跨断档项", "计数", "0（该季首周）/ 7 / >7"),
+    ("hospital", "Identifier", "Hospital name, harmonised across sources", "Categorical", "17 values"),
+    ("cluster", "Identifier", "Hospital cluster", "Categorical", "7 values"),
+    ("fy", "Identifier", "Financial year (starts 1 April)", "Categorical", "2019-20 ... 2026-27"),
+    ("season", "Identifier", "Influenza season label (July boundary)", "Categorical", "8 seasons"),
+    ("week_start", "Identifier", "First day of the week (Sunday)", "Date", "2019-11-25 ..."),
+    ("week_end", "Identifier", "Last day of the week (Saturday), aligned to Flu Express To", "Date", "2019-12-07 ... 2026-08-08"),
+    ("ae_first_attend", "Response", "A&E first attendances (weekly daily mean)", "Count", "attendances/day"),
+    ("ae_to_med_ip", "Response", "Admissions to medical wards via A&E (weekly daily mean)", "Count", "admissions/day"),
+    ("med_bed_occ_rate", "Response", "Medical bed occupancy (weekly daily mean)", "Bounded proportion", "%"),
+    ("ped_bed_occ_rate", "Response", "Paediatric bed occupancy (weekly daily mean)", "Bounded proportion", "%"),
+    ("ILI_PMP", "Predictor", "ILI rate, sentinel general outpatient clinics [primary predictor]", "Continuous", "per 1,000 consultations"),
+    ("ILI_AED", "Predictor", "ILI rate, A&E departments", "Continuous", "per 1,000 consultations"),
+    ("Adm_65", "Predictor", "Influenza admission rate, aged 65+", "Continuous", "per 1,000 population"),
+    ("Adm_All", "Predictor", "Influenza admission rate, all ages", "Continuous", "per 1,000 population"),
+    ("Severe65", "Predictor", "Severe influenza cases, aged 65+", "Count", "cases/week"),
+    ("flu_H1", "Predictor", "Laboratory-confirmed influenza A(H1)", "Count", "cases/week"),
+    ("flu_H3", "Predictor", "Laboratory-confirmed influenza A(H3)", "Count", "cases/week"),
+    ("flu_B", "Predictor", "Laboratory-confirmed influenza B", "Count", "cases/week"),
+    ("flu_AandB", "Predictor", "Laboratory-confirmed influenza A + B", "Count", "cases/week"),
+    ("beds_acute", "Covariate", "Acute and convalescent beds (annual)", "Continuous", "beds"),
+    ("beds_infirmary", "Covariate", "Infirmary beds (annual)", "Continuous", "beds"),
+    ("beds_mental", "Covariate", "Mentally ill beds (annual)", "Continuous", "beds"),
+    ("beds_mh", "Covariate", "Mentally handicapped beds (annual)", "Continuous", "beds"),
+    ("ae_annual", "Covariate", "Total A&E attendances in that financial year", "Continuous", "attendances/year"),
+    ("with_AE", "Covariate", "Whether the institution runs an A&E service", "Categorical", "Yes"),
+    ("lat", "Covariate", "Hospital latitude", "Continuous", "decimal degrees"),
+    ("lon", "Covariate", "Hospital longitude", "Continuous", "decimal degrees"),
+    ("temp_mean", "Covariate", "HKO daily mean temperature (weekly mean)", "Continuous", "deg C"),
+    ("temp_max", "Covariate", "HKO daily maximum temperature (weekly mean)", "Continuous", "deg C"),
+    ("temp_min", "Covariate", "HKO daily minimum temperature (weekly mean)", "Continuous", "deg C"),
+    ("temp_days", "Data quality", "Days with a temperature reading in the week", "Count", "0-7"),
+    ("days", "Data quality", "Days of HA data actually published for the week", "Count", "1-7"),
+    ("week_in_season", "Data quality", "Index of the week within its season", "Count", "1..N"),
+    ("prev_gap_days", "Data quality",
+     "Days since the previous published week in the same season. 7 means truly "
+     "adjacent; >7 means an HA publication gap, and lags crossing it must be masked",
+     "Count", "0 (first week of season) / 7 / >7"),
 ]
 
 
@@ -514,25 +524,25 @@ def write_data_dictionary(panel: pd.DataFrame, hk_week: pd.DataFrame, path: path
 # --------------------------------------------------------------------------
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--raw-dir", default=str(ROOT / "data" / "raw"), help="原始数据目录")
-    ap.add_argument("--out-dir", default=str(ROOT / "data" / "processed"), help="产出目录")
+    ap.add_argument("--raw-dir", default=str(ROOT / "data" / "raw"), help="directory holding the raw data")
+    ap.add_argument("--out-dir", default=str(ROOT / "data" / "processed"), help="output directory")
     ap.add_argument("--check-raw-only", action="store_true",
-                    help="只检查 data/raw/ 完整性，不做构建")
+                    help="only verify data/raw/, do not build")
     args = ap.parse_args()
 
     raw_dir = pathlib.Path(args.raw_dir)
     if args.check_raw_only:
         print("=" * 78)
-        print("data/raw/ 完整性检查")
+        print("data/raw/ integrity check")
         print("=" * 78)
         verify_raw(raw_dir)
         return 0
 
     print("=" * 78)
-    print("01_build.py — 构建分析面板")
+    print("01_build.py - building the analysis panel")
     print("=" * 78)
     build(raw_dir, pathlib.Path(args.out_dir))
-    print("\n✓ 完成。请接着执行 python pipeline/02_validate.py")
+    print("\nDone. Next: python pipeline/02_validate.py")
     return 0
 
 

@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-02_validate.py — 对 data/processed/ 的产出做完整性、一致性与合理性检查。
+02_validate.py - integrity, consistency and plausibility checks on data/processed/.
 
-检查分四类：
-    A. 结构        行数、主键唯一性、面板平衡性、列数
-    B. 时间       周界定义、季节内连续性、季节归属
-    C. 一致性      跨来源数值勾稽（各院之和 vs HA Overall）
-    D. 分布        取值范围、缺失率、结构性常量
+Checks fall into four categories:
+    A. Structure      row count, unique key, panel balance, column count
+    B. Time           week boundary, within-season continuity, season labels
+    C. Consistency    cross-source reconciliation (hospital sums vs HA Overall)
+    D. Distribution   value ranges, missing rates, structural constants
 
-任一检查失败则退出码为 1，可用于 CI。
+Any failure returns exit code 1, so this can be used in CI.
 
-用法：
+Usage:
     python pipeline/02_validate.py
     python pipeline/02_validate.py --out-dir data/processed --report out/validation_report.txt
 """
@@ -35,7 +35,8 @@ EXPECTED_HOSPITALS = 17
 EXPECTED_WEEKS = 144
 EXPECTED_COLS = 34
 
-# 取值范围合理区间（宽松边界，只用于捕捉明显错误，不做数据剪裁）
+# Plausible ranges. These are deliberately loose: they catch clear errors only
+# and are never used to trim the data.
 RANGE_CHECKS = {
     "ae_first_attend": (50, 800),
     "ae_to_med_ip": (0, 300),
@@ -50,14 +51,14 @@ RANGE_CHECKS = {
     "lon": (113.8, 114.5),
 }
 
-# 已知且已记录在案的缺失模式：医院 -> {列: 期望缺失率下限(%)}
+# Documented missing patterns: hospital -> {column: expected minimum missing rate (%)}
 EXPECTED_MISSING = {
     "North Lantau Hospital": {"ae_to_med_ip": 99.0, "med_bed_occ_rate": 99.0, "ped_bed_occ_rate": 99.0},
 }
 
 
 class Report:
-    """收集检查结果，最后统一打印并写文件。"""
+    """Collects check results, then prints and writes them at the end."""
 
     def __init__(self) -> None:
         self.lines: list[str] = []
@@ -91,13 +92,13 @@ class Report:
         self.lines.append("")
         self.lines.append("=" * 78)
         if self.failures:
-            self.lines.append(f"结论：{len(self.failures)} 项检查未通过")
+            self.lines.append(f"Result: {len(self.failures)} check(s) FAILED")
             for f in self.failures:
                 self.lines.append(f"  ✗ {f}")
         else:
-            self.lines.append("结论：全部检查通过")
+            self.lines.append("Result: all checks passed")
         if self.warnings:
-            self.lines.append(f"另有 {len(self.warnings)} 项警告：")
+            self.lines.append(f"{len(self.warnings)} warning(s):")
             for w in self.warnings:
                 self.lines.append(f"  ! {w}")
         self.lines.append("=" * 78)
@@ -105,40 +106,40 @@ class Report:
 
 
 def check_structure(r: Report, panel: pd.DataFrame, hk: pd.DataFrame) -> None:
-    r.section("A. 结构")
-    r.check(len(panel) == EXPECTED_ROWS, "行数 = 2,448", f"实际 {len(panel):,}")
+    r.section("A. Structure")
+    r.check(len(panel) == EXPECTED_ROWS, "Row count = 2,448", f"actual {len(panel):,}")
     r.check(
         panel.hospital.nunique() == EXPECTED_HOSPITALS,
-        "医院数 = 17",
-        f"实际 {panel.hospital.nunique()}",
+        "Hospital count = 17",
+        f"actual {panel.hospital.nunique()}",
     )
     r.check(
         panel.week_end.nunique() == EXPECTED_WEEKS,
-        "周数 = 144",
-        f"实际 {panel.week_end.nunique()}",
+        "Week count = 144",
+        f"actual {panel.week_end.nunique()}",
     )
     r.check(
         len(panel) == panel.hospital.nunique() * panel.week_end.nunique(),
-        "面板完全平衡（无缺行）",
+        "Panel is perfectly balanced (no missing rows)",
         f"{panel.hospital.nunique()} × {panel.week_end.nunique()} = {len(panel):,}",
     )
     dup = panel.duplicated(subset=["hospital", "week_end"]).sum()
-    r.check(dup == 0, "主键 (hospital, week_end) 唯一", f"重复 {dup} 行")
-    r.check(panel.columns.duplicated().sum() == 0, "无重复列名")
+    r.check(dup == 0, "Primary key (hospital, week_end) is unique", f"{dup} duplicates")
+    r.check(panel.columns.duplicated().sum() == 0, "No duplicated column names")
     if len(panel.columns) != EXPECTED_COLS:
-        r.warn("列数不为预期", f"预期 {EXPECTED_COLS}，实际 {len(panel.columns)}")
+        r.warn("Column count differs from expected", f"expected {EXPECTED_COLS}, actual {len(panel.columns)}")
     else:
-        r.check(True, f"列数 = {EXPECTED_COLS}", f"实际 {len(panel.columns)}")
-    r.check(len(hk) == EXPECTED_WEEKS, "全港周序列 = 144 行", f"实际 {len(hk)}")
+        r.check(True, f"Column count = {EXPECTED_COLS}", f"actual {len(panel.columns)}")
+    r.check(len(hk) == EXPECTED_WEEKS, "Territory-wide weekly series = 144 rows", f"actual {len(hk)}")
 
 
 def check_time(r: Report, panel: pd.DataFrame) -> None:
-    r.section("B. 时间轴")
-    # 周界：week_end - week_start 必须恰为 6 天
+    r.section("B. Time axis")
+    # Week boundary: week_end - week_start must be exactly 6 days
     span = (pd.to_datetime(panel.week_end) - pd.to_datetime(panel.week_start)).dt.days
-    r.check(bool((span == 6).all()), "每周 week_start → week_end 恰为 7 天", f"跨度值 {sorted(span.unique())}")
+    r.check(bool((span == 6).all()), "Each week spans exactly 7 days", f"span values {sorted(span.unique())}")
 
-    # 季节归属：以 7 月为界
+    # Season assignment, July boundary
     we = pd.to_datetime(panel.week_end)
     expected_season = np.where(
         we.dt.month < 7,
@@ -146,11 +147,12 @@ def check_time(r: Report, panel: pd.DataFrame) -> None:
         we.dt.year.astype(str) + "-" + (we.dt.year + 1).astype(str).str[2:],
     )
     mismatch = int((expected_season != panel.season.values).sum())
-    r.check(mismatch == 0, "季节标签与 7 月分界一致", f"不符 {mismatch} 行")
+    r.check(mismatch == 0, "Season labels match the July boundary", f"{mismatch} mismatches")
 
-    # 季节内周连续性：HA 并非每个冬季都连续发布，故不要求连续，
-    # 但要求「断档必须被 prev_gap_days 正确标记」，否则跨断档的滞后变量会出错。
-    r.note("季节内连续性（HA 停发会造成断档，必须被 prev_gap_days 标记）：")
+    # Within-season continuity: the HA does not publish every week of every
+    # winter, so continuity is not required. What IS required is that any gap is
+    # correctly flagged by prev_gap_days, or lags crossing it would be wrong.
+    r.note("Within-season continuity (HA gaps must be flagged by prev_gap_days):")
     gap_rows = 0
     for season, grp in panel.groupby("season"):
         weeks = pd.Series(sorted(pd.to_datetime(grp.week_end.unique())))
@@ -159,121 +161,123 @@ def check_time(r: Report, panel: pd.DataFrame) -> None:
         n_gap_weeks = int((grp["prev_gap_days"] > 7).sum() // panel.hospital.nunique())
         gap_rows += n_gap_weeks
         r.note(
-            f"    {season}: {len(weeks):>2} 周  {weeks.iloc[0].date()} → {weeks.iloc[-1].date()}"
-            + (f"   断档 {len(gaps)} 处（间隔 {sorted(set(gaps.astype(int)))} 天），涉及 {n_gap_weeks} 个周"
-               if len(gaps) else "   连续")
+            f"    {season}: {len(weeks):>2} weeks  {weeks.iloc[0].date()} -> {weeks.iloc[-1].date()}"
+            + (f"   {len(gaps)} gap(s) of {sorted(set(gaps.astype(int)))} days, {n_gap_weeks} week(s) affected"
+               if len(gaps) else "   continuous")
         )
-    r.check(gap_rows > 0, "断档已被识别", f"共 {gap_rows} 个周紧随断档之后（prev_gap_days > 7）")
+    r.check(gap_rows > 0, "Gaps are detected", f"{gap_rows} weeks follow a gap (prev_gap_days > 7)")
 
-    # prev_gap_days 的定义校验：>=7 时必等于真实间隔；=0 只允许出现在季节首周
+    # Definition check for prev_gap_days: it must equal the true interval, and 0
+    # may only occur on the first week of a season
     per_week = panel.drop_duplicates(["season", "week_end"])[["season", "week_end", "week_in_season", "prev_gap_days"]].copy()
     per_week["week_end"] = pd.to_datetime(per_week.week_end)
     per_week = per_week.sort_values(["season", "week_end"])
     true_gap = per_week.groupby("season")["week_end"].diff().dt.days.fillna(0).astype(int)
     r.check(bool((true_gap.values == per_week["prev_gap_days"].values).all()),
-            "prev_gap_days 与真实周间隔完全一致",
-            f"不符 {int((true_gap.values != per_week['prev_gap_days'].values).sum())} 处")
+            "prev_gap_days matches the true week interval everywhere",
+            f"{int((true_gap.values != per_week['prev_gap_days'].values).sum())} mismatch(es)")
 
-    # week_in_season 应从 1 连续编号
+    # week_in_season must run 1, 2, 3, ... within each season
     ok_wi = True
     for season, grp in per_week.groupby("season"):
         if list(grp.week_in_season) != list(range(1, len(grp) + 1)):
             ok_wi = False
-    r.check(ok_wi, "week_in_season 在每个季节内从 1 连续编号")
+    r.check(ok_wi, "week_in_season runs consecutively from 1 in every season")
 
 def check_consistency(r: Report, panel: pd.DataFrame, hk: pd.DataFrame, out_dir: pathlib.Path) -> None:
-    r.section("C. 跨来源一致性")
-    # 各院之和应≈ HA Overall（周均值的和 vs 全港日均；两者口径不同，只做量级校验）
+    r.section("C. Cross-source consistency")
+    # Hospital sums should be close to HA Overall. The two are not identical by
+    # construction, so this is an order-of-magnitude check only.
     per_week_sum = panel.groupby("week_end")["ae_first_attend"].sum().rename("sum_hospitals")
     merged = hk.set_index("week_end")["ae_first_attend"].rename("ha_overall").to_frame().join(per_week_sum)
     merged["ratio"] = merged.sum_hospitals / merged.ha_overall
     lo, hi = merged.ratio.min(), merged.ratio.max()
     r.check(
         0.70 <= lo and hi <= 1.30,
-        "各院急症室求诊之和 与 HA Overall 量级一致",
-        f"比值范围 {lo:.3f} – {hi:.3f}（应≈1；差异来自各院独立取整与均值口径）",
+        "Sum of hospital A&E attendances is the same order as HA Overall",
+        f"ratio range {lo:.3f} - {hi:.3f} (should be near 1)",
     )
 
-    # 病床/年服务量必须 100% 覆盖
+    # Capacity covariates must be fully populated
     for col in CAPACITY_COLS:
         pct = panel[col].isna().mean() * 100
-        r.check(pct == 0.0, f"容量协变量 {col} 无缺失", f"缺失率 {pct:.2f}%")
+        r.check(pct == 0.0, f"Capacity covariate {col} has no missing values", f"missing {pct:.2f}%")
 
-    # 医院名录坐标覆盖
-    r.check(panel["lat"].isna().sum() == 0, "所有医院均有坐标", f"缺失 {int(panel['lat'].isna().sum())} 行")
+    # Coordinate coverage
+    r.check(panel["lat"].isna().sum() == 0, "All hospitals have coordinates", f"{int(panel['lat'].isna().sum())} missing")
 
-    # 气温覆盖
-    r.check(panel["temp_mean"].isna().sum() == 0, "所有周均有气温记录",
-            f"缺失 {int(panel['temp_mean'].isna().sum())} 行")
-    r.check(bool((panel["temp_days"] == 7).all()), "每周气温天数均为 7 天",
-            f"取值 {sorted(panel['temp_days'].unique())}")
+    # Temperature coverage
+    r.check(panel["temp_mean"].isna().sum() == 0, "All weeks have a temperature record",
+            f"{int(panel['temp_mean'].isna().sum())} missing")
+    r.check(bool((panel["temp_days"] == 7).all()), "Every week has all 7 days of temperature",
+            f"values {sorted(panel['temp_days'].unique())}")
 
-    # 独立复算：直接读原始 HA 文件核对总行数与日期数
+    # Independent recount straight from the raw HA file
     raw_surge = out_dir.parent / "raw" / "ha" / "service_demand_surge_daily.json"
     if raw_surge.exists():
         import json
         recs = json.loads(raw_surge.read_text(encoding="utf-8"))
         daily = pd.DataFrame(recs)
-        r.check(len(daily) == 16704, "原始 HA 高峰统计行数 = 16,704", f"实际 {len(daily):,}")
+        r.check(len(daily) == 16704, "Raw HA surge file has 16,704 rows", f"actual {len(daily):,}")
         n_days_overall = daily[daily.cluster == "HA Overall"]["date"].nunique()
-        r.check(n_days_overall == 928, "HA Overall 覆盖天数 = 928", f"实际 {n_days_overall}")
+        r.check(n_days_overall == 928, "HA Overall covers 928 distinct dates", f"actual {n_days_overall}")
     else:
-        r.warn("找不到原始 HA 文件，跳过独立复算", str(raw_surge))
+        r.warn("Raw HA file not found, skipping the independent recount", str(raw_surge))
 
 
 def check_distribution(r: Report, panel: pd.DataFrame) -> None:
-    r.section("D. 取值与缺失")
+    r.section("D. Values and missingness")
 
-    r.note("取值范围检查（宽松边界，仅捕捉明显错误）：")
+    r.note("Range checks (loose bounds, catching clear errors only):")
     for col, (lo, hi) in RANGE_CHECKS.items():
         if col not in panel.columns:
             continue
         s = pd.to_numeric(panel[col], errors="coerce").dropna()
         out_of_range = int(((s < lo) | (s > hi)).sum())
         ok = out_of_range == 0
-        r.check(ok, f"{col} 落在 [{lo}, {hi}]", f"越界 {out_of_range} 个，实际范围 [{s.min():.2f}, {s.max():.2f}]")
+        r.check(ok, f"{col} within [{lo}, {hi}]", f"{out_of_range} outside, actual range [{s.min():.2f}, {s.max():.2f}]")
 
     r.note("")
-    r.note("缺失率（按变量）：")
+    r.note("Missing rate by variable:")
     for col in OUTCOME_COLS + FLU_COLS + CAPACITY_COLS:
         pct = panel[col].isna().mean() * 100
         r.note(f"    {col:20s} {pct:6.2f}%")
 
     r.note("")
-    r.note("结构性事实：流感暴露变量在同一周内对 17 家医院取相同值（无截面变异）")
+    r.note("Structural fact: influenza predictors take one value per week across all 17 hospitals (no cross-sectional variation)")
     for col in FLU_COLS:
         nunique = panel.groupby("week_end")[col].nunique()
         ok = bool((nunique == 1).all())
-        r.check(ok, f"{col} 每周仅 1 个取值", f"异常周数 {int((nunique != 1).sum())}")
+        r.check(ok, f"{col} has exactly 1 value per week", f"{int((nunique != 1).sum())} anomalous weeks")
 
     r.note("")
-    r.note("已知缺失模式的确认：")
+    r.note("Confirmation of documented missing patterns:")
     for hospital, expectations in EXPECTED_MISSING.items():
         sub = panel[panel.hospital == hospital]
         if sub.empty:
-            r.warn(f"预期缺失的医院不存在于面板中：{hospital}")
+            r.warn(f"Hospital expected to have missing data is absent from the panel: {hospital}")
             continue
         for col, min_pct in expectations.items():
             actual = sub[col].isna().mean() * 100
-            r.check(actual >= min_pct, f"{hospital} / {col} 仍为高缺失", f"实际 {actual:.1f}%（预期 ≥ {min_pct}%）")
+            r.check(actual >= min_pct, f"{hospital} / {col} still heavily missing", f"actual {actual:.1f}% (expected >= {min_pct}%)")
 
     r.note("")
-    r.note("儿科占用率覆盖（仅设有儿科服务的医院有值）：")
+    r.note("Paediatric occupancy coverage (only hospitals with a paediatric ward have values):")
     ped = panel.groupby("hospital")["ped_bed_occ_rate"].apply(lambda s: s.notna().mean() * 100).round(1)
     n_ped = int((ped > 50).sum())
     n_none = int((ped < 5).sum())
     n_partial = 17 - n_ped - n_none
-    r.note(f"    完整覆盖 {n_ped} 院；完全无覆盖 {n_none} 院；部分覆盖 {n_partial} 院")
-    r.note("    完整：" + ", ".join(f"{h.split()[0]}({p:.0f}%)" for h, p in ped.items() if p > 50))
-    r.note("    无：" + ", ".join(f"{h.split()[0]}" for h, p in ped.items() if p < 5))
+    r.note(f"    {n_ped} hospitals complete, {n_none} with no data, {n_partial} partial")
+    r.note("    Complete: " + ", ".join(f"{h.split()[0]}({p:.0f}%)" for h, p in ped.items() if p > 50))
+    r.note("    None:     " + ", ".join(f"{h.split()[0]}" for h, p in ped.items() if p < 5))
     if n_partial:
-        r.note("    部分：" + ", ".join(f"{h.split()[0]}({p:.0f}%)" for h, p in ped.items() if 5 <= p <= 50))
-    r.check(n_ped + n_none + n_partial == 17, "儿科覆盖可完全归类（合计 17 院）",
+        r.note("    Partial:  " + ", ".join(f"{h.split()[0]}({p:.0f}%)" for h, p in ped.items() if 5 <= p <= 50))
+    r.check(n_ped + n_none + n_partial == 17, "Paediatric coverage fully accounted for (17 hospitals)",
             f"{n_ped} + {n_none} + {n_partial} = 17")
-    r.check(n_ped >= 10, "儿科子样本足够建模（≥10 院）", f"实际 {n_ped} 院")
+    r.check(n_ped >= 10, "Paediatric subsample is large enough to model (>= 10 hospitals)", f"actual {n_ped}")
 
     r.note("")
-    r.note("各变量基本统计：")
+    r.note("Summary statistics:")
     desc = panel[OUTCOME_COLS + FLU_COLS + ["temp_mean", "beds_acute", "ae_annual"]].describe().T
     for name, row in desc.iterrows():
         r.note(f"    {name:20s} n={int(row['count']):>5d}  mean={row['mean']:>10.2f}  sd={row['std']:>9.2f}  "
@@ -290,17 +294,17 @@ def main() -> int:
     panel_path = out_dir / "panel_hospital_week.csv"
     hk_path = out_dir / "hk_weekly.csv"
     if not panel_path.exists():
-        raise SystemExit(f"找不到 {panel_path}\n请先执行：python pipeline/01_build.py")
+        raise SystemExit(f"Cannot find {panel_path}\nRun this first: python pipeline/01_build.py")
 
     panel = pd.read_csv(panel_path)
     hk = pd.read_csv(hk_path)
 
     r = Report()
     r.lines.append("=" * 78)
-    r.lines.append("02_validate.py — 分析面板验证报告")
+    r.lines.append("02_validate.py - analysis panel validation report")
     r.lines.append("=" * 78)
-    r.lines.append(f"  主表   {panel_path}   {panel.shape[0]:,} 行 × {panel.shape[1]} 列")
-    r.lines.append(f"  全港表 {hk_path}   {hk.shape[0]:,} 行 × {hk.shape[1]} 列")
+    r.lines.append(f"  Main table      {panel_path}   {panel.shape[0]:,} rows x {panel.shape[1]} cols")
+    r.lines.append(f"  Weekly series   {hk_path}   {hk.shape[0]:,} rows x {hk.shape[1]} cols")
 
     check_structure(r, panel, hk)
     check_time(r, panel)
@@ -313,7 +317,7 @@ def main() -> int:
     report_path = pathlib.Path(args.report)
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(text, encoding="utf-8")
-    print(f"\n报告已写入 {report_path}")
+    print(f"\nReport written to {report_path}")
 
     return 1 if r.failures else 0
 

@@ -22,19 +22,20 @@ SOFTWARE.
 
 ---
 
-## 数据版权说明
+## Data attribution
 
-本仓库 `data/` 目录下的原始数据来自香港特别行政区政府公开资料，
-版权归各数据提供机构所有，按其开放数据条款使用：
+The raw data under `data/` comes from public sources published by the Government
+of the Hong Kong Special Administrative Region. Copyright remains with the
+respective providers, and the data is used under their open data terms:
 
-| 数据 | 提供机构 | 来源 |
+| Data | Provider | Source |
 | --- | --- | --- |
-| 流感速递图表数据 | 卫生署 卫生防护中心 | data.gov.hk |
-| 服务需求高峰统计数字 | 医院管理局 | data.gov.hk |
-| 住院及日间住院服务量 | 医院管理局 | data.gov.hk |
-| 门诊及社区服务量 | 医院管理局 | data.gov.hk |
-| 医院/机构名录 | 医院管理局 | data.gov.hk |
-| 逐日气温 | 香港天文台 | HKO Open Data API |
+| Flu Express figures | Department of Health, Centre for Health Protection | data.gov.hk |
+| Key Statistics during Service Demand Surge | Hospital Authority | data.gov.hk |
+| Inpatient and Day Inpatient Services Throughput | Hospital Authority | data.gov.hk |
+| Ambulatory and Community Services Throughput | Hospital Authority | data.gov.hk |
+| Hospital / institution list | Hospital Authority | data.gov.hk |
+| Daily temperature | Hong Kong Observatory | HKO Open Data API |
 
-上述数据的著作权不适用本仓库的 MIT 许可。`data/raw/_provenance.json`
-记录了每个数据集的官方元数据与来源链接。
+The MIT licence above does not apply to this data. Official dataset metadata and
+source links for each dataset are recorded in `data/raw/_provenance.json`.

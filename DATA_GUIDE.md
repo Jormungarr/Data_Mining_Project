@@ -1,275 +1,299 @@
-# 数据集说明
+# Data Guide
 
-`data/processed/panel_hospital_week.csv` —— 香港公营医院急症服务的周度面板数据。
+`data/processed/panel_hospital_week.csv` — a weekly panel of emergency-care service
+load across Hong Kong public hospitals.
 
-**结论先行：这是一张 2,448 行 × 34 列的面板数据（17 间医院 × 144 周），
-时间轴由 8 个互不相连的冬季窗口构成，9 个流感解释变量全部没有截面变异。**
-这三件事决定了它**能回答什么问题、不能回答什么问题**，请先读完第 4 节再动手。
+**The short version:** this is a 2,448 × 34 panel — 17 hospitals × 144 weeks. The
+time axis is not continuous; it is eight separate winter windows. And none of the
+nine influenza variables varies across hospitals. Those three facts decide what
+this dataset can and cannot answer, so please read Section 4 before you start
+modelling.
+
+> A Chinese version of this guide is available at [`DATA_GUIDE.zh.md`](DATA_GUIDE.zh.md).
 
 ---
 
-## 1. 数据来源
+## 1. Where the data comes from
 
-六个政府公开数据源。原始文件在 `data/raw/`（逐字节保存，从不改写）：
-**下载链接与 SHA256 见 [`data/raw/SOURCES.md`](data/raw/SOURCES.md)**；
-机器可读清单位于 `data/raw/_manifest.json`，官方元数据见 `data/raw/_provenance.json`。
+Six public data sources. Raw files live in `data/raw/` and are never modified —
+all cleaning happens in `pipeline/01_build.py`.
 
-若需更新到最新官方数据，按 SOURCES.md 手动下载覆盖对应文件即可
-（管道会在构建前比对 SHA256 并提示差异）。
+**Download links and checksums are in [`data/raw/SOURCES.md`](data/raw/SOURCES.md).**
+The machine-readable record is `data/raw/_manifest.json`; the official dataset
+metadata is `data/raw/_provenance.json`.
 
-| # | 提供机构 | 数据 | 频率 | 本地文件 | 用途 |
+| # | Provider | Dataset | Frequency | Local file | Role |
 |---|---|---|---|---|---|
-| 1 | 卫生署 卫生防护中心 | 流感速递图表数据 | 周 | `flu/flux_data.csv` | **解释变量** |
-| 2 | 医院管理局 | 服务需求高峰统计数字 | 日（高峰期内） | `ha/service_demand_surge_daily.json` | **结果变量** |
-| 3 | 医院管理局 | 住院及日间住院服务量 | 财政年度 | `ha/hospital_beds.json` | 协变量 |
-| 4 | 医院管理局 | 门诊及社区服务量 | 财政年度 | `ha/ae_attendances_annual.json` | 协变量 |
-| 5 | 医院管理局 | 医院/机构名录 | 季 | `ha/facility_hospitals.json` | 空间维度 |
-| 6 | 香港天文台 | 开放数据 API 逐日气温 | 日 | `hko/CLM*_YYYY.csv` × 24 | 协变量 |
+| 1 | Department of Health, CHP | Flu Express figures | Weekly | `flu/flux_data.csv` | **Predictors** |
+| 2 | Hospital Authority | Key Statistics during Service Demand Surge | Daily (during surge) | `ha/service_demand_surge_daily.json` | **Response variables** |
+| 3 | Hospital Authority | Inpatient and Day Inpatient Services Throughput | Financial year | `ha/hospital_beds.json` | Covariate |
+| 4 | Hospital Authority | Ambulatory and Community Services Throughput | Financial year | `ha/ae_attendances_annual.json` | Covariate |
+| 5 | Hospital Authority | Hospital / institution list | Quarterly | `ha/facility_hospitals.json` | Geography |
+| 6 | Hong Kong Observatory | Open Data API, daily temperature | Daily | `hko/CLM*_YYYY.csv` × 24 | Covariate |
 
-原始数据规模：
+Raw data at a glance:
 
 ```
-流感速递            666 周      2014-01-04 → 2026-10-03
-HA 高峰统计      16,704 行      2019-12-01 → 2026-08-04   (928 个不同日期)
-HA 病床             807 行      财政年度 2008-09 → 2024-25
-HA 年服务量         293 行      财政年度 2008-09 → 2024-25
-HA 设施名录          44 个机构
-天文台气温        2,800 天      2019-01-01 → 2026-08-31
+Flu Express           666 weeks     2014-01-04 → 2026-10-03
+HA surge statistics   16,704 rows   2019-12-01 → 2026-08-04   (928 distinct dates)
+HA hospital beds      807 rows      FY2008-09 → FY2024-25
+HA annual A&E         293 rows      FY2008-09 → FY2024-25
+HA facility list      44 institutions
+HKO daily temperature 2,800 days   2019-01-01 → 2026-08-31
 ```
 
-时间轴的**基准是流感速递的周**（`To` 为周六）。所有其它来源都对齐到这个边界。
+The week definition comes from Flu Express: each week ends on the `To` date
+(a Saturday). Every other source is aggregated onto that same boundary.
 
 ---
 
-## 2. 主表列清单
+## 2. Columns of the main table
 
-34 列按功能分六组：
+The 34 columns fall into six groups:
 
-| 组 | 列数 | 列名 |
+| Group | Cols | Names |
 |---|---|---|
-| 标识 | 6 | `hospital`, `cluster`, `fy`, `season`, `week_start`, `week_end` |
-| **结果变量** | 4 | `ae_first_attend`, `ae_to_med_ip`, `med_bed_occ_rate`, `ped_bed_occ_rate` |
-| **解释变量** | 9 | `ILI_PMP`, `ILI_AED`, `Adm_65`, `Adm_All`, `Severe65`, `flu_H1`, `flu_H3`, `flu_B`, `flu_AandB` |
-| 协变量·医院 | 8 | `beds_acute`, `beds_infirmary`, `beds_mental`, `beds_mh`, `ae_annual`, `with_AE`, `lat`, `lon` |
-| 协变量·气温 | 3 | `temp_mean`, `temp_max`, `temp_min` |
-| 数据质量 | 4 | `temp_days`, `days`, `week_in_season`, `prev_gap_days` |
+| Identifiers | 6 | `hospital`, `cluster`, `fy`, `season`, `week_start`, `week_end` |
+| **Response** | 4 | `ae_first_attend`, `ae_to_med_ip`, `med_bed_occ_rate`, `ped_bed_occ_rate` |
+| **Predictors** | 9 | `ILI_PMP`, `ILI_AED`, `Adm_65`, `Adm_All`, `Severe65`, `flu_H1`, `flu_H3`, `flu_B`, `flu_AandB` |
+| Hospital covariates | 8 | `beds_acute`, `beds_infirmary`, `beds_mental`, `beds_mh`, `ae_annual`, `with_AE`, `lat`, `lon` |
+| Temperature covariates | 3 | `temp_mean`, `temp_max`, `temp_min` |
+| Data-quality flags | 4 | `temp_days`, `days`, `week_in_season`, `prev_gap_days` |
 
-机器可读的变量字典（含每列类型、单位、非空数、缺失率）：
-**`data/processed/data_dictionary.csv`**。
+A machine-readable dictionary with types, units, non-null counts and missing
+rates is at **`data/processed/data_dictionary.csv`**.
 
 ---
 
-## 3. 变量详解
+## 3. Variables in detail
 
-### 3.1 标识
+### 3.1 Identifiers
 
-| 列 | 说明 |
+| Column | Meaning |
 |---|---|
-| `hospital` | 医院名称，17 个值。已跨来源统一（见第 5 节） |
-| `cluster` | 医院联网，7 个值：Hong Kong East / West、Kowloon Central / East / West、New Territories East / West |
-| `fy` | 财政年度（4 月 1 日起算），如 `2023-24` |
-| `season` | 流感季标签（7 月为界），8 个值：`2019-20` … `2026-27` |
-| `week_start` / `week_end` | 该周周日 / 周六 |
+| `hospital` | Hospital name, 17 values. Names are harmonised across sources (see Section 5) |
+| `cluster` | Hospital cluster, 7 values: Hong Kong East / West, Kowloon Central / East / West, New Territories East / West |
+| `fy` | Financial year starting 1 April, e.g. `2023-24` |
+| `season` | Influenza season label (July boundary), 8 values: `2019-20` … `2026-27` |
+| `week_start` / `week_end` | First day (Sunday) and last day (Saturday) of the week |
 
-17 间医院（按联网分组）：
+The 17 hospitals, grouped by cluster:
 
 ```
-Hong Kong East  (2)  Pamela Youde Nethersole Eastern, Ruttonjee
-Hong Kong West  (1)  Queen Mary
-Kowloon Central (2)  Kwong Wah, Queen Elizabeth
-Kowloon East    (2)  Tseung Kwan O, United Christian
-Kowloon West    (4)  Caritas Medical Centre, North Lantau, Princess Margaret, Yan Chai
+Hong Kong East       (2)  Pamela Youde Nethersole Eastern, Ruttonjee
+Hong Kong West       (1)  Queen Mary
+Kowloon Central      (2)  Kwong Wah, Queen Elizabeth
+Kowloon East         (2)  Tseung Kwan O, United Christian
+Kowloon West         (4)  Caritas Medical Centre, North Lantau, Princess Margaret, Yan Chai
 New Territories East (3)  Alice Ho Miu Ling Nethersole, North District, Prince of Wales
 New Territories West (3)  Pok Oi, Tin Shui Wai, Tuen Mun
 ```
 
-### 3.2 结果变量
+### 3.2 Response variables
 
-| 列 | 含义 | 类型 | n | 缺失 | 范围 | 均值 ± 标准差 |
+| Column | Meaning | Type | n | Missing | Range | Mean ± SD |
 |---|---|---|---|---|---|---|
-| `ae_first_attend` | 急症室首次求诊人次（周内日均） | 计数 | **2,448** | 0.00% | 87 – 597 | 290.4 ± 88.9 |
-| `ae_to_med_ip` | 经急症室转入内科住院人次（周内日均） | 计数 | 2,302 | 5.96% | 1 – 124.9 | 59.7 ± 22.9 |
-| `med_bed_occ_rate` | 内科病床占用率 %（周内日均） | 有界比例 | 2,304 | 5.88% | 58 – 138 | 101.8 ± 11.7 |
-| `ped_bed_occ_rate` | 儿科病床占用率 %（周内日均） | 有界比例 | 1,597 | 34.76% | 10.2 – 128.7 | 66.0 ± 21.3 |
+| `ae_first_attend` | A&E first attendances (daily mean over the week) | Count | **2,448** | 0.00% | 87 – 597 | 290.4 ± 88.9 |
+| `ae_to_med_ip` | Admissions to medical wards via A&E (daily mean) | Count | 2,302 | 5.96% | 1 – 124.9 | 59.7 ± 22.9 |
+| `med_bed_occ_rate` | Medical bed occupancy (daily mean) | Bounded % | 2,304 | 5.88% | 58 – 138 | 101.8 ± 11.7 |
+| `ped_bed_occ_rate` | Paediatric bed occupancy (daily mean) | Bounded % | 1,597 | 34.76% | 10.2 – 128.7 | 66.0 ± 21.3 |
 
-**建模时的分布假设**：前两个是计数 → 泊松 / 负二项；后两个是比例 → Beta 回归、
-logit 变换 OLS、或直接 OLS + 稳健标准误。
+**Distributional choices.** The first two are counts — Poisson or negative
+binomial. The last two are proportions — Beta regression, logit-transformed OLS,
+or plain OLS with robust standard errors.
 
-**各结果变量可用样本不同**，因为它取决于医院是否有该科室：
+**The usable sample differs by response variable**, because it depends on whether
+a hospital has the relevant department:
 
-- `ae_first_attend` —— 17 间全部有值
-- `ae_to_med_ip` / `med_bed_occ_rate` —— 缺 North Lantau（该院无内科住院服务，100% 缺失），
-  另有 Tin Shui Wai 少量缺失
-- `ped_bed_occ_rate` —— 仅 **11 间**设儿科的医院完整有值；5 间完全无儿科（North District、
-  Pok Oi、Ruttonjee、Tin Shui Wai、North Lantau），1 间（Yan Chai）仅 9% 覆盖
+- `ae_first_attend` — all 17 hospitals
+- `ae_to_med_ip` and `med_bed_occ_rate` — missing for North Lantau, which has no
+  medical inpatient service (100% missing), plus a few gaps for Tin Shui Wai
+- `ped_bed_occ_rate` — complete for the **11 hospitals** with a paediatric ward;
+  5 hospitals have none at all (North District, Pok Oi, Ruttonjee, Tin Shui Wai,
+  North Lantau), and Yan Chai is only 9% covered
 
-> 面板结构是平衡的（无缺行），但**可用样本随结果变量变化**。
-> 不要假设「一张表喂进四个模型」，那是四个不同子样本。
+> The panel is balanced in shape, but **each model runs on a different subsample**.
+> Do not assume one table feeds four models.
 
-### 3.3 解释变量（流感暴露）
+### 3.3 Predictors (influenza activity)
 
-| 列 | 含义 | 单位 | 均值 ± 标准差 | 范围 |
+| Column | Meaning | Unit | Mean ± SD | Range |
 |---|---|---|---|---|
-| `ILI_PMP` | 定点普通科门诊流感样病例比率 | 每千宗诊症 | 30.7 ± 15.1 | 5.6 – 77.1 |
-| `ILI_AED` | 急症室流感样病例比率 | 每千宗诊症 | 147.6 ± 50.5 | 65 – 327 |
-| `Adm_65` | 65 岁及以上流感入院率 | 每千人口 | 0.58 ± 0.73 | 0 – 3.10 |
-| `Adm_All` | 整体流感入院率 | 每千人口 | 0.26 ± 0.31 | 0 – 1.22 |
-| `Severe65` | 65 岁及以上严重流感个案 | 宗/周 | 12.7 ± 15.6 | 0 – 68 |
-| `flu_H1` / `flu_H3` / `flu_B` | 实验室确诊（分型） | 宗/周 | 212.2 / 98.8 / 29.3 | — |
-| `flu_AandB` | 实验室确诊甲型+乙型 | 宗/周 | 351.5 ± 427.2 | 0 – 2,015 |
+| `ILI_PMP` | Influenza-like illness rate, sentinel general outpatient clinics | per 1,000 consultations | 30.7 ± 15.1 | 5.6 – 77.1 |
+| `ILI_AED` | Influenza-like illness rate, A&E departments | per 1,000 consultations | 147.6 ± 50.5 | 65 – 327 |
+| `Adm_65` | Influenza admission rate, aged 65+ | per 1,000 population | 0.58 ± 0.73 | 0 – 3.10 |
+| `Adm_All` | Influenza admission rate, all ages | per 1,000 population | 0.26 ± 0.31 | 0 – 1.22 |
+| `Severe65` | Severe influenza cases, aged 65+ | cases per week | 12.7 ± 15.6 | 0 – 68 |
+| `flu_H1`, `flu_H3`, `flu_B` | Laboratory-confirmed influenza, by type | cases per week | 212.2 / 98.8 / 29.3 | — |
+| `flu_AandB` | Laboratory-confirmed influenza A + B | cases per week | 351.5 ± 427.2 | 0 – 2,015 |
 
-全部 9 个变量**零缺失**。
+All nine are **fully observed** — no missing values.
 
-### 3.4 医院协变量
+### 3.4 Hospital covariates
 
-| 列 | 含义 | 均值 | 范围 | 覆盖 |
+| Column | Meaning | Mean | Range | Coverage |
 |---|---|---|---|---|
-| `beds_acute` | 急性及康复病床数 | 1,118 | 130 – 2,110 | 100% |
-| `beds_infirmary` | 疗养病床数 | — | — | 100% |
-| `beds_mental` | 精神科病床数 | — | — | 100% |
-| `beds_mh` | 弱智科病床数 | — | — | 100% |
-| `ae_annual` | 该院该财政年度急症室求诊总人次 | 113,203 | 51,825 – 199,427 | 100% |
-| `with_AE` | 是否设急症室 | — | 全部 Yes | 100% |
-| `lat` / `lon` | 医院经纬度 | — | — | 100% |
+| `beds_acute` | Acute and convalescent beds | 1,118 | 130 – 2,110 | 100% |
+| `beds_infirmary` | Infirmary beds | — | — | 100% |
+| `beds_mental` | Mentally ill beds | — | — | 100% |
+| `beds_mh` | Mentally handicapped beds | — | — | 100% |
+| `ae_annual` | Total A&E attendances in that financial year | 113,203 | 51,825 – 199,427 | 100% |
+| `with_AE` | Whether the institution runs an A&E | — | all Yes | 100% |
+| `lat`, `lon` | Hospital coordinates | — | — | 100% |
 
-`beds_*` 与 `ae_annual` 按**财政年度**发布，只到 FY2024-25，
-之后沿用最后一年（病床是慢变量，年度变动 < 2%）。
+`beds_*` and `ae_annual` are published **annually**, and only up to FY2024-25.
+Later weeks carry the last published year forward — bed counts are slow-moving
+(year-on-year change below 2%).
 
-FY2023-24 各院规模（前 6）：
+FY2023-24 sizes for the six largest hospitals:
 
 ```
-Tuen Mun Hospital                急性 2,081 床   年急症室 173,819 人次
-Queen Elizabeth Hospital         急性 2,018 床   年急症室 199,427 人次
-Prince of Wales Hospital         急性 1,901 床   年急症室 166,509 人次
-Princess Margaret Hospital       急性 1,680 床   年急症室 117,378 人次
-Queen Mary Hospital              急性 1,557 床   年急症室 117,148 人次
-Pamela Youde Nethersole Eastern  急性 1,529 床   年急症室 118,898 人次
+Tuen Mun Hospital                2,081 acute beds   173,819 annual A&E attendances
+Queen Elizabeth Hospital         2,018 acute beds   199,427 annual A&E attendances
+Prince of Wales Hospital         1,901 acute beds   166,509 annual A&E attendances
+Princess Margaret Hospital       1,680 acute beds   117,378 annual A&E attendances
+Queen Mary Hospital              1,557 acute beds   117,148 annual A&E attendances
+Pamela Youde Nethersole Eastern  1,529 acute beds   118,898 annual A&E attendances
 ```
 
-### 3.5 气温协变量
+### 3.5 Temperature covariates
 
-`temp_mean` / `temp_max` / `temp_min` —— 香港天文台总部逐日气温的**周内均值**，
-单位 °C。`temp_mean` 范围 12.1 – 30.1，零缺失。
+`temp_mean`, `temp_max`, `temp_min` — weekly means of daily readings at the Hong
+Kong Observatory headquarters, in °C. `temp_mean` spans 12.1 – 30.1, fully observed.
 
-### 3.6 数据质量列（**动手前必读**）
+### 3.6 Data-quality columns — read these before modelling
 
-| 列 | 含义 | 取值 |
+| Column | Meaning | Values |
 |---|---|---|
-| `days` | 该周 HA 实际发布了几天的数据 | 1–7。`==7` 有 2,108 行，`<7` 有 340 行 |
-| `week_in_season` | 该周在其所属流感季内的序号 | 从 1 连续编号 |
-| `prev_gap_days` | 与同季上一个已发布周的间隔天数 | `0`（季节首周）/ `7`（正常）/ `>7`（HA 停发，共 68 行） |
-| `temp_days` | 该周有气温记录的天数 | 恒为 7 |
+| `days` | How many days of HA data the week actually contains | 1–7. `== 7` for 2,108 rows, `< 7` for 340 |
+| `week_in_season` | Index of the week within its season | 1, 2, 3, … (contiguous) |
+| `prev_gap_days` | Days since the previous published week in the same season | `0` (first week of a season) / `7` (normal) / `> 7` (HA gap; 68 rows) |
+| `temp_days` | Days with a temperature reading in that week | always 7 |
 
 ---
 
-## 4. 三个必须知道的结构特征
+## 4. Three structural facts you must know
 
-### 特征 1：解释变量没有截面变异
+### 4.1 The predictors have no cross-sectional variation
 
-9 个流感变量都是**全港单一时间序列** —— 同一周内 17 间医院取到完全相同的值。
+All nine influenza variables are a **single territory-wide time series** — every
+hospital gets the identical value in a given week.
 
 ```
 week_end       2019-12-07  2019-12-14  2019-12-21  2019-12-28
 North Lantau         16.2        26.4        28.0        29.1
 Queen Mary           16.2        26.4        28.0        29.1
 Tuen Mun             16.2        26.4        28.0        29.1
-                     ↑ 完全相同
+                     ↑ identical
 ```
 
-**后果**：
+**What follows:**
 
-- 它们只能解释「全港共同的周际波动」，**不能**解释「为什么 A 院比 B 院压力大」
-- 不能与医院固定效应交互识别医院层面的时变效应
-- 想刻画院际差异，只能靠医院固定效应 + 容量协变量（`beds_acute`、`ae_annual` 等）
+- They can only explain territory-wide week-to-week movement. They **cannot**
+  explain why hospital A is busier than hospital B.
+- They cannot be interacted with hospital fixed effects to identify
+  hospital-level time-varying effects.
+- Cross-hospital differences have to come from hospital fixed effects and the
+  capacity covariates (`beds_acute`, `ae_annual`, and so on).
 
-### 特征 2：时间轴不连续 —— 8 个冬季窗口
+### 4.2 The time axis is discontinuous — eight winter windows
 
-`T = 144` 不是连续的 144 周，而是 8 个互不相连的窗口：
+`T = 144` is not 144 consecutive weeks. It is eight separate windows:
 
 ```
-season     周数   起            止              断档
-2019-20     13   2019-12-07   2020-02-29      连续
-2020-21     22   2020-12-05   2021-05-01      连续
-2021-22     22   2021-12-04   2022-04-30      连续
-2022-23     30   2022-12-03   2023-06-24      连续
-2023-24     26   2023-12-23   2024-06-22      断档 1 处（14 天）
-2024-25     17   2024-12-21   2025-05-10      断档 1 处（35 天）
-2025-26     11   2025-12-27   2026-04-11      断档 2 处（21、28 天）
-2026-27      3   2026-07-25   2026-08-08      连续
+season    weeks   first        last         gaps
+2019-20      13   2019-12-07   2020-02-29   none
+2020-21      22   2020-12-05   2021-05-01   none
+2021-22      22   2021-12-04   2022-04-30   none
+2022-23      30   2022-12-03   2023-06-24   none
+2023-24      26   2023-12-23   2024-06-22   1 gap (14 days)
+2024-25      17   2024-12-21   2025-05-10   1 gap (35 days)
+2025-26      11   2025-12-27   2026-04-11   2 gaps (21 and 28 days)
+2026-27       3   2026-07-25   2026-08-08   none
 ```
 
-**后果**：
+**What follows:**
 
-- ❌ 不能当作连续时间序列做 ARIMA / STL 全日历年分析
-- ❌ 不能对全表直接 `shift(1)` 造滞后变量
-- ✅ 应以 `season` 分层，把每个冬季视为独立的高峰事件
+- You cannot treat this as a continuous time series. ARIMA and full-year STL
+  decomposition do not apply.
+- You cannot run `shift(1)` on the whole table to build lags.
+- Stratify by `season` and treat each winter as a separate surge episode.
 
-> ⚠️ **构造滞后变量时必须**：
+> **When you build lagged variables:**
 > ```python
 > df = df.sort_values(["season", "week_end"])
 > df["ili_lag1"] = df.groupby("season")["ILI_PMP"].shift(1)
-> # 并且屏蔽跨断档的项：
+> # and mask the ones that cross a gap:
 > df.loc[df["prev_gap_days"] > 7, "ili_lag1"] = np.nan
 > ```
-> 不这么做，在那 4 处断档上会把数周前的值当成「上一周」。
+> Without this, the four gaps will silently give you a value from several weeks
+> earlier, labelled as "last week".
 
-### 特征 3：部分周的数据不完整
+### 4.3 Some weeks are incomplete
 
-`days < 7` 的 340 行中，该周均值由不足 7 天算出（最少只有 1 天），波动更大。
+For the 340 rows with `days < 7`, the weekly mean is computed from fewer than
+seven days — sometimes only one, so it is noisier.
 
-处理选项：
-- (a) 全部保留，用 `days` 作权重
-- (b) 只保留 `days == 7`（剩 2,108 行）
-- (c) 保留但把 (b) 作为稳健性检验 ← **推荐**
-
----
-
-## 5. 数据处理中已解决的坑
-
-这些是构建主表时踩过并修好的问题。**若你从 `data/raw/` 自己重新合并，需要同样处理。**
-
-**① 跨来源医院名称不一致。** HA 各部对同一家医院用不同名称：
-
-```
-高峰统计（surge）:  Ruttonjee & Tang Shiu Kin Hospitals
-病床年表（2017-18 前）: Ruttonjee Hospital
-病床年表（2017-18 后）: Ruttonjee & Tang Shiu Kin Hospitals
-年服务量 / 设施名录:   Ruttonjee Hospital
-```
-
-不统一会导致该院**整行静默丢失**（merge 后变 NaN，不报错）。
-映射表在 `pipeline/01_build.py` 的 `HOSPITAL_NAME_MAP`。
-
-**② 医院名录的联网划分与高峰统计不同。** 名录把港岛合并为 `Hong Kong Island Cluster`，
-而高峰统计拆成 `Hong Kong East` / `Hong Kong West`。名录只用于取坐标。
-
-**③ 名录有 18 间设急症室的医院，surge 只覆盖 17 间。** 缺 **St. John Hospital**
-（长洲，规模很小）。
-
-**④ 病床专科有 "Overall" 汇总行。** 必须剔除，否则重复计数。
-
-**⑤ 年服务量有联网级汇总行（"Overall (...)"）。** 同样必须剔除。
-
-**⑥ HA 从 2023-24 起停发。** 造成第 4 节特征 2 的断档，已由 `prev_gap_days` 标记。
+Options:
+- (a) keep everything and weight by `days`
+- (b) keep only `days == 7` (2,108 rows)
+- (c) keep everything, and use (b) as a robustness check ← **recommended**
 
 ---
 
-## 6. 数据中已有的信号（探索起点）
+## 5. Traps already handled in the pipeline
 
-在动手建模前，可以先确认这些关系确实存在。
+These came up while building the table. **If you merge from `data/raw/` yourself,
+handle them the same way.**
 
-**全港周层面（n = 144）：**
-
-```
-急症室首次求诊  vs ILI_PMP   r = +0.695
-经急症室入院    vs ILI_PMP   r = +0.639
-内科病床占用率  vs ILI_PMP   r = +0.575
-```
-
-**各院「急症室首次求诊 vs ILI_PMP」（每院 n = 144）—— 异质性明显：**
+**① Hospital names differ across sources.** The HA publishes the same hospital
+under different names:
 
 ```
-+0.802  Kwong Wah Hospital                    ← 最敏感
+Surge statistics:            Ruttonjee & Tang Shiu Kin Hospitals
+Bed table (pre-2017-18):     Ruttonjee Hospital
+Bed table (2017-18 onward):  Ruttonjee & Tang Shiu Kin Hospitals
+Annual A&E / facility list:  Ruttonjee Hospital
+```
+
+Unharmonised, the hospital **disappears silently** — the merge produces NaN
+rather than an error. The mapping lives in `HOSPITAL_NAME_MAP` in
+`pipeline/01_build.py`.
+
+**② The facility list groups clusters differently.** It merges Hong Kong Island
+into one cluster, while the surge statistics split it into Hong Kong East and
+Hong Kong West. The facility list is used only for coordinates.
+
+**③ The facility list has 18 A&E hospitals; the surge data covers 17.** The
+missing one is **St. John Hospital** (Cheung Chau, very small).
+
+**④ The bed table includes an "Overall" specialty row.** It must be dropped or
+beds get double-counted.
+
+**⑤ The annual A&E table includes cluster-level "Overall (...)" rows.** Same
+treatment.
+
+**⑥ The HA stopped publishing for some weeks from 2023-24 onward.** This produces
+the gaps in Section 4.2, flagged by `prev_gap_days`.
+
+---
+
+## 6. Signals already visible — a starting point
+
+Before modelling, it is worth confirming these relationships exist.
+
+**Territory-wide, weekly (n = 144):**
+
+```
+A&E first attendances   vs ILI_PMP   r = +0.695
+Admissions via A&E      vs ILI_PMP   r = +0.639
+Medical bed occupancy   vs ILI_PMP   r = +0.575
+```
+
+**Per hospital, A&E first attendances vs ILI_PMP (n = 144 each) — the spread is wide:**
+
+```
++0.802  Kwong Wah Hospital                    <- most responsive
 +0.742  Tuen Mun Hospital
 +0.735  Queen Elizabeth Hospital
 +0.724  North District Hospital
@@ -285,146 +309,159 @@ season     周数   起            止              断档
 +0.573  Pamela Youde Nethersole Eastern Hospital
 +0.569  Princess Margaret Hospital
 +0.508  Tin Shui Wai Hospital
-+0.449  Caritas Medical Centre                ← 最不敏感
++0.449  Caritas Medical Centre                <- least responsive
 ```
 
-**各季节的全港水平（HA Overall）：**
+**Territory-wide by season (HA Overall):**
 
 ```
-season    周数   AE 均值   AE 峰值   占用率均值  占用率峰值
-2019-20     13    4,880     5,920      98.9      113.4
-2020-21     22    4,337     5,090      97.8      104.4
-2021-22     22    4,091     5,111      96.0      105.0
-2022-23     30    5,286     6,287     105.6      116.4
-2023-24     26    5,581     5,988     106.9      114.0
-2024-25     17    5,305     5,633     105.1      110.4
-2025-26     11    4,761     5,084     102.2      106.2
-2026-27      3    5,235     5,366     109.4      110.7
+season    weeks   A&E mean   A&E peak   occupancy mean   occupancy peak
+2019-20      13      4,880      5,920             98.9            113.4
+2020-21      22      4,337      5,090             97.8            104.4
+2021-22      22      4,091      5,111             96.0            105.0
+2022-23      30      5,286      6,287            105.6            116.4
+2023-24      26      5,581      5,988            106.9            114.0
+2024-25      17      5,305      5,633            105.1            110.4
+2025-26      11      4,761      5,084            102.2            106.2
+2026-27       3      5,235      5,366            109.4            110.7
 ```
 
-内科病床占用率**几乎每季都突破 100%**（超载），峰值达 116%。
-COVID 期间（2020-21、2021-22）明显偏低，2022-23 起反弹并持续高位 —— 这本身就是可分析的信号。
+Medical bed occupancy **exceeds 100% in almost every season** — the system runs
+over capacity, peaking at 116%. Levels were visibly lower during COVID
+(2020-21, 2021-22) and rebounded from 2022-23 onward. That pattern is itself
+worth analysing.
 
 ---
 
-## 7. 探索空间
+## 7. What you can and cannot do
 
-### 7.1 能回答的问题
+### 7.1 Questions this dataset can answer
 
-设定分析单元为 `(医院 i, 周 t)`，可做的方向：
+With the unit of analysis as `(hospital i, week t)`:
 
-**① 剂量反应与滞后结构**
+**① Dose–response and lag structure**
 
-$$\text{log}\,\mathbb{E}[Y_{it}] = \alpha_i + \delta_{s(it)} + \sum_{k=0}^{K}\beta_k X_{t-k} + \mathbf{Z}_i^\top\gamma$$
+$$\log \mathbb{E}[Y_{it}] = \alpha_i + \delta_{s(it)} + \sum_{k=0}^{K} \beta_k X_{t-k} + \mathbf{Z}_i^\top \gamma$$
 
-流感活动上升 1 个单位，急症服务压力增加多少？滞后几周到达峰值？
+How much does emergency-care load rise per unit of influenza activity, and how
+many weeks does the peak lag behind?
 
-**② 医院异质性**
+**② Hospital heterogeneity**
 
-$$\text{med\_bed\_occ}_{it} = \alpha_i + \delta_s + \beta X_t + \theta (X_t \times Z_i) + \varepsilon_{it}$$
+$$\text{occupancy}_{it} = \alpha_i + \delta_s + \beta X_t + \theta (X_t \times Z_i) + \varepsilon_{it}$$
 
-哪些医院对流感最敏感？脆弱性来自「基线占用高」还是「弹性大」？
-第 6 节的相关系数跨度 0.449 – 0.802 说明这个方向有实质内容。
+Which hospitals respond most strongly, and is their vulnerability driven by a
+high baseline load or by high responsiveness? The correlation spread in
+Section 6 (0.449 to 0.802) suggests there is real variation to explain.
 
-**③ 非线性与阈值**
+**③ Non-linearity and thresholds**
 
-内科病床占用率突破 100% 的临界流感水平在哪里？超过之后是否加速恶化？
-方法：阈值回归（Hansen）、样条 / GAM、变化点检测。
+At what level of influenza activity does medical bed occupancy cross 100%, and
+does deterioration accelerate beyond it? Threshold regression (Hansen), splines
+or GAMs, and change-point detection all apply.
 
-**④ 季节间比较**
+**④ Comparison across seasons**
 
-以 2022-23（COVID 后首个完整流感季）为断点，检验流感→压力的传导系数是否改变。
+Using 2022-23 — the first complete post-COVID influenza season — as a break
+point, test whether the transmission from influenza to load has changed.
 
-### 7.2 建议的方法与稳健性检验
+### 7.2 Suggested methods and robustness checks
 
-| 目的 | 方法 |
+| Purpose | Method |
 |---|---|
-| 计数结果变量 | 泊松 / 负二项 GLM，log 链接 |
-| 比例结果变量 | Beta 回归 / logit 变换 OLS |
-| 面板结构 | 双向固定效应（医院 + 季节），按医院聚类的稳健标准误 |
-| 滞后结构 | 无约束 lag 0–3 + 联合 Wald 检验 |
-| 非线性 | GAM / 分段回归探测拐点 |
-| 验证 | Leave-one-season-out 交叉验证；非流感季安慰剂检验 |
+| Count responses | Poisson / negative binomial GLM with a log link |
+| Proportion responses | Beta regression or logit-transformed OLS |
+| Panel structure | Two-way fixed effects (hospital + season), standard errors clustered by hospital |
+| Lag structure | Unrestricted lags 0–3 with a joint Wald test |
+| Non-linearity | GAM or piecewise regression to locate a threshold |
+| Validation | Leave-one-season-out cross-validation; off-season placebo test |
 
-**稳健性检验清单**：
+**Robustness checklist:**
 
-1. 只保留 `days == 7` 的完整周（2,108 行）
-2. 轮换解释变量：`ILI_PMP` ↔ `Adm_65` ↔ `flu_AandB`
-3. 换空间单元：医院层 ↔ 联网层（7 个单元，噪声更小）
-4. 剔除 COVID 期间（2020-21、2021-22）后重估
-5. 安慰剂：用非流感季（7–10 月）数据，看关联是否消失
-6. 多重比较：Benjamini–Hochberg FDR
+1. Restrict to complete weeks (`days == 7`, 2,108 rows)
+2. Rotate the predictor: `ILI_PMP` ↔ `Adm_65` ↔ `flu_AandB`
+3. Change the spatial unit: hospital level ↔ cluster level (7 units, less noise)
+4. Drop the COVID seasons (2020-21, 2021-22) and re-estimate
+5. Placebo: use off-season months (July–October) and check the association disappears
+6. Multiple comparisons: Benjamini–Hochberg FDR
 
-### 7.3 不能回答的问题（数据不支持，别浪费时间）
+### 7.3 Questions this dataset cannot answer
 
-| 想做 | 为什么不行 |
+| Tempting but not supported | Why not |
 |---|---|
-| 个体层面的因果推断 | 流感监测是**全港生态指标**，不是医院服务范围级别 |
-| 死亡结局 | 政府月度死亡数**不含年龄与死因**；年龄拆分只有年度 |
-| 日内 / 逐日建模 | 流感暴露是周粒度 |
-| 全日历年时间序列 | 时间轴有 4 处断档，只有 8 个冬季窗口 |
-| 医院内部的时变效应 | 解释变量无截面变异（第 4 节特征 1） |
-| 急症室等候时间结局 | HA 等候时间是**即时快照**（无日期字段），不构成时间序列 |
-| 长期趋势 / 年度分析 | 覆盖仅 2019-12 起，7 个冬季 |
+| Individual-level causal inference | The influenza series is a **territory-wide ecological indicator**, not a hospital-catchment measure |
+| Mortality outcomes | Government monthly deaths carry **no age or cause breakdown**; age detail exists only annually |
+| Daily or intra-day modelling | The exposure is weekly |
+| Full-year time series | The axis has four gaps and only eight winter windows |
+| Within-hospital time-varying effects | The predictors have no cross-sectional variation (Section 4.1) |
+| A&E waiting time as an outcome | HA publishes waiting time as a **live snapshot** with no date field, so it is not a time series |
+| Long-run trends or annual analysis | Coverage starts in December 2019, with seven winters |
 
 ---
 
 ## 8. FAQ
 
-**Q：`T = 144` 是 144 周连续吗？**
-不是。是 8 个冬季窗口拼起来的总周数，中间有 4 处断档。见第 4 节特征 2。
+**Is `T = 144` 144 consecutive weeks?**
+No. It is the total number of weeks across eight winter windows, with four gaps
+in between. See Section 4.2.
 
-**Q：为什么 `med_bed_occ_rate` 能超过 100%？**
-占用率 = 住院病人数 / 病床数。加床（在走廊、临时床位安置病人）时分子会超过分母。
+**Why can `med_bed_occ_rate` exceed 100%?**
+Occupancy is inpatients divided by beds. When beds are added in corridors or
+temporary spaces, the numerator exceeds the denominator.
 
-**Q：`ped_bed_occ_rate` 缺失这么多怎么办？**
-单独建一个 11 间医院的子面板。不要在主模型里用，会丢掉 6 间医院。
+**`ped_bed_occ_rate` is heavily missing — what should I do?**
+Build a separate sub-panel of the 11 hospitals with a paediatric ward. Do not use
+it in the main model; you would lose six hospitals.
 
-**Q：North Lantau 缺内科数据，要不要剔除？**
-主模型涉及 `ae_first_attend` 时保留（它有完整数据）；涉及内科指标时自动被 `dropna` 排除。
+**Should I drop North Lantau because it has no medical data?**
+Keep it for models using `ae_first_attend`, where it is fully observed. For
+medical outcomes it drops out automatically via `dropna`.
 
-**Q：`beds_acute` 在 `season` 内是常数吗？**
-在同一财政年度内是常数。它有 2 个取值变化点（每年 4 月）。放进固定效应模型会被医院 FE 吸收大部分变异。
+**Is `beds_acute` constant within a season?**
+It is constant within a financial year, and changes once a year in April. In a
+fixed-effects model, hospital fixed effects will absorb most of its variation.
 
-**Q：能加更多数据源吗？**
-可以。气象方面还可加相对湿度（HKO 同一 API，参数代码需再查）；
-交通方面 `hk-td-tis_17` 的月度公共交通载客量可与本表按周/月对齐。
+**Can I add more sources?**
+Yes. Relative humidity is available from the same HKO API (the parameter code
+needs checking). On the transport side, monthly public transport patronage from
+`hk-td-tis_17` can be aligned to these weeks or months.
 
 ---
 
-## 9. 自己重新合并数据
+## 9. Merging the data yourself
 
-若你想从 `data/raw/` 自行处理（而非直接用 `data/processed/`）：
+To work from `data/raw/` rather than the finished tables:
 
 ```bash
-# 直接看管道怎么做的
+# See how the pipeline does it
 cat pipeline/01_build.py
 
-# 只用 pandas 即可；关键步骤在 S1–S6，处理约定集中在文件顶部常量区
-# 运行： ./pipeline/run_all.sh
+# pandas is all you need; the key steps are S1-S6, and the
+# processing conventions sit in the constants block at the top of the file
 ```
 
-管道输出的 6 个表：
+The pipeline writes six tables:
 
-| 文件 | 规模 | 内容 |
+| File | Size | Contents |
 |---|---|---|
-| `panel_hospital_week.csv` | 2,448 × 34 | **主分析表** |
-| `hk_weekly.csv` | 144 × 23 | 全港汇总周序列（HA Overall） |
-| `hospital_beds_annual.csv` | 医院 × 财政年度 | 病床数宽表（FY2008-09 起） |
-| `ae_attendances_annual.csv` | 医院 × 财政年度 | 急症室年服务量（FY2008-09 起） |
-| `hospital_directory.csv` | 44 个机构 | 名录、联网、是否有急症室、地址、经纬度 |
-| `data_dictionary.csv` | 34 行 | 变量字典 |
+| `panel_hospital_week.csv` | 2,448 × 34 | **Main analysis table** |
+| `hk_weekly.csv` | 144 × 23 | Territory-wide weekly series (HA Overall) |
+| `hospital_beds_annual.csv` | hospital × FY | Bed counts, wide format (FY2008-09 onward) |
+| `ae_attendances_annual.csv` | hospital × FY | Annual A&E attendances (FY2008-09 onward) |
+| `hospital_directory.csv` | 44 institutions | Names, clusters, A&E flag, address, coordinates |
+| `data_dictionary.csv` | 34 rows | Variable dictionary |
 
-自己跑一遍并与 `data/processed/` 对比，是验证理解是否正确的有效办法
-（管道是确定性的，产出应逐字节一致）。
+Rebuilding and comparing against `data/processed/` is a good way to check your
+understanding — the pipeline is deterministic, so the output should match byte
+for byte.
 
 ---
 
-## 10. 已知限制
+## 10. Known limitations
 
-1. **时间不连续** —— 8 个冬季窗口，非连续时间序列
-2. **解释变量为生态层面** —— 全港指标，不支持个体层面推断
-3. **COVID 混淆** —— 2020–2022 年口罩令与社交距离同时压低了流感与急症需求
-4. **无死亡分层** —— 月度死亡数不含年龄与死因
-5. **病床数为年度** —— 无法捕捉年内容量变化
-6. **仅 7 个流感季** —— 对季节层面的推断而言样本偏少
+1. **Discontinuous time axis** — eight winter windows, not a continuous series
+2. **Ecological exposure** — a territory-wide indicator, so no individual-level inference
+3. **COVID confounding** — 2020–2022 saw mask mandates and distancing that suppressed both influenza and A&E demand simultaneously
+4. **No mortality stratification** — monthly deaths carry no age or cause detail
+5. **Annual bed counts** — within-year capacity changes are not observable
+6. **Only seven influenza seasons** — a small sample for season-level inference

@@ -1,71 +1,71 @@
 ==============================================================================
-02_validate.py — 分析面板验证报告
+02_validate.py - analysis panel validation report
 ==============================================================================
-  主表   /Users/yukuanzou/HKU/HKU-TPG-DS/production/STAT8017/project/data/processed/panel_hospital_week.csv   2,448 行 × 34 列
-  全港表 /Users/yukuanzou/HKU/HKU-TPG-DS/production/STAT8017/project/data/processed/hk_weekly.csv   144 行 × 23 列
+  Main table      /Users/yukuanzou/HKU/HKU-TPG-DS/production/STAT8017/project/data/processed/panel_hospital_week.csv   2,448 rows x 34 cols
+  Weekly series   /Users/yukuanzou/HKU/HKU-TPG-DS/production/STAT8017/project/data/processed/hk_weekly.csv   144 rows x 23 cols
 
 ==============================================================================
-A. 结构
+A. Structure
 ==============================================================================
-  [PASS] 行数 = 2,448  —  实际 2,448
-  [PASS] 医院数 = 17  —  实际 17
-  [PASS] 周数 = 144  —  实际 144
-  [PASS] 面板完全平衡（无缺行）  —  17 × 144 = 2,448
-  [PASS] 主键 (hospital, week_end) 唯一  —  重复 0 行
-  [PASS] 无重复列名
-  [PASS] 列数 = 34  —  实际 34
-  [PASS] 全港周序列 = 144 行  —  实际 144
+  [PASS] Row count = 2,448  —  actual 2,448
+  [PASS] Hospital count = 17  —  actual 17
+  [PASS] Week count = 144  —  actual 144
+  [PASS] Panel is perfectly balanced (no missing rows)  —  17 × 144 = 2,448
+  [PASS] Primary key (hospital, week_end) is unique  —  0 duplicates
+  [PASS] No duplicated column names
+  [PASS] Column count = 34  —  actual 34
+  [PASS] Territory-wide weekly series = 144 rows  —  actual 144
 
 ==============================================================================
-B. 时间轴
+B. Time axis
 ==============================================================================
-  [PASS] 每周 week_start → week_end 恰为 7 天  —  跨度值 [np.int64(6)]
-  [PASS] 季节标签与 7 月分界一致  —  不符 0 行
-         季节内连续性（HA 停发会造成断档，必须被 prev_gap_days 标记）：
-             2019-20: 13 周  2019-12-07 → 2020-02-29   连续
-             2020-21: 22 周  2020-12-05 → 2021-05-01   连续
-             2021-22: 22 周  2021-12-04 → 2022-04-30   连续
-             2022-23: 30 周  2022-12-03 → 2023-06-24   连续
-             2023-24: 26 周  2023-12-23 → 2024-06-22   断档 1 处（间隔 [14] 天），涉及 1 个周
-             2024-25: 17 周  2024-12-21 → 2025-05-10   断档 1 处（间隔 [35] 天），涉及 1 个周
-             2025-26: 11 周  2025-12-27 → 2026-04-11   断档 2 处（间隔 [21, 28] 天），涉及 2 个周
-             2026-27:  3 周  2026-07-25 → 2026-08-08   连续
-  [PASS] 断档已被识别  —  共 4 个周紧随断档之后（prev_gap_days > 7）
-  [PASS] prev_gap_days 与真实周间隔完全一致  —  不符 0 处
-  [PASS] week_in_season 在每个季节内从 1 连续编号
+  [PASS] Each week spans exactly 7 days  —  span values [np.int64(6)]
+  [PASS] Season labels match the July boundary  —  0 mismatches
+         Within-season continuity (HA gaps must be flagged by prev_gap_days):
+             2019-20: 13 weeks  2019-12-07 -> 2020-02-29   continuous
+             2020-21: 22 weeks  2020-12-05 -> 2021-05-01   continuous
+             2021-22: 22 weeks  2021-12-04 -> 2022-04-30   continuous
+             2022-23: 30 weeks  2022-12-03 -> 2023-06-24   continuous
+             2023-24: 26 weeks  2023-12-23 -> 2024-06-22   1 gap(s) of [14] days, 1 week(s) affected
+             2024-25: 17 weeks  2024-12-21 -> 2025-05-10   1 gap(s) of [35] days, 1 week(s) affected
+             2025-26: 11 weeks  2025-12-27 -> 2026-04-11   2 gap(s) of [21, 28] days, 2 week(s) affected
+             2026-27:  3 weeks  2026-07-25 -> 2026-08-08   continuous
+  [PASS] Gaps are detected  —  4 weeks follow a gap (prev_gap_days > 7)
+  [PASS] prev_gap_days matches the true week interval everywhere  —  0 mismatch(es)
+  [PASS] week_in_season runs consecutively from 1 in every season
 
 ==============================================================================
-C. 跨来源一致性
+C. Cross-source consistency
 ==============================================================================
-  [PASS] 各院急症室求诊之和 与 HA Overall 量级一致  —  比值范围 1.000 – 1.000（应≈1；差异来自各院独立取整与均值口径）
-  [PASS] 容量协变量 beds_acute 无缺失  —  缺失率 0.00%
-  [PASS] 容量协变量 beds_infirmary 无缺失  —  缺失率 0.00%
-  [PASS] 容量协变量 beds_mental 无缺失  —  缺失率 0.00%
-  [PASS] 容量协变量 beds_mh 无缺失  —  缺失率 0.00%
-  [PASS] 容量协变量 ae_annual 无缺失  —  缺失率 0.00%
-  [PASS] 所有医院均有坐标  —  缺失 0 行
-  [PASS] 所有周均有气温记录  —  缺失 0 行
-  [PASS] 每周气温天数均为 7 天  —  取值 [np.int64(7)]
-  [PASS] 原始 HA 高峰统计行数 = 16,704  —  实际 16,704
-  [PASS] HA Overall 覆盖天数 = 928  —  实际 928
+  [PASS] Sum of hospital A&E attendances is the same order as HA Overall  —  ratio range 1.000 - 1.000 (should be near 1)
+  [PASS] Capacity covariate beds_acute has no missing values  —  missing 0.00%
+  [PASS] Capacity covariate beds_infirmary has no missing values  —  missing 0.00%
+  [PASS] Capacity covariate beds_mental has no missing values  —  missing 0.00%
+  [PASS] Capacity covariate beds_mh has no missing values  —  missing 0.00%
+  [PASS] Capacity covariate ae_annual has no missing values  —  missing 0.00%
+  [PASS] All hospitals have coordinates  —  0 missing
+  [PASS] All weeks have a temperature record  —  0 missing
+  [PASS] Every week has all 7 days of temperature  —  values [np.int64(7)]
+  [PASS] Raw HA surge file has 16,704 rows  —  actual 16,704
+  [PASS] HA Overall covers 928 distinct dates  —  actual 928
 
 ==============================================================================
-D. 取值与缺失
+D. Values and missingness
 ==============================================================================
-         取值范围检查（宽松边界，仅捕捉明显错误）：
-  [PASS] ae_first_attend 落在 [50, 800]  —  越界 0 个，实际范围 [87.00, 597.00]
-  [PASS] ae_to_med_ip 落在 [0, 300]  —  越界 0 个，实际范围 [1.00, 124.86]
-  [PASS] med_bed_occ_rate 落在 [40, 160]  —  越界 0 个，实际范围 [58.00, 138.00]
-  [PASS] ped_bed_occ_rate 落在 [0, 160]  —  越界 0 个，实际范围 [10.20, 128.71]
-  [PASS] ILI_PMP 落在 [0, 200]  —  越界 0 个，实际范围 [5.60, 77.10]
-  [PASS] Adm_65 落在 [0, 20]  —  越界 0 个，实际范围 [0.00, 3.10]
-  [PASS] temp_mean 落在 [0, 40]  —  越界 0 个，实际范围 [12.11, 30.13]
-  [PASS] temp_max 落在 [0, 45]  —  越界 0 个，实际范围 [14.96, 33.69]
-  [PASS] temp_min 落在 [-5, 35]  —  越界 0 个，实际范围 [10.09, 27.97]
-  [PASS] lat 落在 [22.0, 22.6]  —  越界 0 个，实际范围 [22.27, 22.50]
-  [PASS] lon 落在 [113.8, 114.5]  —  越界 0 个，实际范围 [113.94, 114.27]
+         Range checks (loose bounds, catching clear errors only):
+  [PASS] ae_first_attend within [50, 800]  —  0 outside, actual range [87.00, 597.00]
+  [PASS] ae_to_med_ip within [0, 300]  —  0 outside, actual range [1.00, 124.86]
+  [PASS] med_bed_occ_rate within [40, 160]  —  0 outside, actual range [58.00, 138.00]
+  [PASS] ped_bed_occ_rate within [0, 160]  —  0 outside, actual range [10.20, 128.71]
+  [PASS] ILI_PMP within [0, 200]  —  0 outside, actual range [5.60, 77.10]
+  [PASS] Adm_65 within [0, 20]  —  0 outside, actual range [0.00, 3.10]
+  [PASS] temp_mean within [0, 40]  —  0 outside, actual range [12.11, 30.13]
+  [PASS] temp_max within [0, 45]  —  0 outside, actual range [14.96, 33.69]
+  [PASS] temp_min within [-5, 35]  —  0 outside, actual range [10.09, 27.97]
+  [PASS] lat within [22.0, 22.6]  —  0 outside, actual range [22.27, 22.50]
+  [PASS] lon within [113.8, 114.5]  —  0 outside, actual range [113.94, 114.27]
          
-         缺失率（按变量）：
+         Missing rate by variable:
              ae_first_attend        0.00%
              ae_to_med_ip           5.96%
              med_bed_occ_rate       5.88%
@@ -85,31 +85,31 @@ D. 取值与缺失
              beds_mh                0.00%
              ae_annual              0.00%
          
-         结构性事实：流感暴露变量在同一周内对 17 家医院取相同值（无截面变异）
-  [PASS] ILI_PMP 每周仅 1 个取值  —  异常周数 0
-  [PASS] ILI_AED 每周仅 1 个取值  —  异常周数 0
-  [PASS] Adm_65 每周仅 1 个取值  —  异常周数 0
-  [PASS] Adm_All 每周仅 1 个取值  —  异常周数 0
-  [PASS] Severe65 每周仅 1 个取值  —  异常周数 0
-  [PASS] flu_H1 每周仅 1 个取值  —  异常周数 0
-  [PASS] flu_H3 每周仅 1 个取值  —  异常周数 0
-  [PASS] flu_B 每周仅 1 个取值  —  异常周数 0
-  [PASS] flu_AandB 每周仅 1 个取值  —  异常周数 0
+         Structural fact: influenza predictors take one value per week across all 17 hospitals (no cross-sectional variation)
+  [PASS] ILI_PMP has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] ILI_AED has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] Adm_65 has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] Adm_All has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] Severe65 has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] flu_H1 has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] flu_H3 has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] flu_B has exactly 1 value per week  —  0 anomalous weeks
+  [PASS] flu_AandB has exactly 1 value per week  —  0 anomalous weeks
          
-         已知缺失模式的确认：
-  [PASS] North Lantau Hospital / ae_to_med_ip 仍为高缺失  —  实际 100.0%（预期 ≥ 99.0%）
-  [PASS] North Lantau Hospital / med_bed_occ_rate 仍为高缺失  —  实际 100.0%（预期 ≥ 99.0%）
-  [PASS] North Lantau Hospital / ped_bed_occ_rate 仍为高缺失  —  实际 100.0%（预期 ≥ 99.0%）
+         Confirmation of documented missing patterns:
+  [PASS] North Lantau Hospital / ae_to_med_ip still heavily missing  —  actual 100.0% (expected >= 99.0%)
+  [PASS] North Lantau Hospital / med_bed_occ_rate still heavily missing  —  actual 100.0% (expected >= 99.0%)
+  [PASS] North Lantau Hospital / ped_bed_occ_rate still heavily missing  —  actual 100.0% (expected >= 99.0%)
          
-         儿科占用率覆盖（仅设有儿科服务的医院有值）：
-             完整覆盖 11 院；完全无覆盖 5 院；部分覆盖 1 院
-             完整：Alice(100%), Caritas(100%), Kwong(100%), Pamela(100%), Prince(100%), Princess(100%), Queen(100%), Queen(100%), Tseung(100%), Tuen(100%), United(100%)
-             无：North, North, Pok, Ruttonjee, Tin
-             部分：Yan(9%)
-  [PASS] 儿科覆盖可完全归类（合计 17 院）  —  11 + 5 + 1 = 17
-  [PASS] 儿科子样本足够建模（≥10 院）  —  实际 11 院
+         Paediatric occupancy coverage (only hospitals with a paediatric ward have values):
+             11 hospitals complete, 5 with no data, 1 partial
+             Complete: Alice(100%), Caritas(100%), Kwong(100%), Pamela(100%), Prince(100%), Princess(100%), Queen(100%), Queen(100%), Tseung(100%), Tuen(100%), United(100%)
+             None:     North, North, Pok, Ruttonjee, Tin
+             Partial:  Yan(9%)
+  [PASS] Paediatric coverage fully accounted for (17 hospitals)  —  11 + 5 + 1 = 17
+  [PASS] Paediatric subsample is large enough to model (>= 10 hospitals)  —  actual 11
          
-         各变量基本统计：
+         Summary statistics:
              ae_first_attend      n= 2448  mean=    290.36  sd=    88.85  min=   87.00  max=  597.00
              ae_to_med_ip         n= 2302  mean=     59.66  sd=    22.85  min=    1.00  max=  124.86
              med_bed_occ_rate     n= 2304  mean=    101.76  sd=    11.73  min=   58.00  max=  138.00
@@ -128,5 +128,5 @@ D. 取值与缺失
              ae_annual            n= 2448  mean= 113203.46  sd= 30340.99  min=51825.00  max=199427.00
 
 ==============================================================================
-结论：全部检查通过
+Result: all checks passed
 ==============================================================================
