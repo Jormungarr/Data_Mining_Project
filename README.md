@@ -28,7 +28,7 @@ Four common situations. Pick the row that matches you.
 | **Understand what the columns mean** | [`DATA_GUIDE.md`](DATA_GUIDE.md) Sections 0–3. Section 0 walks through a single row. |
 | **Analyse the data** | Read [Section 4](DATA_GUIDE.md#4-three-structural-facts-you-must-know) **first** — it explains the constraints that will otherwise trip you up — then [Section 7](DATA_GUIDE.md#7-what-you-can-and-cannot-do) for what is and is not answerable. |
 | **Rebuild the dataset** | The setup below, then [Pipeline details](#pipeline-details). |
-| **Run a model** | The template in [Running your own script](#running-your-own-script). |
+| **Run a model** | [Running your own script](#running-your-own-script) below. |
 
 Unfamiliar with terms like *panel data*, *fixed effects* or *negative binomial*?
 There is a plain-language [glossary](DATA_GUIDE.md#10-glossary) at the end of the
@@ -76,9 +76,7 @@ byte-identical CSV output.
 ├── pipeline/                     The whole reproducible pipeline
 │   ├── run_all.sh                One-command driver
 │   ├── 01_build.py               Clean, aggregate, merge -> analysis tables
-│   ├── 02_validate.py            Structural / temporal / consistency / distribution checks
-│   ├── 03_eda.py                 First look at the panel
-│   └── 03_model.py               Baseline model (a starting template, not part of run_all.sh)
+│   └── 02_validate.py            Structural / temporal / consistency / distribution checks
 │
 ├── data/
 │   ├── raw/                      Raw files, byte-for-byte, never rewritten
@@ -157,24 +155,34 @@ The latest report is at [`out/validation_report.txt`](out/validation_report.txt)
 
 ### Running your own script
 
-Scripts read from `data/processed/` and write to `out/`. Run them with the
-project interpreter so they pick up the installed packages:
+The repository ships the data pipeline only. Analysis and modelling scripts are
+yours to write, and are deliberately not versioned — `.gitignore` keeps
+`pipeline/*.py` out of the repository except `01_build.py` and `02_validate.py`,
+and keeps everything in `out/` out except the validation report.
+
+Write your script, then run it with the project interpreter so it picks up the
+installed packages:
 
 ```bash
-export UV_CACHE_DIR="$PWD/.uv-cache"     # only needed if you invoke uv directly
-.venv/bin/python pipeline/03_model.py
+.venv/bin/python pipeline/my_analysis.py
 ```
 
-`pipeline/03_eda.py` is a worked example of an exploratory script, and
-`pipeline/03_model.py` of a modelling script.
+Conventions to follow:
 
-Copy `pipeline/03_model.py` as a template for new scripts: it loads the panel,
-builds a properly masked lag, fits a negative binomial regression with standard
-errors clustered by week, and writes its output to `out/`.
+| | |
+|---|---|
+| **Read from** | `data/processed/*.csv` — never modify `data/raw/` |
+| **Write to** | `out/` |
+| **Resolve paths** | `ROOT = pathlib.Path(__file__).resolve().parent.parent`, so the script works from any directory |
+| **Print** | Use `print()`. A bare expression like `df.shape` echoes in the interactive interpreter but outputs nothing in a script |
+| **Plots** | Start with `matplotlib.use("Agg")` and finish with `fig.savefig(...)`. Calling `.plot()` alone produces no file |
+| **Lags** | Group by `season` and mask rows where `prev_gap_days > 7` — see [DATA_GUIDE 4.2](DATA_GUIDE.md#42-the-time-axis-is-discontinuous--eight-winter-windows) |
+| **Standard errors** | Cluster by `week_end`, not by hospital — see [DATA_GUIDE 7.2](DATA_GUIDE.md#72-suggested-methods-and-robustness-checks) |
+| **New packages** | `uv add <package>`, then commit the updated `pyproject.toml` and `uv.lock` |
 
-New scripts are **not** added to `run_all.sh`. That script covers the data steps,
-which are deterministic and reproducible; analysis is run separately. If you do
-want one command for everything, append your script to the end of `run_all.sh`.
+`run_all.sh` covers the data steps only, which are deterministic and
+reproducible. If you want one command for everything, append your script to the
+end of it.
 
 ---
 

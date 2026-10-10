@@ -76,6 +76,8 @@ Outputs:
 Data structure, variables and what is analysable  ->  DATA_GUIDE.md
 Raw data sources and download links              ->  data/raw/SOURCES.md
 
-Modelling is a separate step. For a worked example:
-  .venv/bin/python pipeline/03_model.py
+This script covers the data steps only. Analysis and modelling scripts are
+yours to write: read from data/processed/, write to out/, and run them with
+  .venv/bin/python pipeline/<your_script>.py
+See README "Running your own script" for the conventions.
 EOF

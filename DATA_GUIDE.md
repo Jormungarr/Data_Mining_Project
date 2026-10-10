@@ -391,7 +391,8 @@ Admissions via A&E      vs ILI_PMP   r = +0.639
 Medical bed occupancy   vs ILI_PMP   r = +0.575
 ```
 
-Run `pipeline/03_eda.py` to reproduce these alongside the pooled versions.
+To reproduce these alongside the pooled versions, average over hospitals within
+each week and take the correlation of the 144 resulting points.
 
 **Per hospital, A&E first attendances vs ILI_PMP (n = 144 each) — the spread is wide:**
 
@@ -486,17 +487,21 @@ season fixed effects, and report the coefficient. Get that working end to end
 before adding lags, interactions or thresholds. The other options exist for
 when you have a specific question that the simple model cannot answer.
 
-`pipeline/03_model.py` already does exactly this and writes its output to `out/`.
-Run it with `.venv/bin/python pipeline/03_model.py`, then copy and adapt it. It
-also demonstrates two traps worth knowing about before you write your own:
+Two traps are worth knowing before you fit anything:
 
-- It estimates the negative binomial dispersion parameter rather than accepting
-  a default. `smf.glm(..., family=sm.families.NegativeBinomial())` silently fixes
-  alpha at 1.0, which for these counts is far too large.
-- It clusters standard errors by **week**, not by hospital. Clustering by
-  hospital looks natural but is wrong here: with only 17 clusters and a predictor
-  that barely varies within them, the variance estimate collapses and p-values
-  become spuriously tiny. The script prints the comparison so you can see it.
+**Estimate the negative binomial dispersion; do not accept a default.**
+`smf.glm(..., family=sm.families.NegativeBinomial())` takes alpha as a fixed
+input and silently uses `alpha = 1.0`. For these counts that is far too large
+and the standard errors come out too small. `sm.NegativeBinomial` estimates
+alpha from the data instead.
+
+**Cluster standard errors by week, not by hospital.** Clustering by hospital is
+the intuitive choice and it is wrong here. The predictor is territory-wide, so
+the residual correlation is across hospitals within a week, not within a
+hospital over time. With only 17 clusters and a predictor that barely varies
+within them, the cluster-robust variance collapses — the standard error falls
+from about 0.0014 to 0.0001 and a p-value of 0.003 becomes 1e-255. Cluster by
+`week_end` instead, where there are 144 clusters.
 
 **Robustness checklist:**
 
@@ -558,8 +563,8 @@ To work from `data/raw/` rather than the finished tables:
 # See how the pipeline does it
 cat pipeline/01_build.py
 
-# A worked example of loading the panel and fitting a model
-cat pipeline/03_model.py
+# Then write your own script, reading from data/processed/ and writing to out/
+# See README "Running your own script" for the conventions
 
 # pandas is all you need; the key steps are S1-S6, and the
 # processing conventions sit in the constants block at the top of the file
