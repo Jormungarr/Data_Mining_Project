@@ -35,6 +35,8 @@ import json
 import pathlib
 import sys
 import time
+import shutil
+import subprocess
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -56,6 +58,9 @@ UA = {
 }
 TIMEOUT = 120
 RETRIES = 3
+
+# 部分政府站点会对 Python 的 TLS 指纹返回 SSL UNEXPECTED_EOF，而 curl 可正常握手。
+# 因此 Python 重试耗尽后回退到 curl，使下载在更多网络环境下可用。
 
 # --------------------------------------------------------------------------
 # 1. 静态清单：每个 (URL, 本地相对路径)
@@ -148,18 +153,49 @@ PROVENANCE_PACKAGES = [
 # --------------------------------------------------------------------------
 # 3. 工具函数
 # --------------------------------------------------------------------------
+def _fetch_urllib(url: str) -> bytes:
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+        return resp.read()
+
+
+def _fetch_curl(url: str) -> bytes:
+    """回退方案：调用系统 curl。对 Python TLS 指纹不友好的站点有效。"""
+    if not shutil.which("curl"):
+        raise RuntimeError("系统没有 curl，无法回退")
+    proc = subprocess.run(
+        ["curl", "-sSL", "--fail", "--max-time", str(TIMEOUT),
+         "-H", f"User-Agent: {UA['User-Agent']}", url],
+        capture_output=True,
+        timeout=TIMEOUT + 30,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(f"curl 退出码 {proc.returncode}：{proc.stderr.decode('utf-8', 'ignore')[:200]}")
+    if not proc.stdout:
+        raise RuntimeError("curl 返回空内容")
+    return proc.stdout
+
+
 def http_get(url: str) -> bytes:
+    """先试 Python 原生下载，耗尽重试后回退到 curl。"""
     last: Exception | None = None
     for attempt in range(1, RETRIES + 1):
         try:
-            req = urllib.request.Request(url, headers=UA)
-            with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
-                return resp.read()
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+            return _fetch_urllib(url)
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as exc:
             last = exc
             if attempt < RETRIES:
                 time.sleep(2 ** attempt)
-    raise RuntimeError(f"下载失败（已重试 {RETRIES} 次）：{url}\n  最后错误：{last}")
+
+    try:
+        body = _fetch_curl(url)
+        print(f"      （Python TLS 失败，已用 curl 回退成功：{type(last).__name__}）")
+        return body
+    except Exception as curl_exc:  # noqa: BLE001
+        raise RuntimeError(
+            f"下载失败：Python 重试 {RETRIES} 次 + curl 回退均失败\n"
+            f"  Python 错误：{last}\n  curl 错误：{curl_exc}"
+        ) from last
 
 
 def sha256(data: bytes) -> str:
