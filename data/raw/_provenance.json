@@ -1,0 +1,42 @@
+{
+  "hk-dh-chpsebcddr-flu-express": {
+    "title": "Flu Express's figures data",
+    "organization": "Department of Health",
+    "notes": "Influenza surveillance data including sentinel surveillance, laboratory surveillance, influenza-like illness outbreak, hospital surveillance and severe influenza case during influenza season",
+    "update_frequency": "Weekly",
+    "url": "https://data.gov.hk/en-data/dataset/hk-dh-chpsebcddr-flu-express",
+    "resource_count": 1
+  },
+  "hospital-hadata-key-statistics-during-surge": {
+    "title": "Key Statistics during Service Demand Surge",
+    "organization": "Hospital Authority",
+    "notes": "Key Statistics during Service Demand Surge",
+    "update_frequency": "Daily (during surge period)",
+    "url": "https://data.gov.hk/en-data/dataset/hospital-hadata-key-statistics-during-surge",
+    "resource_count": 6
+  },
+  "hospital-hadata-service-ipdp": {
+    "title": "Inpatient and Day Inpatient Services Throughput",
+    "organization": "Hospital Authority",
+    "notes": "Inpatient and Day Inpatient Services Throughput",
+    "update_frequency": "Annually",
+    "url": "https://data.gov.hk/en-data/dataset/hospital-hadata-service-ipdp",
+    "resource_count": 51
+  },
+  "hospital-hadata-service-ambulatory-community": {
+    "title": "Ambulatory and Community Services Throughput",
+    "organization": "Hospital Authority",
+    "notes": "Ambulatory and Community Services Throughput",
+    "update_frequency": "Annually",
+    "url": "https://data.gov.hk/en-data/dataset/hospital-hadata-service-ambulatory-community",
+    "resource_count": 88
+  },
+  "hospital-hadata-health-care-facilities": {
+    "title": "List of Hospital Authority Hospitals/Institutions/Specialist Outpatient Clinics/Family Medicine Clinics",
+    "organization": "Hospital Authority",
+    "notes": "List of Hospital Authority Hospitals/Institutions/Specialist Outpatient Clinics/Family Medicine Clinics",
+    "update_frequency": "Quarterly (January, April, July and October)",
+    "url": "https://data.gov.hk/en-data/dataset/hospital-hadata-health-care-facilities",
+    "resource_count": 9
+  }
+}

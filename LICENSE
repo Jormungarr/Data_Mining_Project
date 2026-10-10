@@ -1,0 +1,40 @@
+MIT License
+
+Copyright (c) 2026 STAT8017 Project Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 数据版权说明
+
+本仓库 `data/` 目录下的原始数据来自香港特别行政区政府公开资料，
+版权归各数据提供机构所有，按其开放数据条款使用：
+
+| 数据 | 提供机构 | 来源 |
+| --- | --- | --- |
+| 流感速递图表数据 | 卫生署 卫生防护中心 | data.gov.hk |
+| 服务需求高峰统计数字 | 医院管理局 | data.gov.hk |
+| 住院及日间住院服务量 | 医院管理局 | data.gov.hk |
+| 门诊及社区服务量 | 医院管理局 | data.gov.hk |
+| 医院/机构名录 | 医院管理局 | data.gov.hk |
+| 逐日气温 | 香港天文台 | HKO Open Data API |
+
+上述数据的著作权不适用本仓库的 MIT 许可。`data/raw/_provenance.json`
+记录了每个数据集的官方元数据与来源链接。

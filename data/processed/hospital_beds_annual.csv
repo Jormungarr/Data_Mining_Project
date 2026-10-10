@@ -1,0 +1,808 @@
+fy,hospital,beds_acute,beds_infirmary,beds_mental,beds_mh,bed_cluster
+2008-09,Alice Ho Miu Ling Nethersole Hospital,593.0,0.0,20.0,0.0,New Territories East Cluster
+2009-10,Alice Ho Miu Ling Nethersole Hospital,593.0,0.0,20.0,0.0,New Territories East Cluster
+2010-11,Alice Ho Miu Ling Nethersole Hospital,563.0,0.0,20.0,0.0,New Territories East Cluster
+2011-12,Alice Ho Miu Ling Nethersole Hospital,543.0,0.0,20.0,0.0,New Territories East Cluster
+2012-13,Alice Ho Miu Ling Nethersole Hospital,543.0,0.0,20.0,0.0,New Territories East Cluster
+2013-14,Alice Ho Miu Ling Nethersole Hospital,516.0,0.0,20.0,0.0,New Territories East Cluster
+2014-15,Alice Ho Miu Ling Nethersole Hospital,516.0,0.0,20.0,0.0,New Territories East Cluster
+2015-16,Alice Ho Miu Ling Nethersole Hospital,503.0,0.0,20.0,0.0,New Territories East Cluster
+2016-17,Alice Ho Miu Ling Nethersole Hospital,513.0,0.0,20.0,0.0,New Territories East Cluster
+2017-18,Alice Ho Miu Ling Nethersole Hospital,525.0,0.0,20.0,0.0,New Territories East Cluster
+2018-19,Alice Ho Miu Ling Nethersole Hospital,565.0,0.0,20.0,0.0,New Territories East Cluster
+2019-20,Alice Ho Miu Ling Nethersole Hospital,585.0,0.0,20.0,0.0,New Territories East Cluster
+2020-21,Alice Ho Miu Ling Nethersole Hospital,585.0,0.0,20.0,0.0,New Territories East Cluster
+2021-22,Alice Ho Miu Ling Nethersole Hospital,600.0,0.0,20.0,0.0,New Territories East Cluster
+2022-23,Alice Ho Miu Ling Nethersole Hospital,600.0,0.0,20.0,0.0,New Territories East Cluster
+2023-24,Alice Ho Miu Ling Nethersole Hospital,600.0,0.0,20.0,0.0,New Territories East Cluster
+2024-25,Alice Ho Miu Ling Nethersole Hospital,620.0,0.0,20.0,0.0,New Territories East Cluster
+2008-09,Bradbury Hospice,28.0,0.0,0.0,0.0,New Territories East Cluster
+2009-10,Bradbury Hospice,28.0,0.0,0.0,0.0,New Territories East Cluster
+2010-11,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2011-12,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2012-13,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2013-14,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2014-15,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2015-16,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2016-17,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2017-18,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2018-19,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2019-20,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2020-21,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2021-22,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2022-23,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2023-24,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2024-25,Bradbury Hospice,26.0,0.0,0.0,0.0,New Territories East Cluster
+2008-09,Caritas Medical Centre,1003.0,20.0,0.0,160.0,Kowloon West Cluster
+2009-10,Caritas Medical Centre,1003.0,20.0,0.0,160.0,Kowloon West Cluster
+2010-11,Caritas Medical Centre,1003.0,20.0,0.0,160.0,Kowloon West Cluster
+2011-12,Caritas Medical Centre,1003.0,20.0,0.0,160.0,Kowloon West Cluster
+2012-13,Caritas Medical Centre,1003.0,20.0,0.0,160.0,Kowloon West Cluster
+2013-14,Caritas Medical Centre,1023.0,20.0,0.0,160.0,Kowloon West Cluster
+2014-15,Caritas Medical Centre,1026.0,20.0,0.0,160.0,Kowloon West Cluster
+2015-16,Caritas Medical Centre,1026.0,20.0,0.0,160.0,Kowloon West Cluster
+2016-17,Caritas Medical Centre,1026.0,20.0,0.0,160.0,Kowloon West Cluster
+2017-18,Caritas Medical Centre,1013.0,20.0,0.0,160.0,Kowloon West Cluster
+2018-19,Caritas Medical Centre,1031.0,20.0,0.0,160.0,Kowloon West Cluster
+2019-20,Caritas Medical Centre,1049.0,20.0,0.0,160.0,Kowloon West Cluster
+2020-21,Caritas Medical Centre,1068.0,20.0,0.0,157.0,Kowloon West Cluster
+2021-22,Caritas Medical Centre,1092.0,20.0,0.0,155.0,Kowloon West Cluster
+2022-23,Caritas Medical Centre,1122.0,20.0,0.0,155.0,Kowloon West Cluster
+2023-24,Caritas Medical Centre,1122.0,20.0,0.0,155.0,Kowloon West Cluster
+2024-25,Caritas Medical Centre,1123.0,20.0,0.0,155.0,Kowloon West Cluster
+2008-09,Castle Peak Hospital,0.0,0.0,1437.0,0.0,New Territories West Cluster
+2009-10,Castle Peak Hospital,0.0,0.0,1144.0,0.0,New Territories West Cluster
+2010-11,Castle Peak Hospital,0.0,0.0,1144.0,0.0,New Territories West Cluster
+2011-12,Castle Peak Hospital,0.0,0.0,1144.0,0.0,New Territories West Cluster
+2012-13,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2013-14,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2014-15,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2015-16,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2016-17,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2017-18,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2018-19,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2019-20,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2020-21,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2021-22,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2022-23,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2023-24,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2024-25,Castle Peak Hospital,0.0,0.0,1156.0,0.0,New Territories West Cluster
+2008-09,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2009-10,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2010-11,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2011-12,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2012-13,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2013-14,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2014-15,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2015-16,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2016-17,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2017-18,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2018-19,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2019-20,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2020-21,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2021-22,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2022-23,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2023-24,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2024-25,"Cheshire Home, Chung Hom Kok",0.0,240.0,0.0,0.0,Hong Kong East Cluster
+2008-09,"Cheshire Home, Shatin",86.0,210.0,0.0,0.0,New Territories East Cluster
+2009-10,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2010-11,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2011-12,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2012-13,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2013-14,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2014-15,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2015-16,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2016-17,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2017-18,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2018-19,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2019-20,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2020-21,"Cheshire Home, Shatin",69.0,235.0,0.0,0.0,New Territories East Cluster
+2021-22,"Cheshire Home, Shatin",89.0,215.0,0.0,0.0,New Territories East Cluster
+2022-23,"Cheshire Home, Shatin",109.0,195.0,0.0,0.0,New Territories East Cluster
+2023-24,"Cheshire Home, Shatin",109.0,195.0,0.0,0.0,New Territories East Cluster
+2024-25,"Cheshire Home, Shatin",109.0,195.0,0.0,0.0,New Territories East Cluster
+2008-09,Grantham Hospital,345.0,50.0,0.0,0.0,Hong Kong West Cluster
+2009-10,Grantham Hospital,322.0,50.0,0.0,0.0,Hong Kong West Cluster
+2010-11,Grantham Hospital,322.0,50.0,0.0,0.0,Hong Kong West Cluster
+2011-12,Grantham Hospital,322.0,50.0,0.0,0.0,Hong Kong West Cluster
+2012-13,Grantham Hospital,322.0,50.0,0.0,0.0,Hong Kong West Cluster
+2013-14,Grantham Hospital,322.0,50.0,0.0,0.0,Hong Kong West Cluster
+2014-15,Grantham Hospital,322.0,50.0,0.0,0.0,Hong Kong West Cluster
+2015-16,Grantham Hospital,338.0,50.0,0.0,0.0,Hong Kong West Cluster
+2016-17,Grantham Hospital,338.0,50.0,0.0,0.0,Hong Kong West Cluster
+2017-18,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2018-19,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2019-20,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2020-21,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2021-22,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2022-23,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2023-24,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2024-25,Grantham Hospital,339.0,50.0,0.0,0.0,Hong Kong West Cluster
+2008-09,Haven of Hope Hospital,309.0,116.0,0.0,0.0,Kowloon East Cluster
+2009-10,Haven of Hope Hospital,309.0,116.0,0.0,0.0,Kowloon East Cluster
+2010-11,Haven of Hope Hospital,309.0,116.0,0.0,0.0,Kowloon East Cluster
+2011-12,Haven of Hope Hospital,309.0,116.0,0.0,0.0,Kowloon East Cluster
+2012-13,Haven of Hope Hospital,309.0,116.0,0.0,0.0,Kowloon East Cluster
+2013-14,Haven of Hope Hospital,345.0,116.0,0.0,0.0,Kowloon East Cluster
+2014-15,Haven of Hope Hospital,345.0,116.0,0.0,0.0,Kowloon East Cluster
+2015-16,Haven of Hope Hospital,345.0,116.0,0.0,0.0,Kowloon East Cluster
+2016-17,Haven of Hope Hospital,345.0,116.0,0.0,0.0,Kowloon East Cluster
+2017-18,Haven of Hope Hospital,365.0,116.0,0.0,0.0,Kowloon East Cluster
+2018-19,Haven of Hope Hospital,365.0,116.0,0.0,0.0,Kowloon East Cluster
+2019-20,Haven of Hope Hospital,405.0,116.0,0.0,0.0,Kowloon East Cluster
+2020-21,Haven of Hope Hospital,445.0,76.0,0.0,0.0,Kowloon East Cluster
+2021-22,Haven of Hope Hospital,485.0,76.0,0.0,0.0,Kowloon East Cluster
+2022-23,Haven of Hope Hospital,525.0,76.0,0.0,0.0,Kowloon East Cluster
+2023-24,Haven of Hope Hospital,525.0,76.0,0.0,0.0,Kowloon East Cluster
+2024-25,Haven of Hope Hospital,525.0,76.0,0.0,0.0,Kowloon East Cluster
+2008-09,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2009-10,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2010-11,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2011-12,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2012-13,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2013-14,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2014-15,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2015-16,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2016-17,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2017-18,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2018-19,Hong Kong Buddhist Hospital,324.0,0.0,0.0,0.0,Kowloon Central Cluster
+2019-20,Hong Kong Buddhist Hospital,364.0,0.0,0.0,0.0,Kowloon Central Cluster
+2020-21,Hong Kong Buddhist Hospital,376.0,0.0,0.0,0.0,Kowloon Central Cluster
+2021-22,Hong Kong Buddhist Hospital,376.0,0.0,0.0,0.0,Kowloon Central Cluster
+2022-23,Hong Kong Buddhist Hospital,376.0,0.0,0.0,0.0,Kowloon Central Cluster
+2023-24,Hong Kong Buddhist Hospital,376.0,0.0,0.0,0.0,Kowloon Central Cluster
+2024-25,Hong Kong Buddhist Hospital,376.0,0.0,0.0,0.0,Kowloon Central Cluster
+2018-19,Hong Kong Children's Hospital,40.0,0.0,0.0,0.0,Kowloon Central Cluster
+2019-20,Hong Kong Children's Hospital,179.0,0.0,0.0,0.0,Kowloon Central Cluster
+2020-21,Hong Kong Children's Hospital,244.0,0.0,0.0,0.0,Kowloon Central Cluster
+2021-22,Hong Kong Children's Hospital,274.0,0.0,0.0,0.0,Kowloon Central Cluster
+2022-23,Hong Kong Children's Hospital,278.0,0.0,0.0,0.0,Kowloon Central Cluster
+2023-24,Hong Kong Children's Hospital,278.0,0.0,0.0,0.0,Kowloon Central Cluster
+2024-25,Hong Kong Children's Hospital,278.0,0.0,0.0,0.0,Kowloon Central Cluster
+2008-09,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2009-10,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2010-11,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2011-12,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2012-13,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2013-14,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2014-15,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2015-16,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2016-17,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2017-18,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2018-19,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2019-20,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2020-21,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2021-22,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2022-23,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2023-24,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2024-25,Hong Kong Eye Hospital,45.0,0.0,0.0,0.0,Kowloon Central Cluster
+2008-09,Kowloon Hospital,792.0,118.0,445.0,0.0,Kowloon Central Cluster
+2009-10,Kowloon Hospital,792.0,118.0,425.0,0.0,Kowloon Central Cluster
+2010-11,Kowloon Hospital,792.0,118.0,425.0,0.0,Kowloon Central Cluster
+2011-12,Kowloon Hospital,792.0,118.0,425.0,0.0,Kowloon Central Cluster
+2012-13,Kowloon Hospital,792.0,118.0,425.0,0.0,Kowloon Central Cluster
+2013-14,Kowloon Hospital,792.0,118.0,425.0,0.0,Kowloon Central Cluster
+2014-15,Kowloon Hospital,792.0,118.0,425.0,0.0,Kowloon Central Cluster
+2015-16,Kowloon Hospital,778.0,118.0,425.0,0.0,Kowloon Central Cluster
+2016-17,Kowloon Hospital,778.0,118.0,425.0,0.0,Kowloon Central Cluster
+2017-18,Kowloon Hospital,778.0,118.0,425.0,0.0,Kowloon Central Cluster
+2018-19,Kowloon Hospital,778.0,118.0,465.0,0.0,Kowloon Central Cluster
+2019-20,Kowloon Hospital,778.0,118.0,465.0,0.0,Kowloon Central Cluster
+2020-21,Kowloon Hospital,778.0,118.0,465.0,0.0,Kowloon Central Cluster
+2021-22,Kowloon Hospital,778.0,118.0,465.0,0.0,Kowloon Central Cluster
+2022-23,Kowloon Hospital,778.0,118.0,465.0,0.0,Kowloon Central Cluster
+2023-24,Kowloon Hospital,780.0,118.0,465.0,0.0,Kowloon Central Cluster
+2024-25,Kowloon Hospital,780.0,118.0,465.0,0.0,Kowloon Central Cluster
+2008-09,Kwai Chung Hospital,0.0,0.0,1000.0,0.0,Kowloon West Cluster
+2009-10,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2010-11,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2011-12,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2012-13,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2013-14,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2014-15,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2015-16,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2016-17,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2017-18,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2018-19,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2019-20,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2020-21,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2021-22,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2022-23,Kwai Chung Hospital,0.0,0.0,920.0,0.0,Kowloon West Cluster
+2023-24,Kwai Chung Hospital,0.0,0.0,955.0,0.0,Kowloon West Cluster
+2024-25,Kwai Chung Hospital,0.0,0.0,955.0,0.0,Kowloon West Cluster
+2008-09,Kwong Wah Hospital,1201.0,0.0,0.0,0.0,Kowloon West Cluster
+2009-10,Kwong Wah Hospital,1201.0,0.0,0.0,0.0,Kowloon West Cluster
+2010-11,Kwong Wah Hospital,1201.0,0.0,0.0,0.0,Kowloon West Cluster
+2011-12,Kwong Wah Hospital,1201.0,0.0,0.0,0.0,Kowloon West Cluster
+2012-13,Kwong Wah Hospital,1206.0,0.0,0.0,0.0,Kowloon West Cluster
+2013-14,Kwong Wah Hospital,1206.0,0.0,0.0,0.0,Kowloon West Cluster
+2014-15,Kwong Wah Hospital,1206.0,0.0,0.0,0.0,Kowloon West Cluster
+2015-16,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2016-17,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2017-18,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2018-19,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2019-20,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2020-21,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2021-22,Kwong Wah Hospital,1186.0,0.0,0.0,0.0,Kowloon West Cluster
+2022-23,Kwong Wah Hospital,1229.0,0.0,0.0,0.0,Kowloon West Cluster
+2023-24,Kwong Wah Hospital,1229.0,0.0,0.0,0.0,Kowloon West Cluster
+2024-25,Kwong Wah Hospital,1245.0,0.0,0.0,0.0,Kowloon West Cluster
+2008-09,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2009-10,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2010-11,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2011-12,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2012-13,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2013-14,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2014-15,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2015-16,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2016-17,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2017-18,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2018-19,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2019-20,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2020-21,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2021-22,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2022-23,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2023-24,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2024-25,MacLehose Medical Rehabilitation Centre,110.0,0.0,0.0,0.0,Hong Kong West Cluster
+2008-09,North District Hospital,607.0,0.0,0.0,0.0,New Territories East Cluster
+2009-10,North District Hospital,607.0,0.0,0.0,0.0,New Territories East Cluster
+2010-11,North District Hospital,607.0,0.0,0.0,0.0,New Territories East Cluster
+2011-12,North District Hospital,599.0,0.0,0.0,0.0,New Territories East Cluster
+2012-13,North District Hospital,599.0,0.0,0.0,0.0,New Territories East Cluster
+2013-14,North District Hospital,589.0,0.0,0.0,0.0,New Territories East Cluster
+2014-15,North District Hospital,589.0,0.0,0.0,0.0,New Territories East Cluster
+2015-16,North District Hospital,603.0,0.0,0.0,0.0,New Territories East Cluster
+2016-17,North District Hospital,603.0,0.0,0.0,0.0,New Territories East Cluster
+2017-18,North District Hospital,623.0,0.0,0.0,0.0,New Territories East Cluster
+2018-19,North District Hospital,646.0,0.0,0.0,0.0,New Territories East Cluster
+2019-20,North District Hospital,658.0,0.0,0.0,0.0,New Territories East Cluster
+2020-21,North District Hospital,683.0,0.0,0.0,0.0,New Territories East Cluster
+2021-22,North District Hospital,697.0,0.0,0.0,0.0,New Territories East Cluster
+2022-23,North District Hospital,717.0,0.0,0.0,0.0,New Territories East Cluster
+2023-24,North District Hospital,716.0,0.0,0.0,0.0,New Territories East Cluster
+2024-25,North District Hospital,724.0,0.0,0.0,0.0,New Territories East Cluster
+2014-15,North Lantau Hospital,40.0,0.0,0.0,0.0,Kowloon West Cluster
+2015-16,North Lantau Hospital,40.0,0.0,0.0,0.0,Kowloon West Cluster
+2016-17,North Lantau Hospital,40.0,0.0,0.0,0.0,Kowloon West Cluster
+2017-18,North Lantau Hospital,40.0,0.0,0.0,0.0,Kowloon West Cluster
+2018-19,North Lantau Hospital,90.0,0.0,0.0,0.0,Kowloon West Cluster
+2019-20,North Lantau Hospital,130.0,0.0,0.0,0.0,Kowloon West Cluster
+2020-21,North Lantau Hospital,180.0,0.0,0.0,0.0,Kowloon West Cluster
+2021-22,North Lantau Hospital,180.0,0.0,0.0,0.0,Kowloon West Cluster
+2022-23,North Lantau Hospital,180.0,0.0,0.0,0.0,Kowloon West Cluster
+2023-24,North Lantau Hospital,180.0,0.0,0.0,0.0,Kowloon West Cluster
+2024-25,North Lantau Hospital,180.0,0.0,0.0,0.0,Kowloon West Cluster
+2008-09,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2009-10,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2010-11,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2011-12,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2012-13,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2013-14,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2014-15,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2015-16,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2016-17,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2017-18,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2018-19,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2019-20,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2020-21,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2021-22,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2022-23,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2023-24,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2024-25,Our Lady of Maryknoll Hospital,236.0,0.0,0.0,0.0,Kowloon West Cluster
+2008-09,Overall,20416.0,2041.0,4000.0,660.0,Overall
+2009-10,Overall,20516.0,2041.0,3607.0,660.0,Overall
+2010-11,Overall,20733.0,2041.0,3607.0,660.0,Overall
+2011-12,Overall,20754.0,2041.0,3607.0,660.0,Overall
+2012-13,Overall,20845.0,2041.0,3607.0,660.0,Overall
+2013-14,Overall,21132.0,2041.0,3607.0,660.0,Overall
+2014-15,Overall,21337.0,2041.0,3607.0,660.0,Overall
+2015-16,Overall,21587.0,2041.0,3607.0,660.0,Overall
+2016-17,Overall,21798.0,2041.0,3607.0,680.0,Overall
+2017-18,Overall,22027.0,2041.0,3607.0,680.0,Overall
+2018-19,Overall,22561.0,2041.0,3647.0,680.0,Overall
+2019-20,Overall,23067.0,2041.0,3647.0,680.0,Overall
+2020-21,Overall,23525.0,2001.0,3647.0,677.0,Overall
+2021-22,Overall,23838.0,1981.0,3675.0,675.0,Overall
+2022-23,Overall,24257.0,1961.0,3675.0,675.0,Overall
+2023-24,Overall,24325.0,1961.0,3710.0,675.0,Overall
+2024-25,Overall,24478.0,1961.0,3710.0,675.0,Overall
+2008-09,Overall (Hong Kong East Cluster),1942.0,627.0,400.0,0.0,Hong Kong East Cluster
+2009-10,Overall (Hong Kong East Cluster),1942.0,627.0,400.0,0.0,Hong Kong East Cluster
+2010-11,Overall (Hong Kong East Cluster),2002.0,627.0,400.0,0.0,Hong Kong East Cluster
+2011-12,Overall (Hong Kong East Cluster),2002.0,627.0,400.0,0.0,Hong Kong East Cluster
+2012-13,Overall (Hong Kong East Cluster),2004.0,627.0,400.0,0.0,Hong Kong East Cluster
+2013-14,Overall (Hong Kong East Cluster),2004.0,627.0,400.0,0.0,Hong Kong East Cluster
+2014-15,Overall (Hong Kong East Cluster),2044.0,627.0,400.0,0.0,Hong Kong East Cluster
+2015-16,Overall (Hong Kong East Cluster),2065.0,627.0,400.0,0.0,Hong Kong East Cluster
+2016-17,Overall (Hong Kong East Cluster),2085.0,627.0,400.0,0.0,Hong Kong East Cluster
+2017-18,Overall (Hong Kong East Cluster),2105.0,627.0,400.0,0.0,Hong Kong East Cluster
+2018-19,Overall (Hong Kong East Cluster),2177.0,627.0,400.0,0.0,Hong Kong East Cluster
+2019-20,Overall (Hong Kong East Cluster),2248.0,627.0,400.0,0.0,Hong Kong East Cluster
+2020-21,Overall (Hong Kong East Cluster),2275.0,627.0,400.0,0.0,Hong Kong East Cluster
+2021-22,Overall (Hong Kong East Cluster),2280.0,627.0,400.0,0.0,Hong Kong East Cluster
+2022-23,Overall (Hong Kong East Cluster),2283.0,627.0,400.0,0.0,Hong Kong East Cluster
+2023-24,Overall (Hong Kong East Cluster),2309.0,627.0,400.0,0.0,Hong Kong East Cluster
+2024-25,Overall (Hong Kong East Cluster),2309.0,627.0,400.0,0.0,Hong Kong East Cluster
+2008-09,Overall (Hong Kong West Cluster),2881.0,200.0,82.0,0.0,Hong Kong West Cluster
+2009-10,Overall (Hong Kong West Cluster),2853.0,200.0,82.0,0.0,Hong Kong West Cluster
+2010-11,Overall (Hong Kong West Cluster),2853.0,200.0,82.0,0.0,Hong Kong West Cluster
+2011-12,Overall (Hong Kong West Cluster),2853.0,200.0,82.0,0.0,Hong Kong West Cluster
+2012-13,Overall (Hong Kong West Cluster),2853.0,200.0,82.0,0.0,Hong Kong West Cluster
+2013-14,Overall (Hong Kong West Cluster),2860.0,200.0,82.0,0.0,Hong Kong West Cluster
+2014-15,Overall (Hong Kong West Cluster),2860.0,200.0,82.0,0.0,Hong Kong West Cluster
+2015-16,Overall (Hong Kong West Cluster),2860.0,200.0,82.0,0.0,Hong Kong West Cluster
+2016-17,Overall (Hong Kong West Cluster),2860.0,200.0,82.0,0.0,Hong Kong West Cluster
+2017-18,Overall (Hong Kong West Cluster),2860.0,200.0,82.0,0.0,Hong Kong West Cluster
+2018-19,Overall (Hong Kong West Cluster),2866.0,200.0,82.0,0.0,Hong Kong West Cluster
+2019-20,Overall (Hong Kong West Cluster),2846.0,200.0,82.0,0.0,Hong Kong West Cluster
+2020-21,Overall (Hong Kong West Cluster),2794.0,200.0,82.0,0.0,Hong Kong West Cluster
+2021-22,Overall (Hong Kong West Cluster),2794.0,200.0,82.0,0.0,Hong Kong West Cluster
+2022-23,Overall (Hong Kong West Cluster),2797.0,200.0,82.0,0.0,Hong Kong West Cluster
+2023-24,Overall (Hong Kong West Cluster),2797.0,200.0,82.0,0.0,Hong Kong West Cluster
+2024-25,Overall (Hong Kong West Cluster),2797.0,200.0,82.0,0.0,Hong Kong West Cluster
+2008-09,Overall (Kowloon Central Cluster),3002.0,118.0,445.0,0.0,Kowloon Central Cluster
+2009-10,Overall (Kowloon Central Cluster),3002.0,118.0,425.0,0.0,Kowloon Central Cluster
+2010-11,Overall (Kowloon Central Cluster),3002.0,118.0,425.0,0.0,Kowloon Central Cluster
+2011-12,Overall (Kowloon Central Cluster),3002.0,118.0,425.0,0.0,Kowloon Central Cluster
+2012-13,Overall (Kowloon Central Cluster),3004.0,118.0,425.0,0.0,Kowloon Central Cluster
+2013-14,Overall (Kowloon Central Cluster),3005.0,118.0,425.0,0.0,Kowloon Central Cluster
+2014-15,Overall (Kowloon Central Cluster),3029.0,118.0,425.0,0.0,Kowloon Central Cluster
+2015-16,Overall (Kowloon Central Cluster),3029.0,118.0,425.0,0.0,Kowloon Central Cluster
+2016-17,Overall (Kowloon Central Cluster),3053.0,118.0,425.0,0.0,Kowloon Central Cluster
+2017-18,Overall (Kowloon Central Cluster),4900.0,250.0,425.0,0.0,Kowloon Central Cluster
+2018-19,Overall (Kowloon Central Cluster),4949.0,250.0,465.0,0.0,Kowloon Central Cluster
+2019-20,Overall (Kowloon Central Cluster),5137.0,250.0,465.0,0.0,Kowloon Central Cluster
+2020-21,Overall (Kowloon Central Cluster),5281.0,250.0,465.0,0.0,Kowloon Central Cluster
+2021-22,Overall (Kowloon Central Cluster),5290.0,250.0,465.0,0.0,Kowloon Central Cluster
+2022-23,Overall (Kowloon Central Cluster),5353.0,250.0,465.0,0.0,Kowloon Central Cluster
+2023-24,Overall (Kowloon Central Cluster),5361.0,250.0,465.0,0.0,Kowloon Central Cluster
+2024-25,Overall (Kowloon Central Cluster),5378.0,250.0,465.0,0.0,Kowloon Central Cluster
+2008-09,Overall (Kowloon East Cluster),2039.0,116.0,80.0,0.0,Kowloon East Cluster
+2009-10,Overall (Kowloon East Cluster),2075.0,116.0,80.0,0.0,Kowloon East Cluster
+2010-11,Overall (Kowloon East Cluster),2135.0,116.0,80.0,0.0,Kowloon East Cluster
+2011-12,Overall (Kowloon East Cluster),2135.0,116.0,80.0,0.0,Kowloon East Cluster
+2012-13,Overall (Kowloon East Cluster),2175.0,116.0,80.0,0.0,Kowloon East Cluster
+2013-14,Overall (Kowloon East Cluster),2291.0,116.0,80.0,0.0,Kowloon East Cluster
+2014-15,Overall (Kowloon East Cluster),2295.0,116.0,80.0,0.0,Kowloon East Cluster
+2015-16,Overall (Kowloon East Cluster),2331.0,116.0,80.0,0.0,Kowloon East Cluster
+2016-17,Overall (Kowloon East Cluster),2347.0,116.0,80.0,0.0,Kowloon East Cluster
+2017-18,Overall (Kowloon East Cluster),2405.0,116.0,80.0,0.0,Kowloon East Cluster
+2018-19,Overall (Kowloon East Cluster),2531.0,116.0,80.0,0.0,Kowloon East Cluster
+2019-20,Overall (Kowloon East Cluster),2604.0,116.0,80.0,0.0,Kowloon East Cluster
+2020-21,Overall (Kowloon East Cluster),2690.0,76.0,80.0,0.0,Kowloon East Cluster
+2021-22,Overall (Kowloon East Cluster),2766.0,76.0,80.0,0.0,Kowloon East Cluster
+2022-23,Overall (Kowloon East Cluster),2844.0,76.0,80.0,0.0,Kowloon East Cluster
+2023-24,Overall (Kowloon East Cluster),2854.0,76.0,80.0,0.0,Kowloon East Cluster
+2024-25,Overall (Kowloon East Cluster),2876.0,76.0,80.0,0.0,Kowloon East Cluster
+2008-09,Overall (Kowloon West Cluster),5204.0,328.0,1000.0,160.0,Kowloon West Cluster
+2009-10,Overall (Kowloon West Cluster),5174.0,328.0,920.0,160.0,Kowloon West Cluster
+2010-11,Overall (Kowloon West Cluster),5174.0,328.0,920.0,160.0,Kowloon West Cluster
+2011-12,Overall (Kowloon West Cluster),5174.0,328.0,920.0,160.0,Kowloon West Cluster
+2012-13,Overall (Kowloon West Cluster),5179.0,328.0,920.0,160.0,Kowloon West Cluster
+2013-14,Overall (Kowloon West Cluster),5221.0,328.0,920.0,160.0,Kowloon West Cluster
+2014-15,Overall (Kowloon West Cluster),5244.0,328.0,920.0,160.0,Kowloon West Cluster
+2015-16,Overall (Kowloon West Cluster),5244.0,328.0,920.0,160.0,Kowloon West Cluster
+2016-17,Overall (Kowloon West Cluster),5244.0,328.0,920.0,160.0,Kowloon West Cluster
+2017-18,Overall (Kowloon West Cluster),3431.0,196.0,920.0,160.0,Kowloon West Cluster
+2018-19,Overall (Kowloon West Cluster),3531.0,196.0,920.0,160.0,Kowloon West Cluster
+2019-20,Overall (Kowloon West Cluster),3559.0,196.0,920.0,160.0,Kowloon West Cluster
+2020-21,Overall (Kowloon West Cluster),3633.0,196.0,920.0,157.0,Kowloon West Cluster
+2021-22,Overall (Kowloon West Cluster),3682.0,196.0,920.0,155.0,Kowloon West Cluster
+2022-23,Overall (Kowloon West Cluster),3753.0,196.0,920.0,155.0,Kowloon West Cluster
+2023-24,Overall (Kowloon West Cluster),3753.0,196.0,955.0,155.0,Kowloon West Cluster
+2024-25,Overall (Kowloon West Cluster),3784.0,196.0,955.0,155.0,Kowloon West Cluster
+2008-09,Overall (New Territories East Cluster),3473.0,517.0,524.0,0.0,New Territories East Cluster
+2009-10,Overall (New Territories East Cluster),3473.0,517.0,524.0,0.0,New Territories East Cluster
+2010-11,Overall (New Territories East Cluster),3473.0,517.0,524.0,0.0,New Territories East Cluster
+2011-12,Overall (New Territories East Cluster),3473.0,517.0,524.0,0.0,New Territories East Cluster
+2012-13,Overall (New Territories East Cluster),3474.0,517.0,524.0,0.0,New Territories East Cluster
+2013-14,Overall (New Territories East Cluster),3477.0,517.0,524.0,0.0,New Territories East Cluster
+2014-15,Overall (New Territories East Cluster),3539.0,517.0,524.0,0.0,New Territories East Cluster
+2015-16,Overall (New Territories East Cluster),3610.0,517.0,524.0,0.0,New Territories East Cluster
+2016-17,Overall (New Territories East Cluster),3672.0,517.0,524.0,0.0,New Territories East Cluster
+2017-18,Overall (New Territories East Cluster),3730.0,517.0,524.0,0.0,New Territories East Cluster
+2018-19,Overall (New Territories East Cluster),3819.0,517.0,524.0,0.0,New Territories East Cluster
+2019-20,Overall (New Territories East Cluster),3886.0,517.0,524.0,0.0,New Territories East Cluster
+2020-21,Overall (New Territories East Cluster),4001.0,517.0,524.0,0.0,New Territories East Cluster
+2021-22,Overall (New Territories East Cluster),4095.0,497.0,552.0,0.0,New Territories East Cluster
+2022-23,Overall (New Territories East Cluster),4167.0,477.0,552.0,0.0,New Territories East Cluster
+2023-24,Overall (New Territories East Cluster),4183.0,477.0,552.0,0.0,New Territories East Cluster
+2024-25,Overall (New Territories East Cluster),4237.0,477.0,552.0,0.0,New Territories East Cluster
+2008-09,Overall (New Territories West Cluster),1875.0,135.0,1469.0,500.0,New Territories West Cluster
+2009-10,Overall (New Territories West Cluster),1997.0,135.0,1176.0,500.0,New Territories West Cluster
+2010-11,Overall (New Territories West Cluster),2094.0,135.0,1176.0,500.0,New Territories West Cluster
+2011-12,Overall (New Territories West Cluster),2115.0,135.0,1176.0,500.0,New Territories West Cluster
+2012-13,Overall (New Territories West Cluster),2156.0,135.0,1176.0,500.0,New Territories West Cluster
+2013-14,Overall (New Territories West Cluster),2274.0,135.0,1176.0,500.0,New Territories West Cluster
+2014-15,Overall (New Territories West Cluster),2326.0,135.0,1176.0,500.0,New Territories West Cluster
+2015-16,Overall (New Territories West Cluster),2448.0,135.0,1176.0,500.0,New Territories West Cluster
+2016-17,Overall (New Territories West Cluster),2537.0,135.0,1176.0,520.0,New Territories West Cluster
+2017-18,Overall (New Territories West Cluster),2596.0,135.0,1176.0,520.0,New Territories West Cluster
+2018-19,Overall (New Territories West Cluster),2688.0,135.0,1176.0,520.0,New Territories West Cluster
+2019-20,Overall (New Territories West Cluster),2787.0,135.0,1176.0,520.0,New Territories West Cluster
+2020-21,Overall (New Territories West Cluster),2851.0,135.0,1176.0,520.0,New Territories West Cluster
+2021-22,Overall (New Territories West Cluster),2931.0,135.0,1176.0,520.0,New Territories West Cluster
+2022-23,Overall (New Territories West Cluster),3060.0,135.0,1176.0,520.0,New Territories West Cluster
+2023-24,Overall (New Territories West Cluster),3068.0,135.0,1176.0,520.0,New Territories West Cluster
+2024-25,Overall (New Territories West Cluster),3097.0,135.0,1176.0,520.0,New Territories West Cluster
+2008-09,Pamela Youde Nethersole Eastern Hospital,1131.0,0.0,400.0,0.0,Hong Kong East Cluster
+2009-10,Pamela Youde Nethersole Eastern Hospital,1144.0,0.0,400.0,0.0,Hong Kong East Cluster
+2010-11,Pamela Youde Nethersole Eastern Hospital,1197.0,0.0,400.0,0.0,Hong Kong East Cluster
+2011-12,Pamela Youde Nethersole Eastern Hospital,1197.0,0.0,400.0,0.0,Hong Kong East Cluster
+2012-13,Pamela Youde Nethersole Eastern Hospital,1233.0,0.0,400.0,0.0,Hong Kong East Cluster
+2013-14,Pamela Youde Nethersole Eastern Hospital,1233.0,0.0,400.0,0.0,Hong Kong East Cluster
+2014-15,Pamela Youde Nethersole Eastern Hospital,1273.0,0.0,400.0,0.0,Hong Kong East Cluster
+2015-16,Pamela Youde Nethersole Eastern Hospital,1317.0,0.0,400.0,0.0,Hong Kong East Cluster
+2016-17,Pamela Youde Nethersole Eastern Hospital,1339.0,0.0,400.0,0.0,Hong Kong East Cluster
+2017-18,Pamela Youde Nethersole Eastern Hospital,1359.0,0.0,400.0,0.0,Hong Kong East Cluster
+2018-19,Pamela Youde Nethersole Eastern Hospital,1429.0,0.0,400.0,0.0,Hong Kong East Cluster
+2019-20,Pamela Youde Nethersole Eastern Hospital,1490.0,0.0,400.0,0.0,Hong Kong East Cluster
+2020-21,Pamela Youde Nethersole Eastern Hospital,1497.0,0.0,400.0,0.0,Hong Kong East Cluster
+2021-22,Pamela Youde Nethersole Eastern Hospital,1501.0,0.0,400.0,0.0,Hong Kong East Cluster
+2022-23,Pamela Youde Nethersole Eastern Hospital,1503.0,0.0,400.0,0.0,Hong Kong East Cluster
+2023-24,Pamela Youde Nethersole Eastern Hospital,1529.0,0.0,400.0,0.0,Hong Kong East Cluster
+2024-25,Pamela Youde Nethersole Eastern Hospital,1529.0,0.0,400.0,0.0,Hong Kong East Cluster
+2008-09,Pok Oi Hospital,234.0,135.0,0.0,0.0,New Territories West Cluster
+2009-10,Pok Oi Hospital,319.0,135.0,0.0,0.0,New Territories West Cluster
+2010-11,Pok Oi Hospital,369.0,135.0,0.0,0.0,New Territories West Cluster
+2011-12,Pok Oi Hospital,382.0,135.0,0.0,0.0,New Territories West Cluster
+2012-13,Pok Oi Hospital,392.0,135.0,0.0,0.0,New Territories West Cluster
+2013-14,Pok Oi Hospital,432.0,135.0,0.0,0.0,New Territories West Cluster
+2014-15,Pok Oi Hospital,470.0,135.0,0.0,0.0,New Territories West Cluster
+2015-16,Pok Oi Hospital,584.0,135.0,0.0,0.0,New Territories West Cluster
+2016-17,Pok Oi Hospital,622.0,135.0,0.0,0.0,New Territories West Cluster
+2017-18,Pok Oi Hospital,622.0,135.0,0.0,0.0,New Territories West Cluster
+2018-19,Pok Oi Hospital,660.0,135.0,0.0,0.0,New Territories West Cluster
+2019-20,Pok Oi Hospital,633.0,135.0,0.0,0.0,New Territories West Cluster
+2020-21,Pok Oi Hospital,635.0,135.0,0.0,0.0,New Territories West Cluster
+2021-22,Pok Oi Hospital,647.0,135.0,0.0,0.0,New Territories West Cluster
+2022-23,Pok Oi Hospital,687.0,135.0,0.0,0.0,New Territories West Cluster
+2023-24,Pok Oi Hospital,687.0,135.0,0.0,0.0,New Territories West Cluster
+2024-25,Pok Oi Hospital,687.0,135.0,0.0,0.0,New Territories West Cluster
+2008-09,Prince of Wales Hospital,1425.0,0.0,0.0,0.0,New Territories East Cluster
+2009-10,Prince of Wales Hospital,1425.0,0.0,0.0,0.0,New Territories East Cluster
+2010-11,Prince of Wales Hospital,1449.0,0.0,0.0,0.0,New Territories East Cluster
+2011-12,Prince of Wales Hospital,1477.0,0.0,0.0,0.0,New Territories East Cluster
+2012-13,Prince of Wales Hospital,1478.0,0.0,0.0,0.0,New Territories East Cluster
+2013-14,Prince of Wales Hospital,1518.0,0.0,0.0,0.0,New Territories East Cluster
+2014-15,Prince of Wales Hospital,1580.0,0.0,0.0,0.0,New Territories East Cluster
+2015-16,Prince of Wales Hospital,1650.0,0.0,0.0,0.0,New Territories East Cluster
+2016-17,Prince of Wales Hospital,1682.0,0.0,0.0,0.0,New Territories East Cluster
+2017-18,Prince of Wales Hospital,1708.0,0.0,0.0,0.0,New Territories East Cluster
+2018-19,Prince of Wales Hospital,1734.0,0.0,0.0,0.0,New Territories East Cluster
+2019-20,Prince of Wales Hospital,1749.0,0.0,0.0,0.0,New Territories East Cluster
+2020-21,Prince of Wales Hospital,1807.0,0.0,0.0,0.0,New Territories East Cluster
+2021-22,Prince of Wales Hospital,1852.0,0.0,0.0,0.0,New Territories East Cluster
+2022-23,Prince of Wales Hospital,1884.0,0.0,0.0,0.0,New Territories East Cluster
+2023-24,Prince of Wales Hospital,1901.0,0.0,0.0,0.0,New Territories East Cluster
+2024-25,Prince of Wales Hospital,1917.0,0.0,0.0,0.0,New Territories East Cluster
+2008-09,Princess Margaret Hospital,1623.0,138.0,0.0,0.0,Kowloon West Cluster
+2009-10,Princess Margaret Hospital,1593.0,138.0,0.0,0.0,Kowloon West Cluster
+2010-11,Princess Margaret Hospital,1593.0,138.0,0.0,0.0,Kowloon West Cluster
+2011-12,Princess Margaret Hospital,1593.0,138.0,0.0,0.0,Kowloon West Cluster
+2012-13,Princess Margaret Hospital,1593.0,138.0,0.0,0.0,Kowloon West Cluster
+2013-14,Princess Margaret Hospital,1615.0,138.0,0.0,0.0,Kowloon West Cluster
+2014-15,Princess Margaret Hospital,1595.0,138.0,0.0,0.0,Kowloon West Cluster
+2015-16,Princess Margaret Hospital,1595.0,138.0,0.0,0.0,Kowloon West Cluster
+2016-17,Princess Margaret Hospital,1595.0,138.0,0.0,0.0,Kowloon West Cluster
+2017-18,Princess Margaret Hospital,1603.0,138.0,0.0,0.0,Kowloon West Cluster
+2018-19,Princess Margaret Hospital,1635.0,138.0,0.0,0.0,Kowloon West Cluster
+2019-20,Princess Margaret Hospital,1609.0,138.0,0.0,0.0,Kowloon West Cluster
+2020-21,Princess Margaret Hospital,1622.0,138.0,0.0,0.0,Kowloon West Cluster
+2021-22,Princess Margaret Hospital,1643.0,138.0,0.0,0.0,Kowloon West Cluster
+2022-23,Princess Margaret Hospital,1680.0,138.0,0.0,0.0,Kowloon West Cluster
+2023-24,Princess Margaret Hospital,1680.0,138.0,0.0,0.0,Kowloon West Cluster
+2024-25,Princess Margaret Hospital,1708.0,138.0,0.0,0.0,Kowloon West Cluster
+2008-09,Queen Elizabeth Hospital,1841.0,0.0,0.0,0.0,Kowloon Central Cluster
+2009-10,Queen Elizabeth Hospital,1841.0,0.0,0.0,0.0,Kowloon Central Cluster
+2010-11,Queen Elizabeth Hospital,1841.0,0.0,0.0,0.0,Kowloon Central Cluster
+2011-12,Queen Elizabeth Hospital,1841.0,0.0,0.0,0.0,Kowloon Central Cluster
+2012-13,Queen Elizabeth Hospital,1843.0,0.0,0.0,0.0,Kowloon Central Cluster
+2013-14,Queen Elizabeth Hospital,1844.0,0.0,0.0,0.0,Kowloon Central Cluster
+2014-15,Queen Elizabeth Hospital,1868.0,0.0,0.0,0.0,Kowloon Central Cluster
+2015-16,Queen Elizabeth Hospital,1882.0,0.0,0.0,0.0,Kowloon Central Cluster
+2016-17,Queen Elizabeth Hospital,1906.0,0.0,0.0,0.0,Kowloon Central Cluster
+2017-18,Queen Elizabeth Hospital,1932.0,0.0,0.0,0.0,Kowloon Central Cluster
+2018-19,Queen Elizabeth Hospital,1941.0,0.0,0.0,0.0,Kowloon Central Cluster
+2019-20,Queen Elizabeth Hospital,1950.0,0.0,0.0,0.0,Kowloon Central Cluster
+2020-21,Queen Elizabeth Hospital,2017.0,0.0,0.0,0.0,Kowloon Central Cluster
+2021-22,Queen Elizabeth Hospital,1996.0,0.0,0.0,0.0,Kowloon Central Cluster
+2022-23,Queen Elizabeth Hospital,2012.0,0.0,0.0,0.0,Kowloon Central Cluster
+2023-24,Queen Elizabeth Hospital,2018.0,0.0,0.0,0.0,Kowloon Central Cluster
+2024-25,Queen Elizabeth Hospital,2019.0,0.0,0.0,0.0,Kowloon Central Cluster
+2008-09,Queen Mary Hospital,1608.0,0.0,82.0,0.0,Hong Kong West Cluster
+2009-10,Queen Mary Hospital,1616.0,0.0,82.0,0.0,Hong Kong West Cluster
+2010-11,Queen Mary Hospital,1616.0,0.0,82.0,0.0,Hong Kong West Cluster
+2011-12,Queen Mary Hospital,1616.0,0.0,82.0,0.0,Hong Kong West Cluster
+2012-13,Queen Mary Hospital,1616.0,0.0,82.0,0.0,Hong Kong West Cluster
+2013-14,Queen Mary Hospital,1620.0,0.0,82.0,0.0,Hong Kong West Cluster
+2014-15,Queen Mary Hospital,1620.0,0.0,82.0,0.0,Hong Kong West Cluster
+2015-16,Queen Mary Hospital,1622.0,0.0,82.0,0.0,Hong Kong West Cluster
+2016-17,Queen Mary Hospital,1624.0,0.0,82.0,0.0,Hong Kong West Cluster
+2017-18,Queen Mary Hospital,1623.0,0.0,82.0,0.0,Hong Kong West Cluster
+2018-19,Queen Mary Hospital,1629.0,0.0,82.0,0.0,Hong Kong West Cluster
+2019-20,Queen Mary Hospital,1609.0,0.0,82.0,0.0,Hong Kong West Cluster
+2020-21,Queen Mary Hospital,1557.0,0.0,82.0,0.0,Hong Kong West Cluster
+2021-22,Queen Mary Hospital,1557.0,0.0,82.0,0.0,Hong Kong West Cluster
+2022-23,Queen Mary Hospital,1557.0,0.0,82.0,0.0,Hong Kong West Cluster
+2023-24,Queen Mary Hospital,1557.0,0.0,82.0,0.0,Hong Kong West Cluster
+2024-25,Queen Mary Hospital,1557.0,0.0,82.0,0.0,Hong Kong West Cluster
+2008-09,Ruttonjee Hospital,513.0,156.0,0.0,0.0,Hong Kong East Cluster
+2009-10,Ruttonjee Hospital,500.0,156.0,0.0,0.0,Hong Kong East Cluster
+2010-11,Ruttonjee Hospital,507.0,156.0,0.0,0.0,Hong Kong East Cluster
+2011-12,Ruttonjee Hospital,507.0,156.0,0.0,0.0,Hong Kong East Cluster
+2012-13,Ruttonjee Hospital,477.0,156.0,0.0,0.0,Hong Kong East Cluster
+2013-14,Ruttonjee Hospital,477.0,156.0,0.0,0.0,Hong Kong East Cluster
+2014-15,Ruttonjee Hospital,477.0,156.0,0.0,0.0,Hong Kong East Cluster
+2015-16,Ruttonjee Hospital,465.0,156.0,0.0,0.0,Hong Kong East Cluster
+2016-17,Ruttonjee Hospital,465.0,156.0,0.0,0.0,Hong Kong East Cluster
+2017-18,Ruttonjee Hospital,465.0,156.0,0.0,0.0,Hong Kong East Cluster
+2018-19,Ruttonjee Hospital,467.0,156.0,0.0,0.0,Hong Kong East Cluster
+2019-20,Ruttonjee Hospital,477.0,156.0,0.0,0.0,Hong Kong East Cluster
+2020-21,Ruttonjee Hospital,497.0,156.0,0.0,0.0,Hong Kong East Cluster
+2021-22,Ruttonjee Hospital,501.0,156.0,0.0,0.0,Hong Kong East Cluster
+2022-23,Ruttonjee Hospital,502.0,156.0,0.0,0.0,Hong Kong East Cluster
+2023-24,Ruttonjee Hospital,502.0,156.0,0.0,0.0,Hong Kong East Cluster
+2024-25,Ruttonjee Hospital,502.0,156.0,0.0,0.0,Hong Kong East Cluster
+2008-09,Shatin Hospital,350.0,51.0,144.0,0.0,New Territories East Cluster
+2009-10,Shatin Hospital,350.0,51.0,144.0,0.0,New Territories East Cluster
+2010-11,Shatin Hospital,358.0,51.0,144.0,0.0,New Territories East Cluster
+2011-12,Shatin Hospital,358.0,51.0,144.0,0.0,New Territories East Cluster
+2012-13,Shatin Hospital,358.0,51.0,144.0,0.0,New Territories East Cluster
+2013-14,Shatin Hospital,358.0,51.0,144.0,0.0,New Territories East Cluster
+2014-15,Shatin Hospital,358.0,50.0,144.0,0.0,New Territories East Cluster
+2015-16,Shatin Hospital,358.0,50.0,144.0,0.0,New Territories East Cluster
+2016-17,Shatin Hospital,378.0,50.0,144.0,0.0,New Territories East Cluster
+2017-18,Shatin Hospital,378.0,49.0,144.0,0.0,New Territories East Cluster
+2018-19,Shatin Hospital,378.0,49.0,144.0,0.0,New Territories East Cluster
+2019-20,Shatin Hospital,398.0,49.0,144.0,0.0,New Territories East Cluster
+2020-21,Shatin Hospital,398.0,49.0,144.0,0.0,New Territories East Cluster
+2021-22,Shatin Hospital,398.0,49.0,144.0,0.0,New Territories East Cluster
+2022-23,Shatin Hospital,398.0,49.0,144.0,0.0,New Territories East Cluster
+2023-24,Shatin Hospital,398.0,49.0,144.0,0.0,New Territories East Cluster
+2024-25,Shatin Hospital,408.0,49.0,144.0,0.0,New Territories East Cluster
+2008-09,Siu Lam Hospital,0.0,0.0,0.0,350.0,New Territories West Cluster
+2009-10,Siu Lam Hospital,0.0,0.0,0.0,350.0,New Territories West Cluster
+2010-11,Siu Lam Hospital,0.0,0.0,0.0,350.0,New Territories West Cluster
+2011-12,Siu Lam Hospital,0.0,0.0,0.0,350.0,New Territories West Cluster
+2012-13,Siu Lam Hospital,0.0,0.0,0.0,500.0,New Territories West Cluster
+2013-14,Siu Lam Hospital,0.0,0.0,0.0,500.0,New Territories West Cluster
+2014-15,Siu Lam Hospital,0.0,0.0,0.0,500.0,New Territories West Cluster
+2015-16,Siu Lam Hospital,0.0,0.0,0.0,500.0,New Territories West Cluster
+2016-17,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2017-18,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2018-19,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2019-20,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2020-21,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2021-22,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2022-23,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2023-24,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2024-25,Siu Lam Hospital,0.0,0.0,0.0,520.0,New Territories West Cluster
+2008-09,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2009-10,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2010-11,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2011-12,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2012-13,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2013-14,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2014-15,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2015-16,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2016-17,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2017-18,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2018-19,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2019-20,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2020-21,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2021-22,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2022-23,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2023-24,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2024-25,St. John Hospital,28.0,59.0,0.0,0.0,Hong Kong East Cluster
+2008-09,Tai Po Hospital,384.0,256.0,360.0,0.0,New Territories East Cluster
+2009-10,Tai Po Hospital,401.0,231.0,360.0,0.0,New Territories East Cluster
+2010-11,Tai Po Hospital,401.0,231.0,360.0,0.0,New Territories East Cluster
+2011-12,Tai Po Hospital,401.0,231.0,360.0,0.0,New Territories East Cluster
+2012-13,Tai Po Hospital,401.0,231.0,360.0,0.0,New Territories East Cluster
+2013-14,Tai Po Hospital,401.0,231.0,360.0,0.0,New Territories East Cluster
+2014-15,Tai Po Hospital,401.0,232.0,360.0,0.0,New Territories East Cluster
+2015-16,Tai Po Hospital,401.0,232.0,360.0,0.0,New Territories East Cluster
+2016-17,Tai Po Hospital,401.0,232.0,360.0,0.0,New Territories East Cluster
+2017-18,Tai Po Hospital,401.0,233.0,360.0,0.0,New Territories East Cluster
+2018-19,Tai Po Hospital,401.0,233.0,360.0,0.0,New Territories East Cluster
+2019-20,Tai Po Hospital,401.0,233.0,360.0,0.0,New Territories East Cluster
+2020-21,Tai Po Hospital,433.0,233.0,360.0,0.0,New Territories East Cluster
+2021-22,Tai Po Hospital,433.0,233.0,388.0,0.0,New Territories East Cluster
+2022-23,Tai Po Hospital,433.0,233.0,388.0,0.0,New Territories East Cluster
+2023-24,Tai Po Hospital,433.0,233.0,388.0,0.0,New Territories East Cluster
+2024-25,Tai Po Hospital,433.0,233.0,388.0,0.0,New Territories East Cluster
+2008-09,The Duchess of Kent Children's Hospital at Sandy Bay,130.0,0.0,0.0,0.0,Hong Kong West Cluster
+2009-10,The Duchess of Kent Children's Hospital at Sandy Bay,130.0,0.0,0.0,0.0,Hong Kong West Cluster
+2010-11,The Duchess of Kent Children's Hospital at Sandy Bay,130.0,0.0,0.0,0.0,Hong Kong West Cluster
+2011-12,The Duchess of Kent Children's Hospital at Sandy Bay,130.0,0.0,0.0,0.0,Hong Kong West Cluster
+2012-13,The Duchess of Kent Children's Hospital at Sandy Bay,130.0,0.0,0.0,0.0,Hong Kong West Cluster
+2013-14,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2014-15,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2015-16,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2016-17,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2017-18,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2018-19,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2019-20,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2020-21,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2021-22,The Duchess of Kent Children's Hospital at Sandy Bay,133.0,0.0,0.0,0.0,Hong Kong West Cluster
+2022-23,The Duchess of Kent Children's Hospital at Sandy Bay,136.0,0.0,0.0,0.0,Hong Kong West Cluster
+2023-24,The Duchess of Kent Children's Hospital at Sandy Bay,136.0,0.0,0.0,0.0,Hong Kong West Cluster
+2024-25,The Duchess of Kent Children's Hospital at Sandy Bay,136.0,0.0,0.0,0.0,Hong Kong West Cluster
+2018-19,Tin Shui Wai Hospital,32.0,0.0,0.0,0.0,New Territories West Cluster
+2019-20,Tin Shui Wai Hospital,140.0,0.0,0.0,0.0,New Territories West Cluster
+2020-21,Tin Shui Wai Hospital,200.0,0.0,0.0,0.0,New Territories West Cluster
+2021-22,Tin Shui Wai Hospital,255.0,0.0,0.0,0.0,New Territories West Cluster
+2022-23,Tin Shui Wai Hospital,300.0,0.0,0.0,0.0,New Territories West Cluster
+2023-24,Tin Shui Wai Hospital,300.0,0.0,0.0,0.0,New Territories West Cluster
+2024-25,Tin Shui Wai Hospital,300.0,0.0,0.0,0.0,New Territories West Cluster
+2008-09,Tsan Yuk Hospital,4.0,0.0,0.0,0.0,Hong Kong West Cluster
+2009-10,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2010-11,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2011-12,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2012-13,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2013-14,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2014-15,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2015-16,Tsan Yuk Hospital,3.0,0.0,0.0,0.0,Hong Kong West Cluster
+2016-17,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2017-18,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2018-19,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2019-20,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2020-21,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2021-22,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2022-23,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2023-24,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2024-25,Tsan Yuk Hospital,1.0,0.0,0.0,0.0,Hong Kong West Cluster
+2008-09,Tseung Kwan O Hospital,425.0,0.0,0.0,0.0,Kowloon East Cluster
+2009-10,Tseung Kwan O Hospital,461.0,0.0,0.0,0.0,Kowloon East Cluster
+2010-11,Tseung Kwan O Hospital,503.0,0.0,0.0,0.0,Kowloon East Cluster
+2011-12,Tseung Kwan O Hospital,503.0,0.0,0.0,0.0,Kowloon East Cluster
+2012-13,Tseung Kwan O Hospital,543.0,0.0,0.0,0.0,Kowloon East Cluster
+2013-14,Tseung Kwan O Hospital,623.0,0.0,0.0,0.0,Kowloon East Cluster
+2014-15,Tseung Kwan O Hospital,625.0,0.0,0.0,0.0,Kowloon East Cluster
+2015-16,Tseung Kwan O Hospital,661.0,0.0,0.0,0.0,Kowloon East Cluster
+2016-17,Tseung Kwan O Hospital,667.0,0.0,0.0,0.0,Kowloon East Cluster
+2017-18,Tseung Kwan O Hospital,687.0,0.0,0.0,0.0,Kowloon East Cluster
+2018-19,Tseung Kwan O Hospital,747.0,0.0,0.0,0.0,Kowloon East Cluster
+2019-20,Tseung Kwan O Hospital,757.0,0.0,0.0,0.0,Kowloon East Cluster
+2020-21,Tseung Kwan O Hospital,777.0,0.0,0.0,0.0,Kowloon East Cluster
+2021-22,Tseung Kwan O Hospital,813.0,0.0,0.0,0.0,Kowloon East Cluster
+2022-23,Tseung Kwan O Hospital,825.0,0.0,0.0,0.0,Kowloon East Cluster
+2023-24,Tseung Kwan O Hospital,835.0,0.0,0.0,0.0,Kowloon East Cluster
+2024-25,Tseung Kwan O Hospital,847.0,0.0,0.0,0.0,Kowloon East Cluster
+2008-09,Tuen Mun Hospital,1641.0,0.0,32.0,150.0,New Territories West Cluster
+2009-10,Tuen Mun Hospital,1678.0,0.0,32.0,150.0,New Territories West Cluster
+2010-11,Tuen Mun Hospital,1725.0,0.0,32.0,150.0,New Territories West Cluster
+2011-12,Tuen Mun Hospital,1733.0,0.0,32.0,150.0,New Territories West Cluster
+2012-13,Tuen Mun Hospital,1764.0,0.0,20.0,0.0,New Territories West Cluster
+2013-14,Tuen Mun Hospital,1842.0,0.0,20.0,0.0,New Territories West Cluster
+2014-15,Tuen Mun Hospital,1856.0,0.0,20.0,0.0,New Territories West Cluster
+2015-16,Tuen Mun Hospital,1864.0,0.0,20.0,0.0,New Territories West Cluster
+2016-17,Tuen Mun Hospital,1915.0,0.0,20.0,0.0,New Territories West Cluster
+2017-18,Tuen Mun Hospital,1974.0,0.0,20.0,0.0,New Territories West Cluster
+2018-19,Tuen Mun Hospital,1996.0,0.0,20.0,0.0,New Territories West Cluster
+2019-20,Tuen Mun Hospital,2014.0,0.0,20.0,0.0,New Territories West Cluster
+2020-21,Tuen Mun Hospital,2016.0,0.0,20.0,0.0,New Territories West Cluster
+2021-22,Tuen Mun Hospital,2029.0,0.0,20.0,0.0,New Territories West Cluster
+2022-23,Tuen Mun Hospital,2073.0,0.0,20.0,0.0,New Territories West Cluster
+2023-24,Tuen Mun Hospital,2081.0,0.0,20.0,0.0,New Territories West Cluster
+2024-25,Tuen Mun Hospital,2110.0,0.0,20.0,0.0,New Territories West Cluster
+2008-09,Tung Wah Eastern Hospital,270.0,12.0,0.0,0.0,Hong Kong East Cluster
+2009-10,Tung Wah Eastern Hospital,270.0,12.0,0.0,0.0,Hong Kong East Cluster
+2010-11,Tung Wah Eastern Hospital,270.0,12.0,0.0,0.0,Hong Kong East Cluster
+2011-12,Tung Wah Eastern Hospital,270.0,12.0,0.0,0.0,Hong Kong East Cluster
+2012-13,Tung Wah Eastern Hospital,266.0,12.0,0.0,0.0,Hong Kong East Cluster
+2013-14,Tung Wah Eastern Hospital,266.0,12.0,0.0,0.0,Hong Kong East Cluster
+2014-15,Tung Wah Eastern Hospital,266.0,12.0,0.0,0.0,Hong Kong East Cluster
+2015-16,Tung Wah Eastern Hospital,255.0,12.0,0.0,0.0,Hong Kong East Cluster
+2016-17,Tung Wah Eastern Hospital,253.0,12.0,0.0,0.0,Hong Kong East Cluster
+2017-18,Tung Wah Eastern Hospital,253.0,12.0,0.0,0.0,Hong Kong East Cluster
+2018-19,Tung Wah Eastern Hospital,253.0,12.0,0.0,0.0,Hong Kong East Cluster
+2019-20,Tung Wah Eastern Hospital,253.0,12.0,0.0,0.0,Hong Kong East Cluster
+2020-21,Tung Wah Eastern Hospital,253.0,12.0,0.0,0.0,Hong Kong East Cluster
+2021-22,Tung Wah Eastern Hospital,250.0,12.0,0.0,0.0,Hong Kong East Cluster
+2022-23,Tung Wah Eastern Hospital,250.0,12.0,0.0,0.0,Hong Kong East Cluster
+2023-24,Tung Wah Eastern Hospital,250.0,12.0,0.0,0.0,Hong Kong East Cluster
+2024-25,Tung Wah Eastern Hospital,250.0,12.0,0.0,0.0,Hong Kong East Cluster
+2008-09,Tung Wah Group of Hospitals Fung Yiu King Hospital,196.0,80.0,0.0,0.0,Hong Kong West Cluster
+2009-10,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2010-11,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2011-12,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2012-13,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2013-14,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2014-15,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2015-16,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2016-17,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2017-18,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2018-19,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2019-20,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2020-21,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2021-22,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2022-23,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2023-24,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2024-25,Tung Wah Group of Hospitals Fung Yiu King Hospital,192.0,80.0,0.0,0.0,Hong Kong West Cluster
+2008-09,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2009-10,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2010-11,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2011-12,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2012-13,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2013-14,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2014-15,Tung Wah Group of Hospitals Wong Tai Sin Hospital,379.0,132.0,0.0,0.0,Kowloon West Cluster
+2015-16,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2016-17,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2017-18,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2018-19,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2019-20,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2020-21,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2021-22,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2022-23,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2023-24,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2024-25,Tung Wah Group of Hospitals Wong Tai Sin Hospital,399.0,132.0,0.0,0.0,Kowloon West Cluster
+2008-09,Tung Wah Hospital,488.0,70.0,0.0,0.0,Hong Kong West Cluster
+2009-10,Tung Wah Hospital,480.0,70.0,0.0,0.0,Hong Kong West Cluster
+2010-11,Tung Wah Hospital,480.0,70.0,0.0,0.0,Hong Kong West Cluster
+2011-12,Tung Wah Hospital,480.0,70.0,0.0,0.0,Hong Kong West Cluster
+2012-13,Tung Wah Hospital,480.0,70.0,0.0,0.0,Hong Kong West Cluster
+2013-14,Tung Wah Hospital,480.0,70.0,0.0,0.0,Hong Kong West Cluster
+2014-15,Tung Wah Hospital,480.0,70.0,0.0,0.0,Hong Kong West Cluster
+2015-16,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2016-17,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2017-18,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2018-19,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2019-20,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2020-21,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2021-22,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2022-23,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2023-24,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2024-25,Tung Wah Hospital,462.0,70.0,0.0,0.0,Hong Kong West Cluster
+2008-09,United Christian Hospital,1305.0,0.0,80.0,0.0,Kowloon East Cluster
+2009-10,United Christian Hospital,1305.0,0.0,80.0,0.0,Kowloon East Cluster
+2010-11,United Christian Hospital,1323.0,0.0,80.0,0.0,Kowloon East Cluster
+2011-12,United Christian Hospital,1323.0,0.0,80.0,0.0,Kowloon East Cluster
+2012-13,United Christian Hospital,1323.0,0.0,80.0,0.0,Kowloon East Cluster
+2013-14,United Christian Hospital,1323.0,0.0,80.0,0.0,Kowloon East Cluster
+2014-15,United Christian Hospital,1325.0,0.0,80.0,0.0,Kowloon East Cluster
+2015-16,United Christian Hospital,1325.0,0.0,80.0,0.0,Kowloon East Cluster
+2016-17,United Christian Hospital,1335.0,0.0,80.0,0.0,Kowloon East Cluster
+2017-18,United Christian Hospital,1353.0,0.0,80.0,0.0,Kowloon East Cluster
+2018-19,United Christian Hospital,1419.0,0.0,80.0,0.0,Kowloon East Cluster
+2019-20,United Christian Hospital,1442.0,0.0,80.0,0.0,Kowloon East Cluster
+2020-21,United Christian Hospital,1468.0,0.0,80.0,0.0,Kowloon East Cluster
+2021-22,United Christian Hospital,1468.0,0.0,80.0,0.0,Kowloon East Cluster
+2022-23,United Christian Hospital,1494.0,0.0,80.0,0.0,Kowloon East Cluster
+2023-24,United Christian Hospital,1494.0,0.0,80.0,0.0,Kowloon East Cluster
+2024-25,United Christian Hospital,1504.0,0.0,80.0,0.0,Kowloon East Cluster
+2008-09,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2009-10,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2010-11,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2011-12,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2012-13,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2013-14,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2014-15,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2015-16,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2016-17,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2017-18,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2018-19,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2019-20,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2020-21,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2021-22,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2022-23,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2023-24,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2024-25,Wong Chuk Hang Hospital,0.0,160.0,0.0,0.0,Hong Kong East Cluster
+2008-09,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2009-10,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2010-11,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2011-12,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2012-13,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2013-14,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2014-15,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2015-16,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2016-17,Yan Chai Hospital,762.0,38.0,0.0,0.0,Kowloon West Cluster
+2017-18,Yan Chai Hospital,775.0,38.0,0.0,0.0,Kowloon West Cluster
+2018-19,Yan Chai Hospital,775.0,38.0,0.0,0.0,Kowloon West Cluster
+2019-20,Yan Chai Hospital,771.0,38.0,0.0,0.0,Kowloon West Cluster
+2020-21,Yan Chai Hospital,763.0,38.0,0.0,0.0,Kowloon West Cluster
+2021-22,Yan Chai Hospital,767.0,38.0,0.0,0.0,Kowloon West Cluster
+2022-23,Yan Chai Hospital,771.0,38.0,0.0,0.0,Kowloon West Cluster
+2023-24,Yan Chai Hospital,771.0,38.0,0.0,0.0,Kowloon West Cluster
+2024-25,Yan Chai Hospital,773.0,38.0,0.0,0.0,Kowloon West Cluster

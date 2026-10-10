@@ -1,0 +1,209 @@
+{
+  "files": {
+    "flu/flux_data.csv": {
+      "bytes": 96295,
+      "note": "流感速递图表数据（周）— 数据源：hk-dh-chpsebcddr-flu-express",
+      "retrieved_at": "2026-10-10T15:43:13+00:00",
+      "sha256": "a59f57ea0a920d8c17c66667f45e7fe579124d3e3b9d664f29f5458030910384",
+      "url": "https://www.chp.gov.hk/files/misc/flux_data.csv"
+    },
+    "ha/ae_attendances_annual.json": {
+      "bytes": 67543,
+      "note": "HA 按联网/医院划分的急症室求诊人次（财政年度）— hospital-hadata-service-ambulatory-community",
+      "retrieved_at": "2026-10-10T15:43:14+00:00",
+      "sha256": "5faa9c7c588f880271df60ae062f6833d2d048241627d578ceb356895a0b6f1d",
+      "url": "https://www.ha.org.hk/opendata/ae-attnd-en.json"
+    },
+    "ha/facility_hospitals.json": {
+      "bytes": 25974,
+      "note": "HA 医院/机构名录、联网归属、经纬度 — hospital-hadata-health-care-facilities",
+      "retrieved_at": "2026-10-10T15:43:14+00:00",
+      "sha256": "02a01027c1879f1bb8df27c940e1d1fc5b87d36caa3aaa69ef2e2faa2f4c5918",
+      "url": "https://www.ha.org.hk/opendata/facility-hosp.json"
+    },
+    "ha/hospital_beds.json": {
+      "bytes": 453129,
+      "note": "HA 按专科及联网/医院划分的病床数目（财政年度）— hospital-hadata-service-ipdp",
+      "retrieved_at": "2026-10-10T15:43:14+00:00",
+      "sha256": "42dd2d061c793a6077c0a4b6fe69a17baac650aaf0acaf038f5dee32f3c5f485",
+      "url": "https://www.ha.org.hk/opendata/hosp-bed-en.json"
+    },
+    "ha/service_demand_surge_daily.json": {
+      "bytes": 4333741,
+      "note": "HA 服务需求高峰统计（逐日 × 医院）— hospital-hadata-key-statistics-during-surge",
+      "retrieved_at": "2026-10-10T15:43:14+00:00",
+      "sha256": "75189ca5a7e32025443b8cc4d3d1982a506b97b248752d3a7cd6178798651eb3",
+      "url": "https://www.ha.org.hk/opendata/pas_report/Daily_Services_Statistics/Daily_Services_Statistics_EN.json"
+    },
+    "hko/CLMMAXT_2019.csv": {
+      "bytes": 6473,
+      "note": "HKO 逐日temp_max 2019 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:25+00:00",
+      "sha256": "ad636c124d39721b4282c28f453939b446b223f935a7d5748effd1e0ff126e83",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2019&station=HKO"
+    },
+    "hko/CLMMAXT_2020.csv": {
+      "bytes": 6490,
+      "note": "HKO 逐日temp_max 2020 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:26+00:00",
+      "sha256": "6d985547c8454192157a7423ec8b698bf63248af33aeaa555dfe9121ddf647b7",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2020&station=HKO"
+    },
+    "hko/CLMMAXT_2021.csv": {
+      "bytes": 6473,
+      "note": "HKO 逐日temp_max 2021 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:27+00:00",
+      "sha256": "77ae52ec01705e311ae394f4daac19e1c3cab23d1745218538e10b29dcb23fe9",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2021&station=HKO"
+    },
+    "hko/CLMMAXT_2022.csv": {
+      "bytes": 6472,
+      "note": "HKO 逐日temp_max 2022 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:28+00:00",
+      "sha256": "5365ce5496bb507bd9172617de7916b0c25aeb3dfc2e44ac5041f04874bc68d8",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2022&station=HKO"
+    },
+    "hko/CLMMAXT_2023.csv": {
+      "bytes": 6473,
+      "note": "HKO 逐日temp_max 2023 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:28+00:00",
+      "sha256": "d20c9fb0088d2699637fe091807d6c852d21561bc3d6e8221f4e17be7e525b75",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2023&station=HKO"
+    },
+    "hko/CLMMAXT_2024.csv": {
+      "bytes": 6490,
+      "note": "HKO 逐日temp_max 2024 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:28+00:00",
+      "sha256": "8766f3ef865797c2f3334ec12db86ef725c16508935ec4696e9bd5c76c09f808",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2024&station=HKO"
+    },
+    "hko/CLMMAXT_2025.csv": {
+      "bytes": 6473,
+      "note": "HKO 逐日temp_max 2025 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:28+00:00",
+      "sha256": "991e404094ae6b7148da2ba60f3ff1e5230ecec2fd25343af5f9afb0d62ed0af",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2025&station=HKO"
+    },
+    "hko/CLMMAXT_2026.csv": {
+      "bytes": 4343,
+      "note": "HKO 逐日temp_max 2026 年（CLMMAXT）",
+      "retrieved_at": "2026-10-10T15:45:29+00:00",
+      "sha256": "4c64bc82b0484e9f64a19873dec0b5016dfe3f2127e29bd665d64e8724caa898",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMAXT&lang=en&rformat=csv&year=2026&station=HKO"
+    },
+    "hko/CLMMINT_2019.csv": {
+      "bytes": 6473,
+      "note": "HKO 逐日temp_min 2019 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:29+00:00",
+      "sha256": "47562cdeef8d9eb9c03212ac719758d2b2d22534199ed91d085406cb7e421a75",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2019&station=HKO"
+    },
+    "hko/CLMMINT_2020.csv": {
+      "bytes": 6489,
+      "note": "HKO 逐日temp_min 2020 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:29+00:00",
+      "sha256": "411b8691d5dcc01f91d84709b97257ae94df226f5ddb27e91e87d7f331a6bad9",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2020&station=HKO"
+    },
+    "hko/CLMMINT_2021.csv": {
+      "bytes": 6467,
+      "note": "HKO 逐日temp_min 2021 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:29+00:00",
+      "sha256": "953c35a90212e9d4a34f059e6f7ca7b51241d264b50fc4bd7d1061cabebca6f8",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2021&station=HKO"
+    },
+    "hko/CLMMINT_2022.csv": {
+      "bytes": 6467,
+      "note": "HKO 逐日temp_min 2022 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:30+00:00",
+      "sha256": "af4b35db1be9b6fdd75db17406b3575b8df6e15b7ecf1af3ad53e31057696594",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2022&station=HKO"
+    },
+    "hko/CLMMINT_2023.csv": {
+      "bytes": 6469,
+      "note": "HKO 逐日temp_min 2023 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:31+00:00",
+      "sha256": "6ef582b718cc3fe69e1024db6dee9b47ed4047f794650545ebcbfa025449f636",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2023&station=HKO"
+    },
+    "hko/CLMMINT_2024.csv": {
+      "bytes": 6485,
+      "note": "HKO 逐日temp_min 2024 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:31+00:00",
+      "sha256": "42fb7d5d0ee3b9be964cc53324b5bd886bca2bf4a99330b0c08799d6063d88ec",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2024&station=HKO"
+    },
+    "hko/CLMMINT_2025.csv": {
+      "bytes": 6473,
+      "note": "HKO 逐日temp_min 2025 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:31+00:00",
+      "sha256": "e2cabef880eae9a24bd85cea17aefd04760b88c06e532c2c13dc924ab0caafe3",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2025&station=HKO"
+    },
+    "hko/CLMMINT_2026.csv": {
+      "bytes": 4343,
+      "note": "HKO 逐日temp_min 2026 年（CLMMINT）",
+      "retrieved_at": "2026-10-10T15:45:31+00:00",
+      "sha256": "db62142c09a6f3bdcb314294e99d63a1f189cce7d5fae9cf6cb789c55ed4d655",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMMINT&lang=en&rformat=csv&year=2026&station=HKO"
+    },
+    "hko/CLMTEMP_2019.csv": {
+      "bytes": 6470,
+      "note": "HKO 逐日temp_mean 2019 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:21+00:00",
+      "sha256": "733afc696d0dc82b84eb9ac0695e0c1b5236b395c2a1cfb6c77314b707ce0d37",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2019&station=HKO"
+    },
+    "hko/CLMTEMP_2020.csv": {
+      "bytes": 6487,
+      "note": "HKO 逐日temp_mean 2020 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:22+00:00",
+      "sha256": "202fae5f2f3d16d30beef601f6e42de8be54d63f8ff0fcc195cb8c5529e92f2c",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2020&station=HKO"
+    },
+    "hko/CLMTEMP_2021.csv": {
+      "bytes": 6469,
+      "note": "HKO 逐日temp_mean 2021 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:23+00:00",
+      "sha256": "456421fe7ce8ab3520badc5c5d935f8e221f6413a1037b32b4786a7fbc16badb",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2021&station=HKO"
+    },
+    "hko/CLMTEMP_2022.csv": {
+      "bytes": 6468,
+      "note": "HKO 逐日temp_mean 2022 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:23+00:00",
+      "sha256": "a0ac063acdac7ae944209bc2bc175fc8e29faf6c89ee5bbdd00a59f21a3ba3dd",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2022&station=HKO"
+    },
+    "hko/CLMTEMP_2023.csv": {
+      "bytes": 6470,
+      "note": "HKO 逐日temp_mean 2023 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:23+00:00",
+      "sha256": "45de3d34bf4c84085c1a761edf6f4e894338b544e5a256cf2091b712f1db0469",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2023&station=HKO"
+    },
+    "hko/CLMTEMP_2024.csv": {
+      "bytes": 6485,
+      "note": "HKO 逐日temp_mean 2024 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:24+00:00",
+      "sha256": "1f985243efa37f545a3c005028dd87525503e4974363f87e0161f64a4f0ba2f1",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2024&station=HKO"
+    },
+    "hko/CLMTEMP_2025.csv": {
+      "bytes": 6470,
+      "note": "HKO 逐日temp_mean 2025 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:24+00:00",
+      "sha256": "3f3eedc82f799ea6e5693474afea538b94ad550fc77bed8f32801775a0c8c8bd",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2025&station=HKO"
+    },
+    "hko/CLMTEMP_2026.csv": {
+      "bytes": 4340,
+      "note": "HKO 逐日temp_mean 2026 年（CLMTEMP）",
+      "retrieved_at": "2026-10-10T15:45:24+00:00",
+      "sha256": "872d3a516e069415f7ea854eccab1ad8681f2625646d276f5f7c62d91f290c44",
+      "url": "https://data.weather.gov.hk/weatherAPI/opendata/opendata.php?dataType=CLMTEMP&lang=en&rformat=csv&year=2026&station=HKO"
+    }
+  },
+  "generated_at": "2026-10-10T15:45:34+00:00",
+  "source_count": 29
+}

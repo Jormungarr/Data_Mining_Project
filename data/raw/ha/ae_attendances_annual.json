@@ -1,0 +1,2576 @@
+[
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 151895
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 84759
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 9703
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 246357
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 121482
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 121482
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 203032
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 203032
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 102633
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 192154
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 294787
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 131612
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 143084
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 136424
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 138595
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 549715
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 119149
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 117823
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 145030
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 382002
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 99317
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 219817
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 319134
+  },
+  {
+    "Financial Year": "2008-09",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2116509
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 153546
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 87265
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 10024
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 250835
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 125661
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 125661
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 211528
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 211528
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 112980
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 202731
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 315711
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 133737
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 150879
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 145209
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 140994
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 570819
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 121626
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 122376
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 150878
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 394880
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 113378
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 231610
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 344988
+  },
+  {
+    "Financial Year": "2009-10",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2214422
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 154874
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 86691
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 11046
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 252611
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 128398
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 128398
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 212630
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 212630
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 118917
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 198306
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 317223
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 134480
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 149502
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 148007
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 143399
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 575388
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 125938
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 115730
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 150917
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 392585
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 125449
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 232965
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 358414
+  },
+  {
+    "Financial Year": "2010-11",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2237249
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 153816
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 84594
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 10820
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 249230
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 131129
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 131129
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 211566
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 211566
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 124694
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 187715
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 312409
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 134021
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 145917
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 151204
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 141919
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 573061
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 128506
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 117687
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 155851
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 402044
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 130725
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 231012
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 361737
+  },
+  {
+    "Financial Year": "2011-12",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2241176
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 155156
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 82799
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 10975
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 248930
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 132564
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 132564
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 206214
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 206214
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 132059
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 183774
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 315833
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 139820
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 142120
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 155381
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 142805
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 580126
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 136101
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 115764
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 157719
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 409584
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 131188
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 228871
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 360059
+  },
+  {
+    "Financial Year": "2012-13",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2253310
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 152332
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 80806
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 10712
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 243850
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 131577
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 131577
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 195280
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 195280
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 135270
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 188433
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 323703
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 136813
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 140983
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 26931
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 149645
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 140713
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 595085
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 136913
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 112777
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 144581
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 394271
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 131012
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 226228
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 357240
+  },
+  {
+    "Financial Year": "2013-14",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2241006
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 147409
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 78676
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 10662
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 236747
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 128855
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 128855
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 190391
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 190391
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 137551
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 182520
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 320071
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 130870
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 136456
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 81314
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 137003
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 135904
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 621547
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 135275
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 106630
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 138137
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 380042
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 126292
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 218956
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 345248
+  },
+  {
+    "Financial Year": "2014-15",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2222901
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 144204
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 77916
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 9717
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 231837
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 128503
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 128503
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 195584
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 195584
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 137654
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 178581
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 316235
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 133947
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 134014
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 92869
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 134857
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 133732
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 629419
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 137489
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 108150
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 139975
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 385614
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 126901
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 222363
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 349264
+  },
+  {
+    "Financial Year": "2015-16",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2236456
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 140520
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 77666
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 9279
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 227465
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 129674
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 129674
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 194648
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 194648
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 133867
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 182962
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 316829
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 135290
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 133290
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 95022
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 134704
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 132929
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 631235
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 134477
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 106606
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 144349
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 385432
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 123898
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 2932
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 219838
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 346668
+  },
+  {
+    "Financial Year": "2016-17",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2231951
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 133929
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 73612
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 9419
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 216960
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 125506
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 125506
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 131904
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 188878
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 320782
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 120088
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 175938
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 296026
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 134358
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 91082
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 130054
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 128391
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 483885
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 124403
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 103826
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 143694
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 371923
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 116052
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 67798
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 190108
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 373958
+  },
+  {
+    "Financial Year": "2017-18",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2189040
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 133149
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 72601
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 8978
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 214728
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 123901
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 123901
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 127046
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 185515
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 312561
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 116275
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 166409
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 282684
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 132911
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 93057
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 123698
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 124416
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 474082
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 114794
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 98067
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 143598
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 356459
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 110093
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 109642
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 173467
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 393202
+  },
+  {
+    "Financial Year": "2018-19",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2157617
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 122435
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 65346
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 8540
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 196321
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 118213
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 118213
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 112769
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 172435
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 285204
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 111366
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 155120
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 266486
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 127503
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 89629
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 115003
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 121443
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 453578
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 104588
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 90100
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 139671
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 334359
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 98028
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 136385
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 159465
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 393878
+  },
+  {
+    "Financial Year": "2019-20",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2048039
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 96651
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 51825
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 6591
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 155067
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 98145
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 98145
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 93032
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 145318
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 238350
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 93262
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 124778
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 218040
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 98338
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 63007
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 92055
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 100572
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 353972
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 76884
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 71733
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 121640
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 270257
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 76996
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 102798
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 126828
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 306622
+  },
+  {
+    "Financial Year": "2020-21",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 1640453
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 104604
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 60506
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 7354
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 172464
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 107820
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 107820
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 101485
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 166131
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 267616
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 103913
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 140273
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 244186
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 108148
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 79889
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 109389
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 112240
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 409666
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 86503
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 76342
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 143163
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 306008
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 82447
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 107037
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 142785
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 332269
+  },
+  {
+    "Financial Year": "2021-22",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 1840029
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 102608
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 56652
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 7299
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 166559
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 100469
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 100469
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 102823
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 155064
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 257887
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 99970
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 132023
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 231993
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 96465
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 71653
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 100105
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 97029
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 365252
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 81241
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 78810
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 141250
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 301301
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 82498
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 93240
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 141892
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 317630
+  },
+  {
+    "Financial Year": "2022-23",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 1741091
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 118898
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 69783
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 9871
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 198552
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 117148
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 117148
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 133082
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 199427
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 332509
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 128849
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 157333
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 286182
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 118801
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 90811
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 117378
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 121052
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 448042
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 101372
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 96799
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 166509
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 364680
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 99145
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 122753
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 173819
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 395717
+  },
+  {
+    "Financial Year": "2023-24",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2142830
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Pamela Youde Nethersole Eastern Hospital",
+    "AE Attendances": 112407
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Ruttonjee Hospital",
+    "AE Attendances": 67698
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "St. John Hospital",
+    "AE Attendances": 8845
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Hong Kong East Cluster",
+    "Hospital": "Overall (Hong Kong East Cluster)",
+    "AE Attendances": 188950
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Queen Mary Hospital",
+    "AE Attendances": 114325
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Hong Kong West Cluster",
+    "Hospital": "Overall (Hong Kong West Cluster)",
+    "AE Attendances": 114325
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Kwong Wah Hospital",
+    "AE Attendances": 134389
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Queen Elizabeth Hospital",
+    "AE Attendances": 191524
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon Central Cluster",
+    "Hospital": "Overall (Kowloon Central Cluster)",
+    "AE Attendances": 325913
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Tseung Kwan O Hospital",
+    "AE Attendances": 118366
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "United Christian Hospital",
+    "AE Attendances": 150556
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon East Cluster",
+    "Hospital": "Overall (Kowloon East Cluster)",
+    "AE Attendances": 268922
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Caritas Medical Centre",
+    "AE Attendances": 102250
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "North Lantau Hospital",
+    "AE Attendances": 82476
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Princess Margaret Hospital",
+    "AE Attendances": 110410
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Yan Chai Hospital",
+    "AE Attendances": 117793
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Kowloon West Cluster",
+    "Hospital": "Overall (Kowloon West Cluster)",
+    "AE Attendances": 412929
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Alice Ho Miu Ling Nethersole Hospital",
+    "AE Attendances": 92703
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "North District Hospital",
+    "AE Attendances": 93090
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Prince of Wales Hospital",
+    "AE Attendances": 157051
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories East Cluster",
+    "Hospital": "Overall (New Territories East Cluster)",
+    "AE Attendances": 342844
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Pok Oi Hospital",
+    "AE Attendances": 92950
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tin Shui Wai Hospital",
+    "AE Attendances": 111932
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Tuen Mun Hospital",
+    "AE Attendances": 165504
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "New Territories West Cluster",
+    "Hospital": "Overall (New Territories West Cluster)",
+    "AE Attendances": 370386
+  },
+  {
+    "Financial Year": "2024-25",
+    "Cluster": "Overall",
+    "Hospital": "Overall",
+    "AE Attendances": 2024269
+  }
+]

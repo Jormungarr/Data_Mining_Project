@@ -1,0 +1,35 @@
+column,table,role,description,dtype,unit,n_non_null,n_missing,pct_missing
+hospital,panel_hospital_week,标识,医院名称（已跨来源统一）,分类型,17 个值,2448,0,0.0
+cluster,panel_hospital_week,标识,医院所属医院联网,分类型,7 个值,2448,0,0.0
+fy,panel_hospital_week,标识,财政年度（4 月 1 日起算）,分类型,2019-20 … 2026-27,2448,0,0.0
+season,panel_hospital_week,标识,流感季标签（7 月为界）,分类型,8 个季节,2448,0,0.0
+week_start,panel_hospital_week,标识,该周第一天（周日）,日期,2019-11-25 …,2448,0,0.0
+week_end,panel_hospital_week,标识,该周最后一天（周六），对齐流感速递 To,日期,2019-12-07 … 2026-08-08,2448,0,0.0
+ae_first_attend,panel_hospital_week,结果变量,急症室首次求诊人次（周内日均）,计数,人次/日,2448,0,0.0
+ae_to_med_ip,panel_hospital_week,结果变量,经急症室转入内科住院人次（周内日均）,计数,人次/日,2302,146,5.96
+med_bed_occ_rate,panel_hospital_week,结果变量,内科病床占用率（周内日均）,有界比例,%,2304,144,5.88
+ped_bed_occ_rate,panel_hospital_week,结果变量,儿科病床占用率（周内日均）,有界比例,%,1597,851,34.76
+ILI_PMP,panel_hospital_week,解释变量,定点普通科门诊流感样病例比率【主解释变量】,连续,每千宗诊症,2448,0,0.0
+ILI_AED,panel_hospital_week,解释变量,急症室流感样病例比率,连续,每千宗诊症,2448,0,0.0
+Adm_65,panel_hospital_week,解释变量,65 岁及以上流感入院率,连续,每千人口,2448,0,0.0
+Adm_All,panel_hospital_week,解释变量,整体流感入院率,连续,每千人口,2448,0,0.0
+Severe65,panel_hospital_week,解释变量,65 岁及以上严重流感个案数,计数,宗/周,2448,0,0.0
+flu_H1,panel_hospital_week,解释变量,实验室确诊甲型 H1 流感病毒数,计数,宗/周,2448,0,0.0
+flu_H3,panel_hospital_week,解释变量,实验室确诊甲型 H3 流感病毒数,计数,宗/周,2448,0,0.0
+flu_B,panel_hospital_week,解释变量,实验室确诊乙型流感病毒数,计数,宗/周,2448,0,0.0
+flu_AandB,panel_hospital_week,解释变量,实验室确诊甲型+乙型流感病毒数,计数,宗/周,2448,0,0.0
+beds_acute,panel_hospital_week,协变量,急性及康复病床数（财政年度）,连续,张,2448,0,0.0
+beds_infirmary,panel_hospital_week,协变量,疗养病床数（财政年度）,连续,张,2448,0,0.0
+beds_mental,panel_hospital_week,协变量,精神科病床数（财政年度）,连续,张,2448,0,0.0
+beds_mh,panel_hospital_week,协变量,弱智科病床数（财政年度）,连续,张,2448,0,0.0
+ae_annual,panel_hospital_week,协变量,该院该财政年度急症室求诊总人次,连续,人次/年,2448,0,0.0
+with_AE,panel_hospital_week,协变量,该机构是否设急症室服务,分类型,Yes,2448,0,0.0
+lat,panel_hospital_week,协变量,医院纬度,连续,十进制度,2448,0,0.0
+lon,panel_hospital_week,协变量,医院经度,连续,十进制度,2448,0,0.0
+temp_mean,panel_hospital_week,协变量,香港天文台日平均气温（周内均值）,连续,°C,2448,0,0.0
+temp_max,panel_hospital_week,协变量,香港天文台日最高气温（周内均值）,连续,°C,2448,0,0.0
+temp_min,panel_hospital_week,协变量,香港天文台日最低气温（周内均值）,连续,°C,2448,0,0.0
+temp_days,panel_hospital_week,数据质量,该周有气温记录的天数,计数,0–7,2448,0,0.0
+days,panel_hospital_week,数据质量,该周 HA 实际发布数据的天数,计数,1–7,2448,0,0.0
+week_in_season,panel_hospital_week,数据质量,该周在其所属流感季内的序号,计数,1..N,2448,0,0.0
+prev_gap_days,panel_hospital_week,数据质量,与同季上一个已发布周的间隔天数。=7 表示真正相邻；>7 表示 HA 停发造成断档，构造滞后变量时必须据此屏蔽跨断档项,计数,0（该季首周）/ 7 / >7,2448,0,0.0
