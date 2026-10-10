@@ -31,3 +31,6 @@ Thumbs.db
 *.tmp
 .pytest_cache/
 .ruff_cache/
+
+# SSH 主机密钥（workspace 本地，供 core.sshCommand 使用）
+.github_known_hosts
