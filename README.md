@@ -28,6 +28,7 @@ Four common situations. Pick the row that matches you.
 | **Understand what the columns mean** | [`DATA_GUIDE.md`](DATA_GUIDE.md) Sections 0–3. Section 0 walks through a single row. |
 | **Analyse the data** | Read [Section 4](DATA_GUIDE.md#4-three-structural-facts-you-must-know) **first** — it explains the constraints that will otherwise trip you up — then [Section 7](DATA_GUIDE.md#7-what-you-can-and-cannot-do) for what is and is not answerable. |
 | **Rebuild the dataset** | The setup below, then [Pipeline details](#pipeline-details). |
+| **Run a model** | The template in [Running your own script](#running-your-own-script). |
 
 Unfamiliar with terms like *panel data*, *fixed effects* or *negative binomial*?
 There is a plain-language [glossary](DATA_GUIDE.md#10-glossary) at the end of the
@@ -75,7 +76,8 @@ byte-identical CSV output.
 ├── pipeline/                     The whole reproducible pipeline
 │   ├── run_all.sh                One-command driver
 │   ├── 01_build.py               Clean, aggregate, merge -> analysis tables
-│   └── 02_validate.py            Structural / temporal / consistency / distribution checks
+│   ├── 02_validate.py            Structural / temporal / consistency / distribution checks
+│   └── 03_model.py               Baseline model (a starting template, not part of run_all.sh)
 │
 ├── data/
 │   ├── raw/                      Raw files, byte-for-byte, never rewritten
@@ -151,6 +153,24 @@ code 1, so it can be used in CI.
 | **D. Distribution** | Value ranges; missing rates; structural constancy of the influenza predictors; known missing patterns |
 
 The latest report is at [`out/validation_report.txt`](out/validation_report.txt).
+
+### Running your own script
+
+Scripts read from `data/processed/` and write to `out/`. Run them with the
+project interpreter so they pick up the installed packages:
+
+```bash
+export UV_CACHE_DIR="$PWD/.uv-cache"     # only needed if you invoke uv directly
+.venv/bin/python pipeline/03_model.py
+```
+
+Copy `pipeline/03_model.py` as a template for new scripts: it loads the panel,
+builds a properly masked lag, fits a negative binomial regression with standard
+errors clustered by week, and writes its output to `out/`.
+
+New scripts are **not** added to `run_all.sh`. That script covers the data steps,
+which are deterministic and reproducible; analysis is run separately. If you do
+want one command for everything, append your script to the end of `run_all.sh`.
 
 ---
 

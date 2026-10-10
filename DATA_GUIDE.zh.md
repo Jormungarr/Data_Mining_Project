@@ -447,6 +447,17 @@ $$\text{med\_bed\_occ}_{it} = \alpha_i + \delta_s + \beta X_t + \theta (X_t \tim
 加入医院固定效应和季节固定效应，报告系数。先把这条链路完整跑通，
 再去加滞后项、交互项或阈值。后面的选项是为了回答简单模型答不了的具体问题而存在的。
 
+`pipeline/03_model.py` 就是照这个思路写的，输出到 `out/`。
+用 `.venv/bin/python pipeline/03_model.py` 运行，然后复制改动即可。
+它还顺手演示了两个坑：
+
+- 负二项的离散参数是**估计出来的**，不是用默认值。
+  `smf.glm(..., family=sm.families.NegativeBinomial())` 会把 alpha 悄悄固定在
+  1.0，对这种计数数据来说太大了。
+- 标准误按**周**聚类，不是按医院。按医院聚类看起来更自然，但在这里是错的：
+  只有 17 个聚类、而且回归量在聚类内几乎没有变异，方差估计会崩塌，
+  p 值变得虚假地小。脚本会把对比打出来给你看。
+
 **稳健性检验清单**：
 
 1. 只保留 `days == 7` 的完整周（2,108 行）
@@ -500,6 +511,9 @@ $$\text{med\_bed\_occ}_{it} = \alpha_i + \delta_s + \beta X_t + \theta (X_t \tim
 ```bash
 # 直接看管道怎么做的
 cat pipeline/01_build.py
+
+# 一个加载面板并拟合模型的完整示例
+cat pipeline/03_model.py
 
 # 只用 pandas 即可；关键步骤在 S1–S6，处理约定集中在文件顶部常量区
 # 运行： ./pipeline/run_all.sh

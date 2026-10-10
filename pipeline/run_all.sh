@@ -75,4 +75,7 @@ Outputs:
 
 Data structure, variables and what is analysable  ->  DATA_GUIDE.md
 Raw data sources and download links              ->  data/raw/SOURCES.md
+
+Modelling is a separate step. For a worked example:
+  .venv/bin/python pipeline/03_model.py
 EOF
