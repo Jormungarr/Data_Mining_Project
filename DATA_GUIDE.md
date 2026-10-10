@@ -379,13 +379,19 @@ Before modelling, it is worth confirming these relationships exist.
 > part of the pattern. Establishing a causal claim needs the modelling in
 > Section 7 plus explicit assumptions — and this dataset alone cannot settle it.
 
-**Territory-wide, weekly (n = 144):**
+**Territory-wide, weekly (n = 144).** These come from `hk_weekly.csv`, the HA
+Overall aggregate. Averaging the 17 hospitals in the main panel instead gives
+the same value for `ae_first_attend` and values up to 0.005 lower for the other
+two, because HA Overall covers slightly more hospitals. Both are correct — they
+are different aggregations.
 
 ```
 A&E first attendances   vs ILI_PMP   r = +0.695
 Admissions via A&E      vs ILI_PMP   r = +0.639
 Medical bed occupancy   vs ILI_PMP   r = +0.575
 ```
+
+Run `pipeline/03_eda.py` to reproduce these alongside the pooled versions.
 
 **Per hospital, A&E first attendances vs ILI_PMP (n = 144 each) — the spread is wide:**
 

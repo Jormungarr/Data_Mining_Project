@@ -77,6 +77,7 @@ byte-identical CSV output.
 │   ├── run_all.sh                One-command driver
 │   ├── 01_build.py               Clean, aggregate, merge -> analysis tables
 │   ├── 02_validate.py            Structural / temporal / consistency / distribution checks
+│   ├── 03_eda.py                 First look at the panel
 │   └── 03_model.py               Baseline model (a starting template, not part of run_all.sh)
 │
 ├── data/
@@ -163,6 +164,9 @@ project interpreter so they pick up the installed packages:
 export UV_CACHE_DIR="$PWD/.uv-cache"     # only needed if you invoke uv directly
 .venv/bin/python pipeline/03_model.py
 ```
+
+`pipeline/03_eda.py` is a worked example of an exploratory script, and
+`pipeline/03_model.py` of a modelling script.
 
 Copy `pipeline/03_model.py` as a template for new scripts: it loads the panel,
 builds a properly masked lag, fits a negative binomial regression with standard

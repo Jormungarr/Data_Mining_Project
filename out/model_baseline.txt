@@ -4,7 +4,7 @@ Dep. Variable:                      y   No. Observations:                 2372
 Model:               NegativeBinomial   Df Residuals:                     2346
 Method:                           MLE   Df Model:                           25
 Date:                Sun, 11 Oct 2026   Pseudo R-squ.:                  0.1446
-Time:                        01:12:33   Log-Likelihood:                -11919.
+Time:                        01:17:14   Log-Likelihood:                -11919.
 converged:                       True   LL-Null:                       -13934.
 Covariance Type:              cluster   LLR p-value:                     0.000
 ==============================================================================
