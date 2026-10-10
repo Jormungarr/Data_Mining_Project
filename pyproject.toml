@@ -1,7 +1,7 @@
 [project]
 name = "hk-flu-hospital-pressure"
 version = "0.1.0"
-description = "流感季公营医院急症服务压力：数据管道与分析数据集"
+description = "Weekly panel of emergency-care load at Hong Kong public hospitals during influenza seasons"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -14,8 +14,8 @@ dependencies = [
     "statsmodels>=0.15.0",
 ]
 
-# 本项目是一套数据管道脚本，不是可安装的 Python 包：
-# 没有 src/ 布局，也不需要构建 wheel。声明为非打包项目，
-# 否则 `uv sync` 会尝试寻找 src/<name>/__init__.py 而失败。
+# This project is a set of data-pipeline scripts, not an installable package:
+# there is no src/ layout and no wheel to build. Declaring it as unpackaged
+# stops `uv sync` from looking for src/<name>/__init__.py and failing.
 [tool.uv]
 package = false
